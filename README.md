@@ -10,7 +10,7 @@ Always live at [investor.netlify.app](https://investor.netlify.app/).
 ##### ⬜ Latest news
 
 ## Pushing
-You're awesome. Clone the repository to your computer and run `index.html`.
+You're awesome. Clone the repo to your computer and run `index.html`.
 
 ## License
 MIT
