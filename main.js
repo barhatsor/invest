@@ -33,8 +33,9 @@ class APIHandler {
     // Filter API response
     filterResponse(response)
     {
-        let result = response.filter(peRatio => peRatio < 11);
-        return result;
+        //let result = response.filter(peRatio => peRatio < 11);
+        //return result;
+        return response;
     }
 
     // Handle API response
@@ -45,7 +46,7 @@ class APIHandler {
                 // Parse response from JSON to array
                 var APIresponse = JSON.parse(this.responseText);
                 // Filter response
-                filteredResponse = this.filterResponse(APIresponse);
+                var filteredResponse = this.filterResponse(APIresponse);
                 // Finally, build the HTML
                 buildHTML(filteredResponse);
             }
@@ -55,9 +56,9 @@ class APIHandler {
 
 
 /* Handle everything HTML */
-buildHTML(response) {
+function buildHTML(response) {
     // Finished HTML goes here
-    this.out = "";
+    var out = "";
     // Create precent var to track negative precentages
     var precent;
     // For each stock in API response
@@ -71,7 +72,7 @@ buildHTML(response) {
             precent = "<h2>+";
         }
         // Build stock entries
-        this.out +=
+        out +=
             "<div class='entry'><h1>" +
             response[prop].quote.symbol +
             "</h1><p>" +
@@ -88,7 +89,7 @@ buildHTML(response) {
 
     // Inject the finished HTML into the page
     document.querySelector(".entries").innerHTML =
-        View.out + "<a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
+        out + "<a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
 
     // And remove the loading screen
     document.querySelector(".title").style.animation =
