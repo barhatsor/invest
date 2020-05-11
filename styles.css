@@ -1,16 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 .header {
-  height: 50px;
+  height: 53px;
   width: 100%;
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: black;
-  background-image: url("https://bassets.github.io/finance-logo-horiz.svg");
-  background-repeat: no-repeat;
-  background-size: 100px;
-  background-position: 10px 50%;
-  transition: 0.2s ease;
+  background: url("https://bassets.github.io/invest-icon.svg") no-repeat 20px 12.5px/25px black;
+  transition: .2s ease;
   z-index: 2;
 }
 .header .filter-button {
@@ -20,9 +16,14 @@
   cursor: pointer;
   padding: 15px 8px;
   border-radius: 4px;
-  transition: 0.2s ease;
-  right: 10px;
-  top: 9px;
+  transition: .2s ease;
+  background: black;
+  border: 1px solid #3d5466;
+  right: 20px;
+  top: 9.5px;
+}
+.header .filter-button.active {
+  border-color: #1da1f2;
 }
 .header .filter-button.active span {
   width: 6px;
@@ -36,7 +37,7 @@
 .header .filter-button span {
   position: relative;
   display: block;
-  background-color: white;
+  background: white;
   border-radius: 6px;
   height: 2px;
   width: 10px;
@@ -51,9 +52,9 @@
   position: absolute;
   left: 0;
   height: 2px;
-  background-color: inherit;
-  border-radius: 4px;
+  background: inherit;
   transition: inherit;
+  border-radius: 4px;
 }
 .header .filter-button span::before {
   top: -6px;
@@ -65,10 +66,37 @@
   position: absolute;
   top: 8px;
   right: 7px;
-  transition: 0.2s ease;
+  transition: .2s ease;
 }
-.header .filter-button:active {
-  transform: scale(0.9);
+
+.search {
+  position: fixed;
+  background: url("https://bassets.github.io/search.svg") 15px no-repeat #253341;
+  border-radius: 20px;
+  padding: 8px 8px 8px 40px;
+  border: 1px solid transparent;
+  font: inherit;
+  width: calc(100% - 180px);
+  font-size: 15px;
+  color: inherit;
+  left: 58px;
+  transition: .2s ease;
+  z-index: 2;
+}
+.search:focus {
+  border-color: white;
+  background-image: url("https://bassets.github.io/search-white.svg");
+  outline: none;
+}
+
+.search-wrapper {
+  position: fixed;
+  background: #253341;
+  width: calc(100% - 180px);
+  border-radius: 20px;
+  left: 58px;
+  top: 7.5px;
+  z-index: 2;
 }
 
 .filters-wrapper {
@@ -80,22 +108,22 @@
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  background: black;
+  background: linear-gradient(180deg, black, rgba(0, 0, 0, 0.5));
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.06);
-  transition: 0.2s ease;
+  transition: .2s ease;
   z-index: 1;
 }
 .filters-wrapper.active {
-  top: 50px;
+  top: 53px;
   overflow: auto;
 }
 .filters-wrapper .filters {
-  padding: 0 5px 0 5px;
+  padding: 0 13px 0 13px;
   display: flex;
 }
 .filters-wrapper .filters::before, .filters-wrapper .filters::after {
-  width: 10px;
-  height: 50px;
+  width: 18px;
+  height: 48px;
   position: fixed;
   content: "";
 }
@@ -111,16 +139,19 @@
   width: max-content;
   cursor: pointer;
   border-radius: 20px;
-  background-color: #4a4a4f;
   color: #f9f9facc;
   margin: 5px;
   padding: 10px 10px 10px 10px;
   box-shadow: 0 1px 1px 0 rgba(12, 12, 13, 0.2);
-  transition: 0.2s ease;
+  transition: .2s ease;
+  background: #253341;
+  border: 1px solid transparent;
+  font-size: 15px;
 }
 .filters-wrapper .filters .filter.active {
-  background-color: #0060df;
+  background: #3d5466;
   color: #f9f9fa;
+  border-color: #1da1f2;
   box-shadow: 0 1px 7px 0 rgba(0, 0, 255, 0.2);
 }
 .filters-wrapper .filters .filter:active {
@@ -128,24 +159,24 @@
 }
 
 .entries {
-  padding-top: 42px;
+  padding-top: 36px;
   cursor: pointer;
 }
 .entries a {
   color: #737373;
   text-decoration: none;
-  padding: 15px 0 15px 0;
+  padding: 15px 10px 15px 10px;
+  font-size: 15px;
   float: right;
 }
 .entries .entry {
-  background: url("https://bassets.github.io/info.svg") no-repeat;
-  background-size: 30px;
-  background-position: 50% 25%;
-  border-bottom: 1px solid #484848;
+  background: url("https://bassets.github.io/arrow.svg") no-repeat 50% 50%/20px #15202b;
   color: #737373;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
   opacity: 0;
-  height: auto;
-  transition: 0.2s ease;
 }
 .entries .entry h1 {
   font-size: 20px;
@@ -178,18 +209,16 @@
   height: 100%;
   left: 0;
   top: 0;
-  background: url("https://bassets.github.io/finance-logo-ver.svg") no-repeat 50% 50%/50% 50% black;
+  background: url("https://bassets.github.io/invest-logo-ver.svg") no-repeat 50% 50%/50% 50% black;
   z-index: 3;
 }
 
 @keyframes entry {
   from {
-    opacity: 0;
-    margin: 30px 30px 0 30px;
+    transform: scale(0.9);
   }
   to {
     opacity: 1;
-    margin: 0;
   }
 }
 @keyframes title {
@@ -197,6 +226,7 @@
     opacity: 1;
   }
   99.9% {
+    transform: scale(1.1);
     opacity: 0;
     z-index: 3;
   }
@@ -205,16 +235,23 @@
     opacity: 0;
   }
 }
+@keyframes overflow {
+  90% {
+    overflow: hidden;
+  }
+  to {
+    overflow-y: auto;
+  }
+}
 body {
   background: black;
-  font: 400 16px "Inter", sans-serif;
   color: #f9f9fa;
-  user-select: none;
-  -webkit-user-select: none;
+  font: 400 16px "Inter", sans-serif;
+  overflow: hidden;
+  animation: .2s .2s overflow forwards;
   -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
-  color: #f9f9fa;
   background: #f9f9fa33;
 }
