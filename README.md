@@ -1,19 +1,19 @@
-# invest
-A webapp for investing in the stock market.
-Always live at [investor.netlify.app](https://investor.netlify.app/).
-
-## Todo
-###### ☑️ `GET` ~~data from API and integrate into HTML~~
-###### ☑️ ~~Sleek UI~~
-##### ⬜ Stock filtering
-##### ⬜ Updates in realtime
-##### ⬜ Latest news
-
-## Pushing
-You're awesome. Clone the repo to your computer and run `index.html`.
-
-## License
-MIT
-
+Invest in stocks easily and quickly, all while staying in your browser.
 ---
-Uses the IEX Cloud API.
+
+### 🛣️ Roadmap
+<br>
+#### **v2.1** // 5/11/20
+- Added search
+- Javascript changes
+  
+#### **v2** // 4/11/20
+- Major UI changes
+- Added version number  
+
+#### **v1.5** // 4/30/20
+- UI Tweaks
+- Changed IF loops to toggles  
+
+#### **v1.2** // 4/23/20
+- Published project.
