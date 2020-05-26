@@ -1,10 +1,6 @@
 /* Main thread */
 
-// Initiate API handler
-APIhandler = new APIHandler();
 
-APIhandler.sendAPIReq();
-APIhandler.handleResponse();
 
 
 /* Handle everything API */
@@ -18,7 +14,7 @@ class APIHandler {
     }
 
     // Send API request
-    sendRequest(div) {
+    sendAPIReq(div) {
         this.xmlhttp = new XMLHttpRequest();
         // Requested dividends or not
         if (!div) {
@@ -31,7 +27,7 @@ class APIHandler {
     }
 
     // Filter API response
-    filterResponse(response)
+     filterResponse(response)
     {
         //let result = response.filter(peRatio => peRatio < 11);
         //return result;
@@ -44,58 +40,80 @@ class APIHandler {
         this.xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 // Parse response from JSON to array
-                var APIresponse = JSON.parse(this.responseText);
+                var obj = JSON.parse(this.responseText);
+                this.APIresponse = obj;
+                //this.APIresponse = JSON.parse(this.responseText);
                 // Filter response
-                var filteredResponse = this.filterResponse(APIresponse);
+                var filteredResponse = obj;
+                //filteredResponse = this.APIresponse;//this.filterResponse(this.APIresponse);
                 // Finally, build the HTML
-                buildHTML(filteredResponse);
+                View.buildHTML(filteredResponse);
             }
         }
     }
 }
 
+class ViewBuild {
+    /* Handle everything HTML */
 
-/* Handle everything HTML */
-function buildHTML(response) {
-    // Finished HTML goes here
-    var out = "";
-    // Create precent var to track negative precentages
-    var precent;
-    // For each stock in API response
-    for (var prop in response) {
-        // If precent is negative, color it red
-        if (response[prop].quote.changePercent < 0) {
-            precent = "<h2 class='red'>";
-        }
-        // Else, default to green
-        else {
-            precent = "<h2>+";
-        }
-        // Build stock entries
-        out +=
-            "<div class='entry'><h1>" +
-            response[prop].quote.symbol +
-            "</h1><p>" +
-            response[prop].quote.companyName +
-            "</p>" +
-            precent +
-            // Round precentages to 2 digits & remove trailing zeros
-            ((Math.round(response[prop].quote.changePercent * 100) / 100).toFixed(1) * 1).toString() +
-            "%</h2><span>" +
-            // Do the same for stock prices
-            ((Math.round(response[prop].quote.latestPrice * 100) / 100).toFixed(1) * 1).toString() +
-            "</span></div>";
+    constructor() {
+        //Create listeners for toggle buttons:
     }
 
-    // Inject the finished HTML into the page
-    document.querySelector(".entries").innerHTML =
-        out + "<a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
+    scrldIntoView(el) {
+        var rect = el.getBoundingClientRect();
+        var elemTop = rect.top;
+        var isVisible = elemTop < window.screen.height;
+        return isVisible;
+    }
 
-    // And remove the loading screen
-    document.querySelector(".title").style.animation =
-        "title .2s ease forwards";
+    buildHTML(response) {
+        // Finished HTML goes here
+         this.out = "";
+        // Create precent var to track negative precentages
+        var precent;
+        // For each stock in API response
+        for (var prop in response) {
+            // If precent is negative, color it red
+            if (response[prop].quote.changePercent < 0) {
+                precent = "<h2 class='red'>";
+            }
+            // Else, default to green
+            else {
+                precent = "<h2>+";
+            }
+            // Build stock entries
+            this.out +=
+                "<div class='entry'><h1>" +
+                response[prop].quote.symbol +
+                "</h1><p>" +
+                response[prop].quote.companyName +
+                "</p>" +
+                precent +
+                // Round precentages to 2 digits & remove trailing zeros
+                ((Math.round(response[prop].quote.changePercent * 100) / 100).toFixed(1) * 1).toString() +
+                "%</h2><span>" +
+                // Do the same for stock prices
+                ((Math.round(response[prop].quote.latestPrice * 100) / 100).toFixed(1) * 1).toString() +
+                "</span></div>";
+        }
+
+        // Inject the finished HTML into the page
+        document.querySelector(".entries").innerHTML =
+            this.out + "<a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
+
+        // And remove the loading screen
+        document.querySelector(".title").style.animation =
+            "title .2s ease forwards";
+
+        // Entries animate when scrolled into view
+        document.querySelectorAll(".entry").forEach((i) => {
+            if (scrldIntoView(i)) {
+                i.style.animation = "entry .5s ease forwards";
+            }
+        })
+    }
 }
-
 
 /* --UI-related JS-- */
 
@@ -128,6 +146,13 @@ function scrldIntoView(el) {
 }
 
 
+// Initiate API handler
+View = new ViewBuild();
+APIhandler = new APIHandler();
+
+APIhandler.sendAPIReq();
+APIhandler.handleResponse();
+
 /* Unimplemented (yet!) filter code */
 
 /*
@@ -135,7 +160,6 @@ var filter = peRatio.filter(function(ratio) {
   return ratio < 15;
 });
 console.log(filter);
-
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
