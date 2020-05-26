@@ -1,7 +1,4 @@
-/* Main thread */
-
-
-
+var v = 2.3;
 
 /* Handle everything API */
 class APIHandler {
@@ -15,14 +12,11 @@ class APIHandler {
 
     // Send API request
     sendAPIReq(div) {
-        this.xmlhttp = new XMLHttpRequest();
         // Requested dividends or not
         if (!div) {
-            this.xmlhttp.open("GET", this.APIurl, true);
-            this.xmlhttp.send();
+            httpRequest("GET", this.APIurl, handleResponse);
         } else {
-            this.xmlhttp.open("GET", this.APIurl_div, true);
-            this.xmlhttp.send();
+            httpRequest("GET", this.APIurl_div, handleResponse);
         }
     }
 
@@ -35,29 +29,22 @@ class APIHandler {
     }
 
     // Handle API response
-    handleResponse() {
-        this.APIresponse = null;
-        this.xmlhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // Parse response from JSON to array
-                var obj = JSON.parse(this.responseText);
-                this.APIresponse = obj;
-                //this.APIresponse = JSON.parse(this.responseText);
-                // Filter response
-                var filteredResponse = obj;
-                //filteredResponse = this.APIresponse;//this.filterResponse(this.APIresponse);
-                // Finally, build the HTML
-                View.buildHTML(filteredResponse);
-            }
-        }
+    handleResponse(response) {
+        // Parse response from JSON to array
+        var obj = JSON.parse(response);
+        //this.APIresponse = JSON.parse(this.responseText);
+        // Filter response
+        var filteredResponse = obj;
+        //filteredResponse = this.APIresponse;//this.filterResponse(this.APIresponse);
+        // Finally, build the HTML
+        stocks.buildHTML(filteredResponse);
     }
 }
 
-class ViewBuild {
-    /* Handle everything HTML */
-
+/* Handle everything HTML */
+class stockEntries {
+    
     constructor() {
-        //Create listeners for toggle buttons:
     }
 
     scrldIntoView(el) {
@@ -69,7 +56,7 @@ class ViewBuild {
 
     buildHTML(response) {
         // Finished HTML goes here
-         this.out = "";
+        this.out = "";
         // Create precent var to track negative precentages
         var precent;
         // For each stock in API response
@@ -100,19 +87,72 @@ class ViewBuild {
 
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML =
-            this.out + "<a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
+            this.out + "<a href='https://codepen.io/barhatsor' style='float: left'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
 
         // And remove the loading screen
         document.querySelector(".title").style.animation =
             "title .2s ease forwards";
 
-        // Entries animate when scrolled into view
+        // Onscreen entries animate
         document.querySelectorAll(".entry").forEach((i) => {
             if (scrldIntoView(i)) {
-                i.style.animation = "entry .5s ease forwards";
+                i.style.animation = "entry .2s .2 ease forwards";
             }
         })
     }
+}
+
+/* Search */
+var prevrequest = "";
+document.querySelector('.search').addEventListener('input', function (event) {
+  if (this.value != "" && this.value != prevrequest) {
+    prevrequest = this.value;
+    httpRequest("GET", "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords="+this.value+"&apikey=XH456FPPVS8MHBXA", renderSuggestions);
+  }
+  else {
+    document.querySelector(".search").classList.remove("suggestions");
+    document.querySelector(".search-wrapper").style.display = "block";
+  }
+});
+
+document.querySelector('.search').addEventListener('blur', function (event) {
+  document.querySelector(".search").classList.remove("suggestions");
+  document.querySelector(".search-wrapper").style.display = "none";
+});
+
+
+/* Search Suggestions */
+function renderSuggestions(response) {
+  var obj = JSON.parse(response);
+  var s = "1. symbol";
+  var n = "2. name";
+  var out = "";
+  if (!obj.Note) {
+    obj.bestMatches.forEach(match => {
+    out += '<div class="suggestion"><p>'+match[s]+'</p><a>'+match[n]+'</a></div>';
+    })
+    if (out == "") {
+      out = '<div class="suggestion"><p>No results</p></div>';
+    }
+  }
+  else {
+    out = '<div class="suggestion"><p>Server overload: Try again later</p></div>';
+  }
+  document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
+  document.querySelector(".search-wrapper").style.display = "block";
+  document.querySelector(".search").classList.add("suggestions");
+}
+
+/* HTTP Request */
+function httpRequest(type, url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() { 
+        if (this.readyState == 4 && this.status == 200) {
+           callback(this.responseText);
+        }
+    }
+    xmlhttp.open(type, url, true); 
+    xmlhttp.send();
 }
 
 /* --UI-related JS-- */
@@ -134,7 +174,7 @@ document.querySelectorAll(".filter").forEach((filter) => {
 window.onscroll = function (e) {
     document.querySelectorAll(".entry").forEach((entry) => {
         if (scrldIntoView(entry)) {
-            entry.style.animation = "entry .5s ease forwards";
+            entry.style.animation = "entry .2s ease forwards";
         }
     })
 }
@@ -145,11 +185,15 @@ function scrldIntoView(el) {
     return isVisible;
 }
 
+/* Main thread */
 
 // Initiate API handler
-View = new ViewBuild();
 APIhandler = new APIHandler();
 
+// Initiate View builder
+stocks = new stockEntries();
+
+// Run
 APIhandler.sendAPIReq();
 APIhandler.handleResponse();
 
