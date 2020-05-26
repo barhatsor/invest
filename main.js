@@ -111,7 +111,7 @@ document.querySelector('.search').addEventListener('input', function (event) {
   }
   else {
     document.querySelector(".search").classList.remove("suggestions");
-    document.querySelector(".search-wrapper").style.display = "block";
+    document.querySelector(".search-wrapper").style.display = "none";
   }
 });
 
