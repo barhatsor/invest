@@ -14,9 +14,9 @@ class APIHandler {
     sendAPIReq(div) {
         // Requested dividends or not
         if (!div) {
-            httpRequest("GET", this.APIurl, handleResponse);
+            httpRequest("GET", this.APIurl, this.handleResponse);
         } else {
-            httpRequest("GET", this.APIurl_div, handleResponse);
+            httpRequest("GET", this.APIurl_div, this.handleResponse);
         }
     }
 
@@ -96,7 +96,7 @@ class stockEntries {
         // Onscreen entries animate
         document.querySelectorAll(".entry").forEach((i) => {
             if (scrldIntoView(i)) {
-                i.style.animation = "entry .2s .2 ease forwards";
+                i.style.animation = "entry .2s .2s ease forwards";
             }
         })
     }
@@ -195,7 +195,6 @@ stocks = new stockEntries();
 
 // Run
 APIhandler.sendAPIReq();
-APIhandler.handleResponse();
 
 /* Unimplemented (yet!) filter code */
 
