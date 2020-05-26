@@ -136,7 +136,7 @@ function renderSuggestions(response) {
     }
   }
   else {
-    out = '<div class="suggestion"><p>Server overload: Try again later</p></div>';
+    out = '<div class="suggestion"><p>Try again later</p></div>';
   }
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
   document.querySelector(".search-wrapper").style.display = "block";
