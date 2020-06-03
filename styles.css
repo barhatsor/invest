@@ -78,6 +78,7 @@
   font-size: 15px;
   color: inherit;
   width: calc(100% - 212px);
+  top: 8.5px;
   left: 58px;
   border: 1px solid transparent;
   z-index: 2;
@@ -292,7 +293,6 @@ body {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
 ::selection {
   background: #f9f9fa33;
 }
