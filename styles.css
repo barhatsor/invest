@@ -211,7 +211,6 @@
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
-  opacity: 0;
 }
 .entries .entry h1 {
   font-size: 20px;
@@ -288,7 +287,7 @@
   
 @keyframes entry {
   from {
-    transform: scale(0.9);
+    opacity: 0;
   }
   to {
     opacity: 1;
