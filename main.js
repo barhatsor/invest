@@ -89,9 +89,6 @@ class stockEntries {
         document.querySelector(".entries").innerHTML =
             this.out + "<a href='https://codepen.io/barhatsor' style='float: left;padding-right: 0'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
 
-        // And remove the loading screen
-        document.querySelector(".title").classList.add("hidden");
-
         // Onscreen entries animate
         var a = 0;
         document.querySelectorAll(".entry").forEach((entry) => {
