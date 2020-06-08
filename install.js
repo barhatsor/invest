@@ -2,8 +2,8 @@
 
 let deferredInstallPrompt = null;
 
-const installWrapper = document.getElementById('.install-wrapper');
-const installButton = document.getElementById('.install');
+const installWrapper = document.querySelector('.install-wrapper');
+const installButton = document.querySelector('.install');
 
 installButton.addEventListener('click', installPWA);
 
