@@ -6,7 +6,7 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 #### **v2.5** // 6/8/20
 - Added PWA support
 
-#### **v2.3** // 6/8/20
+#### **v2.3** // 6/2/20
 - Added class structure to Javascript code
 
 #### **v2.1** // 5/11/20
