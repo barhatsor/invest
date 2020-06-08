@@ -71,7 +71,7 @@ class stockEntries {
             }
             // Build stock entries
             this.out +=
-                "<div class='entry'><h1>" +
+                "<div class='entry' style='opacity:1'><h1>" +
                 response[prop].quote.symbol +
                 "</h1><p>" +
                 response[prop].quote.companyName +
