@@ -94,9 +94,11 @@ class stockEntries {
             "title .2s ease forwards";
 
         // Onscreen entries animate
+        var a = 0;
         document.querySelectorAll(".entry").forEach((i) => {
             if (scrldIntoView(i)) {
-                i.style.animation = "entry .2s .2s ease forwards";
+                i.style.animation = "entry .2s "+a*0.2+"s ease forwards";
+                a += 1;
             }
         })
     }
