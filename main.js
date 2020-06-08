@@ -97,7 +97,7 @@ class stockEntries {
         var a = 0;
         document.querySelectorAll(".entry").forEach((i) => {
             if (scrldIntoView(i)) {
-                i.style.animation = "entry .2s "+a*0.02+"s ease forwards";
+                i.style.animation = "entry .2s "+a*0.06+"s ease forwards";
                 a += 1;
             }
         })
