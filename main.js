@@ -87,7 +87,7 @@ class stockEntries {
 
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML =
-            this.out + "<a href='https://codepen.io/barhatsor' style='float: left'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
+            this.out + "<a href='https://codepen.io/barhatsor' style='float: left;padding-right: 0'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
 
         // And remove the loading screen
         document.querySelector(".title").style.animation =
