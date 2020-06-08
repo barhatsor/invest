@@ -1,7 +1,10 @@
 'use strict';
 
 let deferredInstallPrompt = null;
-const installButton = document.getElementById('install');
+
+const installWrapper = document.getElementById('.install-wrapper');
+const installButton = document.getElementById('.install');
+
 installButton.addEventListener('click', installPWA);
 
 window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
@@ -14,7 +17,7 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
  */
 function saveBeforeInstallPromptEvent(evt) {
   deferredInstallPrompt = evt;
-  installButton.removeAttribute('hidden');
+  installWrapper.classList.remove('hidden');
 }
 
 
@@ -26,7 +29,7 @@ function saveBeforeInstallPromptEvent(evt) {
 function installPWA(evt) {
   deferredInstallPrompt.prompt();
   // Hide the install button, it can't be called twice.
-  evt.srcElement.setAttribute('hidden', true);
+  installWrapper.classList.add('hidden');
   // Log user response to prompt.
   deferredInstallPrompt.userChoice
     .then((choice) => {
