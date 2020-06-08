@@ -6,7 +6,7 @@
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url("https://bassets.github.io/invest-icon.svg") no-repeat 20px 12.5px/25px black;
+  background: url("/images/invest-icon.svg") no-repeat 20px 12.5px/25px black;
   transition: .2s ease;
   z-index: 2;
 }
@@ -72,7 +72,7 @@
 
 .search {
   position: fixed;
-  background: url("https://bassets.github.io/search.svg") 15px no-repeat, url("https://bassets.github.io/search-white.svg") 15px/0px no-repeat #253341;
+  background: url("/images/search.svg") 15px no-repeat, url("/images/search-white.svg") 15px/0px no-repeat #253341;
   border-radius: 20px;
   padding: 8px 40px 8px 40px;
   font: inherit;
@@ -89,7 +89,7 @@
   border-radius: 20px 20px 0px 0px;
 }
 .search:focus {
-  background-image: url("https://bassets.github.io/search-white.svg");
+  background-image: url("/images/search-white.svg");
   border-color: white;
   outline: none;
 }
@@ -114,7 +114,7 @@
   border-top: 1px solid #3d5466;
 }
 .search-wrapper .suggestion {
-  background: url("https://bassets.github.io/search.svg") 15px no-repeat;
+  background: url("/images/search.svg") 15px no-repeat;
   padding: 6px 10px 6px 40px;
 }
 .search-wrapper .suggestion p {
@@ -206,7 +206,7 @@
   float: right;
 }
 .entries .entry {
-  background: url("https://bassets.github.io/arrow.svg") no-repeat 50% 50%/20px #15202b;
+  background: url("/images/arrow.svg") no-repeat 50% 50%/20px #15202b;
   color: #737373;
   margin: 10px;
   padding: 10px;
@@ -249,7 +249,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  background: url("https://bassets.github.io/invest-icon.svg") no-repeat 52% 55%/50% 50% black;
+  background: url("/images/invest-icon.svg") no-repeat 52% 55%/50% 50% black;
   z-index: 3;
 }
 
