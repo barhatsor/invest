@@ -173,12 +173,10 @@ document.querySelectorAll(".filter").forEach((filter) => {
 });
 
 // Entries animate when scrolled into view
-var a = 0;
 window.onscroll = function (e) {
     document.querySelectorAll(".entry").forEach((entry) => {
         if (scrldIntoView(entry)) {
-            entry.style.animation = "entry .2s "+a*0.06+"s ease forwards";
-            a += 1;
+            entry.style.animation = "entry .2s ease forwards";
         }
     })
 }
