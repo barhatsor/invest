@@ -88,15 +88,6 @@ class stockEntries {
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML =
             this.out + "<a href='https://codepen.io/barhatsor' style='float: left;padding-right: 0'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
-
-        // Onscreen entries animate
-        var a = 0;
-        document.querySelectorAll(".entry").forEach((entry) => {
-            if (scrldIntoView(entry)) {
-                entry.style.animation = "entry .2s "+a*0.06+"s ease forwards";
-                a += 1;
-            }
-        })
     }
 }
 
