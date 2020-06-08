@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 .header {
   height: 53px;
   width: 100%;
@@ -7,7 +6,6 @@
   font-size: 22px;
   margin: -8px 0 0 -8px;
   background: url("/images/invest-icon.svg") no-repeat 20px 12.5px/25px black;
-  transition: .2s ease;
   z-index: 2;
 }
 .header .filter-button {
@@ -42,7 +40,6 @@
   border-radius: 6px;
   height: 2px;
   width: 10px;
-  transition: 0.2s ease;
 }
 .header .filter-button span::after {
   bottom: -6px;
@@ -251,11 +248,10 @@
   display: grid;
   place-content: center;
   background: rgba(0, 0, 0, 0.7);
-  background-size: 100%;
+  pointer-events: auto;
   transition: .2s ease;
   z-index: 3;
 }
-
 .install-wrapper .install {
   box-shadow: inset 0px 0px 0px 5px;
   padding: 45px;
@@ -265,14 +261,13 @@
   border-radius: 10px;
   transition: inherit;
 }
+.install-wrapper.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 .install-wrapper .install:hover {
   background: #ffffff1a;
   transform: scale(0.95);
-}
-
-.hidden {
-  opacity: 0;
-  pointer-events: none;
 }
   
 @keyframes entry {
