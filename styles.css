@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 .header {
   height: 53px;
   width: 100%;
@@ -249,7 +248,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  background: url("https://bassets.github.io/invest-logo-ver.svg") no-repeat 50% 50%/50% 50% black;
+  background: url("https://bassets.github.io/invest-icon.svg") no-repeat 50% 50%/50% 50% black;
   z-index: 3;
 }
 
@@ -261,7 +260,6 @@
     opacity: 1;
   }
 }
-
 @keyframes title {
   60% {
     opacity: 1;
@@ -275,20 +273,12 @@
     z-index: -1;
   }
 }
-@keyframes overflow {
-  90% {
-    overflow: hidden;
-  }
-  to {
-    overflow-y: auto;
-  }
-}
+
 body {
   background: black;
   color: #f9f9fa;
   font: 400 16px "Inter", sans-serif;
   overflow: hidden;
-  animation: .2s .2s overflow forwards;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
