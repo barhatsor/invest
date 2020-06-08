@@ -1,4 +1,4 @@
-var v = 2.3;
+var v = 2.5;
 
 /* Handle everything API */
 class APIHandler {
