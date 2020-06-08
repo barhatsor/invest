@@ -212,7 +212,6 @@
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
-  opacity: 0;
 }
 .entries .entry h1 {
   font-size: 20px;
@@ -249,20 +248,21 @@
   height: 100%;
   left: 0;
   top: 0;
-  background: url("https://bassets.github.io/invest-icon.svg") no-repeat 50% 50%/50% 50% black;
+  background: url("https://bassets.github.io/invest-icon.svg") no-repeat 52% 55%/50% 50% black;
   z-index: 3;
 }
 
 @keyframes entry {
   from {
     transform: scale(0.9);
+    opacity: 0;
   }
   to {
     opacity: 1;
   }
 }
 @keyframes title {
-  60% {
+  50% {
     opacity: 1;
   }
   99.9% {
