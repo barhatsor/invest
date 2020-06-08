@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 .header {
   height: 53px;
   width: 100%;
@@ -71,7 +72,7 @@
 
 .search {
   position: fixed;
-  background: url("https://bassets.github.io/search.svg") 15px no-repeat #253341;
+  background: url("https://bassets.github.io/search.svg") 15px no-repeat, url("https://bassets.github.io/search-white.svg") 15px/0px no-repeat #253341;
   border-radius: 20px;
   padding: 8px 40px 8px 40px;
   font: inherit;
@@ -85,7 +86,6 @@
 }
 .search.suggestions {
   border-bottom: none;
-  border-color: white;
   border-radius: 20px 20px 0px 0px;
 }
 .search:focus {
