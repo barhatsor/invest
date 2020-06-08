@@ -277,8 +277,8 @@
   
 @keyframes entry {
   from {
+    transform: scale(0.9);
     opacity: 0;
-    color: transparent;
   }
   to {
     opacity: 1;
