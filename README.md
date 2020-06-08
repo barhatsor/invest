@@ -3,6 +3,9 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 
 ## 🛣️ Roadmap
 
+#### **v2.3** // 6/8/20
+- Added class structure to Javascript code
+
 #### **v2.1** // 5/11/20
 - Added search
 - Javascript changes
@@ -13,7 +16,7 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 
 #### **v1.5** // 4/30/20
 - UI Tweaks
-- Changed IF loops to toggles  
+- Minified Javascript.
 
 #### **v1.2** // 4/23/20
 - Published project.
