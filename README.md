@@ -3,6 +3,11 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 
 ## 🛣️ Roadmap
 
+#### **v2.6** // 6/11/20
+- Enlarged header
+- Refined CSS
+- Removed entry animation
+
 #### **v2.5** // 6/8/20
 - Added PWA support
 - Removed in-browser splash screen
