@@ -151,7 +151,7 @@
   z-index: 1;
 }
 .filters-wrapper.active {
-  top: 53px;
+  top: 55px;
   overflow: auto;
 }
 .filters-wrapper .filters {
