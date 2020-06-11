@@ -1,24 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 .header {
-  height: 53px;
+  height: 60px;
   width: 100%;
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url("/images/invest-icon.svg") no-repeat 20px 12.5px/25px black;
+  background: url("/images/invest-icon.svg") no-repeat 20px 13px/29px black;
   z-index: 2;
 }
 .header .filter-button {
-  width: 20px;
-  height: 2px;
+  width: 24px;
+  height: 5px;
   position: absolute;
   cursor: pointer;
   padding: 15px 8px;
-  border-radius: 4px;
-  background: black;
   border: 1px solid #3d5466;
+  border-radius: 4px;
   right: 20px;
-  top: 9.5px;
+  top: 11.7px;
+  transition: .2s ease;
 }
 .header .filter-button.active {
   border-color: #1da1f2;
@@ -33,15 +34,18 @@
   transform: scale(-1) translateY(-1px);
 }
 .header .filter-button span {
-  position: relative;
   display: block;
+  position: relative;
   background: white;
   border-radius: 6px;
   height: 2px;
   width: 10px;
+  top: 1px;
+  left: 1px;
+  transition: .2s ease;
 }
 .header .filter-button span::after {
-  bottom: -6px;
+  bottom: -7px;
   width: 16px;
 }
 .header .filter-button span::before, .header .filter-button span::after {
@@ -58,11 +62,11 @@
   width: 6px;
 }
 .header .filter-button .arrow {
-  width: 12px;
-  height: 9px;
+  width: 13px;
+  height: 10px;
   position: absolute;
-  top: 8px;
-  right: 7px;
+  top: 9px;
+  right: 8px;
   transition: .2s ease;
 }
 
@@ -75,7 +79,8 @@
   font-size: 15px;
   color: inherit;
   width: calc(100% - 212px);
-  top: 8.5px;
+  height: 22px;
+  top: 10px;
   left: 58px;
   border: 1px solid transparent;
   z-index: 2;
@@ -140,8 +145,8 @@
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
   width: 100%;
+  padding-bottom: 5px;
   background: linear-gradient(180deg, black, rgba(0, 0, 0, 0.5));
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.06);
   transition: .2s ease;
   z-index: 1;
 }
@@ -169,16 +174,16 @@
 }
 .filters-wrapper .filters .filter {
   width: max-content;
-  cursor: pointer;
-  border-radius: 20px;
+  background: #253341;
+  border: 1px solid transparent;
+  border-radius: 30px;
   color: #f9f9facc;
+  font-size: 15px;
   margin: 5px;
   padding: 10px 10px 10px 10px;
   box-shadow: 0 1px 1px 0 rgba(12, 12, 13, 0.2);
+  cursor: pointer;
   transition: .2s ease;
-  background: #253341;
-  border: 1px solid transparent;
-  font-size: 15px;
 }
 .filters-wrapper .filters .filter.active {
   background: #3d5466;
@@ -191,7 +196,7 @@
 }
 
 .entries {
-  padding-top: 36px;
+  padding-top: 42px;
   cursor: pointer;
 }
 .entries a {
@@ -208,7 +213,6 @@
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
-  opacity: 0;
 }
 .entries .entry h1 {
   font-size: 20px;
@@ -259,25 +263,16 @@
   padding-bottom: 30px;
   padding-top: 30px;
   border-radius: 10px;
-  transition: inherit;
+  cursor: pointer;
+  transition: .2s ease;
 }
 .install-wrapper.hidden {
   opacity: 0;
   pointer-events: none;
 }
-.install-wrapper .install:hover {
+.install-wrapper .install:active {
   background: #ffffff1a;
   transform: scale(0.95);
-}
-  
-@keyframes entry {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 html {
