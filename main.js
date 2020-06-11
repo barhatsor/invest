@@ -1,4 +1,4 @@
-var v = 2.5;
+var v = 2.6;
 
 /* Handle everything API */
 class APIHandler {
@@ -158,21 +158,6 @@ document.querySelectorAll(".filter").forEach((filter) => {
         filter.classList.toggle("active");
     });
 });
-
-// Entries animate when scrolled into view
-window.onscroll = function (e) {
-    document.querySelectorAll(".entry").forEach((entry) => {
-        if (scrldIntoView(entry)) {
-            entry.style.animation = "entry .2s ease forwards";
-        }
-    })
-}
-function scrldIntoView(el) {
-    var rect = el.getBoundingClientRect();
-    var elemTop = rect.top;
-    var isVisible = elemTop < window.screen.height;
-    return isVisible;
-}
 
 /* Main thread */
 
