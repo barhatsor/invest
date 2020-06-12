@@ -5,9 +5,8 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 
 #### **v2.6** // 6/11/20
 - Enlarged header
-- Refined CSS
 - Removed animation for entries
-- Updated native splash screens
+- Updated PWA splash screen
 
 #### **v2.5** // 6/8/20
 - Added PWA support
@@ -21,15 +20,15 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 - Added search
 - Javascript changes
   
-#### **v2** // 4/11/20
+#### **v2** // 4/26/20
 - Major UI changes
 - Added version number  
 
-#### **v1.5** // 4/30/20
+#### **v1.5** // 4/13/20
 - UI Tweaks
 - Minified Javascript.
 
-#### **v1.2** // 4/23/20
+#### **v1.2** // 4/2/20
 - Published project.
 
 ## ❓ About
