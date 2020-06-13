@@ -1,5 +1,5 @@
 # Invest
-A Progressive Web App for stock investing. [investor.netlify.app](https://investor.netlify.app)
+Progressive Web App for investing in the stock market. [investor.netlify.app](https://investor.netlify.app)
 
 ## Roadmap
 
