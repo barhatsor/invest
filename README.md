@@ -1,7 +1,7 @@
 # Invest
 Invest in stocks easily and quickly, all while staying in your browser. [investor.netlify.app](https://investor.netlify.app)
 
-## 🛣️ Roadmap
+## Roadmap
 
 #### **v2.6** // 6/11/20
 - Enlarged header
@@ -31,10 +31,10 @@ Invest in stocks easily and quickly, all while staying in your browser. [investo
 #### **v1.2** // 4/2/20
 - Published project.
 
-## 🤗 Contributing
+## Contributing
 You're free to open an [issue](https://github.com/barhatsor/invest/issues). Tell us what you think!
 
-## 🗃️ Credits
+## Credits
 - Uses the [IEX Cloud API](https://iexcloud.io)
 - Uses the [Alpha Vantage API](https://www.alphavantage.co)
 - Uses the [Intrinio API](https://intrinio.com)
