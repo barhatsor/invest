@@ -32,7 +32,7 @@ Progressive Web App for investing in the stock market. [investor.netlify.app](ht
 - Published project.
 
 ## Contributing
-You can open an [issue](https://github.com/barhatsor/invest/issues) or send a push request.
+Open an [issue](https://github.com/barhatsor/invest/issues) or send a push request.
 
 ## Credits
 - Uses the [IEX Cloud API](https://iexcloud.io)
