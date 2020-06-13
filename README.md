@@ -1,5 +1,5 @@
 # Invest
-Invest in stocks easily and quickly, all while staying in your browser. [investor.netlify.app](https://investor.netlify.app)
+A Progressive Web App for stock investing. [investor.netlify.app](https://investor.netlify.app)
 
 ## Roadmap
 
