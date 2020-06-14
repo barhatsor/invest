@@ -28,14 +28,13 @@ function saveBeforeInstallPromptEvent(evt) {
  * @param {Event} evt
  */
 function installPWA(evt) {
-  // Hide the install button, it can't be called twice.
+  installButton.classList.add('download');
   deferredInstallPrompt.prompt();
   // Log user response to prompt.
   deferredInstallPrompt.userChoice
     .then((choice) => {
       if (choice.outcome === 'accepted') {
-        installWrapper.innerHTML = '<p>Adding...</p><img class="install" alt="install" src="/images/plus.svg">';
-        installButton.classList.add('download');
+        installWrapper.innerHTML = '<p>Adding...</p><img class="install download" alt="install" src="/images/plus.svg">';
         console.log('User accepted the A2HS prompt');
       } else {
         console.log('User dismissed the A2HS prompt');
