@@ -95,9 +95,9 @@ class stockEntries {
 function filterStocks(response) {
     var obj = JSON.parse(response);
     var filteredResponse = '';
-    for (var prop in response) {
-        if (response[prop].quote.peRatio < 15) {
-            filteredResponse += response[prop];
+    for (var prop in obj) {
+        if (obj[prop].quote.peRatio < 15) {
+            filteredResponse += obj[prop];
         }
     }
     stocks.buildHTML(filteredResponse);
