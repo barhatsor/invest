@@ -106,7 +106,7 @@ function filterStocks(response) {
     // For each stock
     for (var prop in data) {
         // Only add it to the list if filter condition is true
-        if (data[prop].quote.peRatio < 99) {
+        if (data[prop].quote.peRatio < 20) {
             tempData.push(data[prop]);
         }
     }
