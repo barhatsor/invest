@@ -96,7 +96,7 @@ function filterStocks(response) {
     var obj = JSON.parse(response);
     for (var prop in obj) {
         if (obj[prop].quote.peRatio > 15) {
-            obj = obj.replace(obj[prop], '');
+            obj = obj.toString().replace(obj[prop], '');
         }
     }
     //stocks.buildHTML(obj);
