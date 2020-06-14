@@ -275,6 +275,14 @@
   transform: scale(0.95);
 }
 
+@keyframes filter {
+  to {
+    margin-top: -95.8px;
+    position: relative;
+    z-index: -1;
+  }
+}
+
 html {
   background: black;
   color: #f9f9fa;

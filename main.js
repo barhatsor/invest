@@ -55,55 +55,64 @@ class stockEntries {
     }
 
     buildHTML(response) {
-        // Finished HTML goes here
-        this.out = "";
-        // Create precent var to track negative precentages
-        var precent;
-        // For each stock in API response
-        for (var prop in response) {
-            // If precent is negative, color it red
-            if (response[prop].quote.changePercent < 0) {
-                precent = "<h2 class='red'>";
+        // Check for response
+        if (response) {
+            // Finished HTML goes here
+            this.out = "";
+            // Create precent var to track negative precentages
+            var precent;
+            // For each stock in API response
+            for (var prop in response) {
+                // If precent is negative, color it red
+                if (response[prop].quote.changePercent < 0) {
+                    precent = "<h2 class='red'>";
+                }
+                // Else, default to green
+                else {
+                    precent = "<h2>+";
+                }
+                // Build stock entries
+                this.out +=
+                    "<div class='entry'><h1>" +
+                    response[prop].quote.symbol +
+                    "</h1><p>" +
+                    response[prop].quote.companyName +
+                    "</p>" +
+                    precent +
+                    // Round precentages to 2 digits & remove trailing zeros
+                    ((Math.round(response[prop].quote.changePercent * 100) / 100).toFixed(1) * 1).toString() +
+                    "%</h2><span>" +
+                    // Do the same for stock prices
+                    ((Math.round(response[prop].quote.latestPrice * 100) / 100).toFixed(1) * 1).toString() +
+                    "</span></div>";
             }
-            // Else, default to green
-            else {
-                precent = "<h2>+";
-            }
-            // Build stock entries
-            this.out +=
-                "<div class='entry'><h1>" +
-                response[prop].quote.symbol +
-                "</h1><p>" +
-                response[prop].quote.companyName +
-                "</p>" +
-                precent +
-                // Round precentages to 2 digits & remove trailing zeros
-                ((Math.round(response[prop].quote.changePercent * 100) / 100).toFixed(1) * 1).toString() +
-                "%</h2><span>" +
-                // Do the same for stock prices
-                ((Math.round(response[prop].quote.latestPrice * 100) / 100).toFixed(1) * 1).toString() +
-                "</span></div>";
         }
-
+        // If no response provided, show no stocks message
+        else {
+            out = '<p style="padding-top: 15px;text-align: center">No stocks</p>';
+        }
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML =
             this.out + "<a href='https://codepen.io/barhatsor' style='float: left;padding-right: 0'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
     }
 }
 
+
 /* Filters */
 function filterStocks(response) {
+    // Parse the response
     var data = JSON.parse(response);
     var tempData = [];
-    for ( var prop in data ) {
-        if ( data[prop].quote.peRatio < 99 ) {
-            tempData.push( data[prop] );
+    // For each stock
+    for (var prop in data) {
+        // Only add it to the list if filter condition is true
+        if (data[prop].quote.peRatio < 99) {
+            tempData.push(data[prop]);
         }
     }
     data = tempData;
-    console.log(data);
+    // Rebuild entries
     stocks.buildHTML(data);
-    //document.querySelector(".entries").innerHTML = data;
 }
 
 
@@ -169,11 +178,16 @@ document.querySelector(".filter-button").addEventListener("click", (e) => {
 });
 
 // Toggle each filter
+var prevHTML = "";
 document.querySelectorAll(".filter").forEach((filter) => {
     filter.addEventListener("click", (e) => {
         filter.classList.toggle("active");
-        if (filter.classList == "active") {
+        if (filter.className == "active") {
+            prevHTML = document.querySelector(".entries").innerHTML;
             httpRequest("GET", "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec", filterStocks);
+        }
+        else {
+            document.querySelector(".entries").innerHTML = prevHTML;
         }
     });
 });
@@ -189,13 +203,9 @@ stocks = new stockEntries();
 // Run
 APIhandler.sendAPIReq();
 
-/* Unimplemented (yet!) filter code */
+/* Unimplemented (yet!) dividend filter code */
 
 /*
-var filter = peRatio.filter(function(ratio) {
-  return ratio < 15;
-});
-console.log(filter);
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -203,4 +213,5 @@ xmlhttp.onreadystatechange = function() {
     try {console.log(obj[0].amount);} catch {};
   }};
 xmlhttp.open("GET", "https://cloud.iexapis.com/stable/stock/AAPL/dividends/5y?token=pk_370633a589a240f29304a7420b9960ec", true);
-xmlhttp.send(); */
+xmlhttp.send();
+*/
