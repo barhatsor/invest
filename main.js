@@ -93,14 +93,15 @@ class stockEntries {
 
 /* Filters */
 function filterStocks(response) {
-    var obj = JSON.parse(response);
-    for (var prop in obj) {
-        if (obj[prop].quote.peRatio > 15) {
-            obj = obj.toString().replace(obj[prop], '');
+    var resp = JSON.parse(response);
+    var out;
+    for (var prop in resp) {
+        if (resp[prop].quote.peRatio < 100) {
+            out += resp[prop];
         }
     }
     //stocks.buildHTML(obj);
-    document.querySelector(".entries").innerHTML = obj;
+    document.querySelector(".entries").innerHTML = out;
 }
 
 
