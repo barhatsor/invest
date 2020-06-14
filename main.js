@@ -101,8 +101,8 @@ function filterStocks(response) {
         }
     }
     data = tempData;
-    stocks.buildHTML(data);
-    //document.querySelector(".entries").innerHTML = out;
+    //stocks.buildHTML(data);
+    document.querySelector(".entries").innerHTML = data;
 }
 
 
