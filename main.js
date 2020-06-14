@@ -97,7 +97,7 @@ function filterStocks(response) {
     console.log(obj);
     var out = {};
     for (var prop in obj) {
-        if (obj[prop].quote.peRatio < 100) {
+        if (obj[prop].quote.peRatio < 99) {
             out.push(obj[prop]);
         }
     }
