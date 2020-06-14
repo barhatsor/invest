@@ -97,7 +97,7 @@ function filterStocks(response) {
     var tempData = [];
     for ( var prop in data ) {
         if ( data[prop].quote.peRatio < 99 ) {
-            tempData.push( data );
+            tempData.push( data[prop] );
         }
     }
     data = tempData;
