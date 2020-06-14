@@ -52,6 +52,7 @@ window.addEventListener('appinstalled', logAppInstalled);
  * @param {Event} evt
  */
 function logAppInstalled(evt) {
+  installWrapper.classList.add('hidden');
   console.log('Invest installed succesfully.', evt);
 }
 
