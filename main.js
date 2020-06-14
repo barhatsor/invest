@@ -99,7 +99,8 @@ function filterStocks(response) {
             obj = obj.replace(obj[prop], '');
         }
     }
-    stocks.buildHTML(obj);
+    //stocks.buildHTML(obj);
+    document.querySelector(".entries").innerHTML = obj;
 }
 
 
