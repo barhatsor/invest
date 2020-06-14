@@ -269,7 +269,7 @@
 .install-wrapper.hidden {
   bottom: -70px;
 }
-.install.download {
+.install-wrapper .install.download {
   transform: rotate(45deg);
 }
 
