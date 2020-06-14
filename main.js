@@ -93,16 +93,15 @@ class stockEntries {
 
 /* Filters */
 function filterStocks(response) {
-    var obj = JSON.parse(response);
-    console.log(obj);
-    var out = {};
-    for (var prop in obj) {
-        if (obj[prop].quote.peRatio < 99) {
-            out.push(obj[prop]);
+    var data = JSON.parse(response);
+    var tempData = [];
+    for ( var index=0; index<data.length; index++ ) {
+        if ( data[index].quote.peRatio < 99 ) {
+            tempData.push( data );
         }
     }
-    console.log(out);
-    stocks.buildHTML(out);
+    data = tempData;
+    stocks.buildHTML(data);
     //document.querySelector(".entries").innerHTML = out;
 }
 
