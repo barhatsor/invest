@@ -16,6 +16,7 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
  * @param {Event} evt
  */
 function saveBeforeInstallPromptEvent(evt) {
+  evt.preventDefault();
   deferredInstallPrompt = evt;
   installWrapper.classList.remove('hidden');
 }
@@ -27,16 +28,17 @@ function saveBeforeInstallPromptEvent(evt) {
  * @param {Event} evt
  */
 function installPWA(evt) {
-  deferredInstallPrompt.prompt();
   // Hide the install button, it can't be called twice.
   installWrapper.classList.add('hidden');
+  deferredInstallPrompt.prompt();
   // Log user response to prompt.
   deferredInstallPrompt.userChoice
     .then((choice) => {
       if (choice.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt', choice);
+        installWrapper.innerHTML = '<p>Adding...</p><img class="install download" alt="install" src="/images/plus.svg">'
+        console.log('User accepted the A2HS prompt');
       } else {
-        console.log('User dismissed the A2HS prompt', choice);
+        console.log('User dismissed the A2HS prompt');
       }
       deferredInstallPrompt = null;
     });
@@ -53,3 +55,15 @@ window.addEventListener('appinstalled', logAppInstalled);
 function logAppInstalled(evt) {
   console.log('Invest installed succesfully.', evt);
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  let displayMode = 'browser tab';
+  if (navigator.standalone) {
+    displayMode = 'standalone-ios';
+  }
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    displayMode = 'standalone';
+  }
+  // Log launch display mode to analytics
+  console.log('DISPLAY_MODE_LAUNCH:', displayMode);
+});
