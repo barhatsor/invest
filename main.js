@@ -100,8 +100,8 @@ function filterStocks(response) {
             out += obj[prop];
         }
     }
-    stocks.buildHTML(out);
-    //document.querySelector(".entries").innerHTML = out;
+    //stocks.buildHTML(out);
+    document.querySelector(".entries").innerHTML = out;
 }
 
 
