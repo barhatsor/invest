@@ -34,7 +34,8 @@ function installPWA(evt) {
   deferredInstallPrompt.userChoice
     .then((choice) => {
       if (choice.outcome === 'accepted') {
-        installWrapper.innerHTML = '<p>Adding...</p><img class="install download" alt="install" src="/images/plus.svg">'
+        installWrapper.innerHTML = '<p>Adding...</p><img class="install" alt="install" src="/images/plus.svg">';
+        installButton.classList.add('download');
         console.log('User accepted the A2HS prompt');
       } else {
         console.log('User dismissed the A2HS prompt');
