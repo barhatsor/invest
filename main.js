@@ -95,8 +95,8 @@ class stockEntries {
 function filterStocks(response) {
     var data = JSON.parse(response);
     var tempData = [];
-    for ( var index=0; index<data.length; index++ ) {
-        if ( data[index].quote.peRatio < 99 ) {
+    for ( var prop in data ) {
+        if ( data[prop].quote.peRatio < 99 ) {
             tempData.push( data );
         }
     }
