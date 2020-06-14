@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 .header {
   height: 60px;
   width: 100%;
@@ -260,17 +261,18 @@
 .install-wrapper .install {
   width: 25px;
   position: absolute;
-  top: 22px;
-  right: 22px;
+  top: 2px;
+  right: 0;
   float: right;
+  padding: 20px;
   cursor: pointer;
   transition: .2s ease;
 }
-.install-wrapper.hidden {
-  bottom: -70px;
-}
 .install-wrapper .install.download {
   transform: rotate(45deg);
+}
+.install-wrapper.hidden {
+  bottom: -70px;
 }
 
 @keyframes filter {
