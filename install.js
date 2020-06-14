@@ -29,7 +29,6 @@ function saveBeforeInstallPromptEvent(evt) {
  */
 function installPWA(evt) {
   // Hide the install button, it can't be called twice.
-  installWrapper.classList.add('hidden');
   deferredInstallPrompt.prompt();
   // Log user response to prompt.
   deferredInstallPrompt.userChoice
