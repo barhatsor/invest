@@ -71,7 +71,7 @@ class stockEntries {
             }
             // Build stock entries
             this.out +=
-                "<div class='entry' style='opacity:1'><h1>" +
+                "<div class='entry'><h1>" +
                 response[prop].quote.symbol +
                 "</h1><p>" +
                 response[prop].quote.companyName +
@@ -94,13 +94,12 @@ class stockEntries {
 /* Filters */
 function filterStocks(response) {
     var obj = JSON.parse(response);
-    var filteredResponse = '';
     for (var prop in obj) {
-        if (obj[prop].quote.peRatio < 15) {
-            filteredResponse += obj[prop];
+        if (obj[prop].quote.peRatio > 15) {
+            obj = obj.replace(obj[prop], '');
         }
     }
-    stocks.buildHTML(filteredResponse);
+    stocks.buildHTML(obj);
 }
 
 
