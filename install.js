@@ -37,6 +37,7 @@ function installPWA(evt) {
         installWrapper.innerHTML = '<p>Adding...</p><img class="install download" alt="install" src="/images/plus.svg">';
         console.log('User accepted the A2HS prompt');
       } else {
+        installButton.classList.remove('download');
         console.log('User dismissed the A2HS prompt');
       }
       deferredInstallPrompt = null;
