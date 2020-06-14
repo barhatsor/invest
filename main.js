@@ -178,16 +178,14 @@ document.querySelector(".filter-button").addEventListener("click", (e) => {
 });
 
 // Toggle each filter
-var prevHTML = "";
 document.querySelectorAll(".filter").forEach((filter) => {
     filter.addEventListener("click", (e) => {
         filter.classList.toggle("active");
         if (filter.className == "active") {
-            prevHTML = document.querySelector(".entries").innerHTML;
             httpRequest("GET", "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec", filterStocks);
         }
         else {
-            document.querySelector(".entries").innerHTML = prevHTML;
+            APIhandler.sendAPIReq();
         }
     });
 });
