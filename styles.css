@@ -244,27 +244,24 @@
 }
 
 .install-wrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  display: grid;
-  align-content: center;
-  background: black;
-  transition: .2s ease;
-  z-index: 3;
-}
-.install-wrapper p {
-  padding-left: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: grid;
+    align-content: center;
+    background: black;
+    padding-left: 20px;
+    transition: .2s ease;
+    z-index: 3;
 }
 .install-wrapper .install {
   width: 25px;
   position: absolute;
-  top: 2px;
   right: 0;
   float: right;
-  padding: 20px;
+  padding: 17px;
   cursor: pointer;
   transition: .2s ease;
 }
