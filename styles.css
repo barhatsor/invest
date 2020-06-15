@@ -259,8 +259,7 @@
 .install-wrapper .install {
   width: 25px;
   position: absolute;
-  right: 0;
-  float: right;
+  right: 20px;
   padding: 17px;
   cursor: pointer;
   transition: .2s ease;
