@@ -28,13 +28,13 @@ function saveBeforeInstallPromptEvent(evt) {
  * @param {Event} evt
  */
 function installPWA(evt) {
-  installButton.classList.add('download');
   deferredInstallPrompt.prompt();
   // Log user response to prompt.
   deferredInstallPrompt.userChoice
     .then((choice) => {
       if (choice.outcome === 'accepted') {
-        installWrapper.innerHTML = '<p>Adding...</p><img class="install download" alt="install" src="/images/plus.svg">';
+        installWrapper.classList.add('download');
+        setTimeout(document.querySelector('.install-wrapper p').innerHTML = "Adding..."; installWrapper.style.color = "#fff, 200);
         console.log('User accepted the A2HS prompt');
       } else {
         installButton.classList.remove('download');
