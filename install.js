@@ -34,7 +34,7 @@ function installPWA(evt) {
     .then((choice) => {
       if (choice.outcome === 'accepted') {
         installWrapper.classList.add('download');
-        setTimeout(document.querySelector('.install-wrapper p').innerHTML = "Adding..."; installWrapper.style.color = "#fff, 200);
+        setTimeout(document.querySelector('.install-wrapper p').innerHTML = "Adding..."; installWrapper.style.color = "#fff", 200);
         console.log('User accepted the A2HS prompt');
       } else {
         installButton.classList.remove('download');
