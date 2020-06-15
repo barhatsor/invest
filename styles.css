@@ -265,7 +265,10 @@
   cursor: pointer;
   transition: .2s ease;
 }
-.install-wrapper .install.download {
+.install-wrapper.download {
+  color: transparent;
+}
+.install-wrapper.download .install {
   transform: rotate(45deg);
 }
 .install-wrapper.hidden {
