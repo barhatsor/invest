@@ -6,7 +6,7 @@
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url("/images/invest-icon.svg") no-repeat 20px 13px/29px black;
+  background: url("/images/invest-icon.svg") no-repeat 15px 14px/30px black;
   z-index: 2;
 }
 .header .filter-button {
@@ -17,7 +17,7 @@
   padding: 15px 8px;
   border: 1px solid #3d5466;
   border-radius: 4px;
-  right: 20px;
+  right: 15px;
   top: 11.7px;
   transition: .2s ease;
 }
@@ -81,7 +81,7 @@
   width: calc(100% - 212px);
   height: 22px;
   top: 10px;
-  left: 58px;
+  left: 56px;
   border: 1px solid transparent;
   z-index: 2;
 }
@@ -202,14 +202,14 @@
 .entries a {
   color: #737373;
   text-decoration: none;
-  padding: 17px 10px 17px 10px;
+  padding: 17px 5px 17px 5px;
   font-size: 15px;
   float: right;
 }
 .entries .entry {
   background: url("/images/arrow.svg") no-repeat 50% 50%/20px #15202b;
   color: #737373;
-  margin: 10px;
+  margin: 10px 5px 10px 5px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
@@ -252,14 +252,15 @@
   display: grid;
   align-content: center;
   background: black;
-  padding-left: 20px;
+  padding-left: 15px;
   transition: .2s ease;
   z-index: 3;
 }
+
 .install-wrapper .install {
   width: 25px;
   position: absolute;
-  right: 20px;
+  right: 15px;
   padding: 17px;
   cursor: pointer;
   transition: .2s ease;
@@ -291,6 +292,7 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
 ::selection {
   background: #f9f9fa33;
 }
