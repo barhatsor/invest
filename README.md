@@ -7,7 +7,6 @@ Progressive Web App for investing in the stock market. [investor.netlify.app](ht
 - Added filter
 - Enlarged header
 - Removed animation for entries
-- Updated PWA splash screen
 
 #### **v2.5** // 6/8/20
 - Added PWA support
