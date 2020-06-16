@@ -1,7 +1,7 @@
 # <img src="https://investor.netlify.app/images/icons/icon-browser.png" alt="Invest Logo" height="33"/> Invest
 Progressive Web App for investing in the stock market. [investor.netlify.app](https://investor.netlify.app)
 
-## Roadmap
+## 🛣️ Roadmap
 
 #### **v2.6** // 6/11/20
 - Enlarged header
@@ -31,10 +31,10 @@ Progressive Web App for investing in the stock market. [investor.netlify.app](ht
 #### **v1.2** // 4/2/20
 - Published project.
 
-## Contributing
+## 📤 Contributing
 Open an [issue](https://github.com/barhatsor/invest/issues) or send a push request.
 
-## Credits
+## 🗃️ Credits
 - Uses the [IEX Cloud API](https://iexcloud.io)
 - Uses the [Alpha Vantage API](https://www.alphavantage.co)
 - Uses the [Intrinio API](https://intrinio.com)
