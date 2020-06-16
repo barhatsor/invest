@@ -1,4 +1,4 @@
-# Invest
+# ![invest logo](https://investor.netlify.app/images/icons/icon-browser.png) Invest
 Progressive Web App for investing in the stock market. [investor.netlify.app](https://investor.netlify.app)
 
 ## Roadmap
