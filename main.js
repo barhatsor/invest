@@ -175,6 +175,8 @@ function updateChart(labels, data) {
         document.querySelector('.chart-wrapper').innerHTML = '<canvas class="chart"><canvas>';
     }
     else {
+        var can = document.querySelector('.chart');
+        var ctx = can.getContext('2d');
         var gradient = ctx.createLinearGradient(0, 0, 0, 800);
     }
 
