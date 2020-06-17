@@ -284,6 +284,7 @@
 }
 .chart-wrapper {
   position: absolute;
+  width: calc(100% + 50px);
   left: -50px;
   bottom: 0;
   transition: .2s ease;
