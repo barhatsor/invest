@@ -156,8 +156,8 @@ function initChart(response) {
         i++;
     }
     // Reverse the chart
-    lbs.reverse();
-    pts.reverse();
+    labels.reverse();
+    points.reverse();
     // Render chart
     renderChart();
 }
