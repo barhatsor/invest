@@ -139,34 +139,38 @@ document.querySelector('.search').addEventListener('blur', function (event) {
 
 // Gather data for chart
 function initChart(response) {
-    document.querySelector('.chart-wrapper').style.opacity = 1;
-
-    var labels = [];
-    var points = [];
-    // Parse response
-    var obj = JSON.parse(response);
-    // Access time series
-    var ts = obj["Time Series (Daily)"];
-    var i = 0;
-    // For each time
-    for (var prop in ts) {
-        // Push time labels to array
-        labels.push(Object.keys(ts)[i]);
-        // Push points to array
-        points.push(ts[prop]["1. open"]);
-        i++;
+        var labels = [];
+        var points = [];
+        // Parse response
+        var obj = JSON.parse(response);
+        if (!obj["Note"]) {
+        // Access time series
+        var ts = obj["Time Series (Daily)"];
+        var i = 0;
+        // For each time
+        for (var prop in ts) {
+            // Push time labels to array
+            labels.push(Object.keys(ts)[i]);
+            // Push points to array
+            points.push(ts[prop]["1. open"]);
+            i++;
+        }
+        // Reverse the chart
+        labels.reverse();
+        points.reverse();
+        // Update chart data
+        updateChart(labels, points);
     }
-    // Reverse the chart
-    labels.reverse();
-    points.reverse();
-    // Update chart data
-    updateChart(labels, points);
+    else {
+        document.querySelector('.details-wrapper').innerHTML += '<p style="margin-top: 70px;color: #737373">No chart... Try again later</p>';
+    }
 }
 
 // Inject data into chart
 function updateChart(labels, data) {
     if (chart) {
         chart.destroy();
+        document.querySelector('.chart-wrapper').style.opacity = 1;
     }
     var ctx = document.querySelector('.chart').getContext('2d');
 
