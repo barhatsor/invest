@@ -283,9 +283,9 @@
   color: #ea4335;
 }
 .chart-wrapper {
-  width: calc(100% + 58px);
+  position: absolute;
   left: -50px;
-  position: relative;
+  bottom: 0;
   transition: .2s ease;
 }
 .details.hidden {
