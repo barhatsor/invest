@@ -139,7 +139,7 @@ document.querySelector('.search').addEventListener('blur', function (event) {
 
 // Gather data for chart
 function initChart(response) {
-    document.querySelector('.details').classList.remove('hidden');
+    document.querySelector('.chart-wrapper').style.opacity = 1;
 
     var labels = [];
     var points = [];
@@ -233,9 +233,11 @@ function toggleDetails(toggle, el) {
         document.body.style.overflow = "hidden";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
         httpRequest("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+el.children[0].innerHTML+"&apikey=XH456FPPVS8MHBXA", initChart);
+        document.querySelector('.details').classList.remove('hidden');
     }
     else {
         document.body.style.overflow = "auto";
+        document.querySelector('.chart-wrapper').style.opacity = 0;
         document.querySelector('.details').classList.add('hidden');
     }
 }

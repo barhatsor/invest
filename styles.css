@@ -287,6 +287,8 @@
   top: 30px;
   left: -50px;
   position: relative;
+  pointer-events: none;
+  transition: .2s ease;
 }
 .details.hidden {
   opacity: 0;
