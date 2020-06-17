@@ -56,7 +56,8 @@
   <div class="entry" style="background-image:none"><h1></h1><p>.</p></div>
 </div>
 <div class="details hidden">
-  <img class="arrow" alt="arrow" onclick="toggleDetails(false)" src="/images/arrow.svg">
+  <img class="arrow" alt="arrow" onclick="toggleDetails(false, '')" src="/images/arrow.svg">
+  <div class="details-wrapper"></div>
   <div class="chart-wrapper">
       <canvas class="chart"></canvas>
   </div>
@@ -64,9 +65,9 @@
 <div class="install-wrapper hidden"><p>Add for the full experience.</p><img class="install" alt="install" src="/images/plus.svg">
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script src="main.js"></script>
 <script src="install.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
 // Register service worker
 if ('serviceWorker' in navigator) {

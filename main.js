@@ -73,7 +73,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick='toggleDetails(true)'><h1>" +
+                    "<div class='entry' onclick='toggleDetails(true, this)'><h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
@@ -136,12 +136,11 @@ document.querySelector('.search').addEventListener('blur', function (event) {
 
 
 /* Chart */
-// Request time series
-httpRequest("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=aapl&apikey=XH456FPPVS8MHBXA", initChart);
 
-var labels = [];
-var points = [];
+// Gather data for chart
 function initChart(response) {
+    var labels = [];
+    var points = [];
     // Parse response
     var obj = JSON.parse(response);
     // Access time series
@@ -158,12 +157,15 @@ function initChart(response) {
     // Reverse the chart
     labels.reverse();
     points.reverse();
-    // Render chart
-    renderChart();
+    // Update chart data
+    updateChart(labels, points);
 }
 
-// Render chart using chart.js library
-function renderChart() {
+// Inject data into chart
+function updateChart(labels, data) {
+    if (chart) {
+        chart.destroy();
+    }
     var ctx = document.querySelector('.chart').getContext('2d');
 
     var gradient = ctx.createLinearGradient(0, 0, 0, 650);
@@ -177,7 +179,8 @@ function renderChart() {
             datasets: [{
                 backgroundColor: gradient,
                 borderColor: '#34a853',
-                data: points
+                pointRadius: 0,
+                data: data
             }]
         },
         options: {
@@ -223,11 +226,15 @@ document.querySelectorAll(".filter").forEach((filter) => {
 });
 
 // Toggle stock details
-function toggleDetails(toggle) {
+function toggleDetails(toggle, el) {
     if (toggle == true) {
+        document.body.style.overflow = "hidden";
+        document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
+        httpRequest("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+el.children[0].innerHTML+"&apikey=XH456FPPVS8MHBXA", initChart);
         document.querySelector('.details').classList.remove('hidden');
     }
     else {
+        document.body.style.overflow = "auto";
         document.querySelector('.details').classList.add('hidden');
     }
 }
