@@ -175,24 +175,29 @@ function updateChart(labels, data) {
     var ctx = document.querySelector('.chart').getContext('2d');
 
     var gradient = ctx.createLinearGradient(0, 0, 0, 650);
-    gradient.addColorStop(0, '#34a8536b');
-    gradient.addColorStop(1, 'black');
-
+    if (red) {
+        gradient.addColorStop(0, 'rgba(234, 67, 53, 0.2)');
+    }
+    else {
+        gradient.addColorStop(0, 'rgba(52, 168, 83, 0.5)');
+        red = '#34a853';
+    }
+    gradient.addColorStop(1, 'transparent');
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [{
                 backgroundColor: gradient,
-                borderColor: '#34a853',
-                pointRadius: 0,
+                borderColor: red,
+                pointRadius: 5,
                 data: data
             }]
         },
         options: {
             legend: {display: false},
             grid: {display: false},
-            scales: {yAxes: [{display: false}]}
+            scales: {xAxes: [{display: false}], yAxes: [{display: false}]}
         }
     });
 }
@@ -232,8 +237,15 @@ document.querySelectorAll(".filter").forEach((filter) => {
 });
 
 // Toggle stock details
+var red = null;
 function toggleDetails(toggle, el) {
     if (toggle == true) {
+        if (el.children[2].className == "red") {
+            red = "#ea4335";
+        }
+        else {
+            red = null;
+        }
         document.body.style.overflow = "hidden";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
         httpRequest("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+el.children[0].innerHTML+"&apikey=XH456FPPVS8MHBXA", initChart);
