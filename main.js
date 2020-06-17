@@ -135,27 +135,59 @@ document.querySelector('.search').addEventListener('blur', function (event) {
 });
 
 
-/* Search Suggestions */
-function renderSuggestions(response) {
-  var obj = JSON.parse(response);
-  var s = "1. symbol";
-  var n = "2. name";
-  var out = "";
-  if (!obj.Note) {
-    obj.bestMatches.forEach(match => {
-    out += '<div class="suggestion"><p>'+match[s]+'</p><a>'+match[n]+'</a></div>';
-    })
-    if (out == "") {
-      out = '<div class="suggestion"><p>No results</p></div>';
+/* Chart */
+// Request time series
+httpRequest("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=aapl&apikey=XH456FPPVS8MHBXA", initChart);
+
+var labels = [];
+var points = [];
+function initChart(response) {
+    // Parse response
+    var obj = JSON.parse(response);
+    // Access time series
+    var ts = obj["Time Series (Daily)"];
+    var i = 0;
+    // For each time
+    for (var prop in ts) {
+        // Push time labels to array
+        labels.push(Object.keys(ts)[i]);
+        // Push points to array
+        points.push(ts[prop]["1. open"]);
+        i++;
     }
-  }
-  else {
-    out = '<div class="suggestion"><p>Try again later</p></div>';
-  }
-  document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
-  document.querySelector(".search-wrapper").style.display = "block";
-  document.querySelector(".search").classList.add("suggestions");
+    // Reverse the chart
+    lbs.reverse();
+    pts.reverse();
+    // Render chart
+    renderChart();
 }
+
+// Render chart using chart.js library
+function renderChart() {
+    var ctx = document.querySelector('.chart').getContext('2d');
+
+    var gradient = ctx.createLinearGradient(0, 0, 0, 650);
+    gradient.addColorStop(0, '#34a8536b');
+    gradient.addColorStop(1, 'black');
+
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                backgroundColor: gradient,
+                borderColor: '#34a853',
+                data: points
+            }]
+        },
+        options: {
+            legend: {display: false},
+            grid: {display: false},
+            scales: {yAxes: [{display: false}]}
+        }
+    });
+}
+
 
 /* HTTP Request */
 function httpRequest(type, url, callback) {

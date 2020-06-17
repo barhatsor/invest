@@ -40,7 +40,6 @@ function installPWA(evt) {
         }, 200);
         console.log('User accepted the A2HS prompt');
       } else {
-        installButton.classList.remove('download');
         console.log('User dismissed the A2HS prompt');
       }
       deferredInstallPrompt = null;
