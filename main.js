@@ -73,7 +73,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick=''><h1>" +
+                    "<div class='entry' onclick='toggleDetails(true)'><h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
