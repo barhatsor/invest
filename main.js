@@ -139,6 +139,7 @@ document.querySelector('.search').addEventListener('blur', function (event) {
 
 // Gather data for chart
 function initChart(response) {
+        document.querySelector('.chart-wrapper').style.opacity = 1;
         var labels = [];
         var points = [];
         // Parse response
@@ -170,7 +171,6 @@ function initChart(response) {
 function updateChart(labels, data) {
     if (chart) {
         chart.destroy();
-        document.querySelector('.chart-wrapper').style.opacity = 1;
     }
     var ctx = document.querySelector('.chart').getContext('2d');
 
