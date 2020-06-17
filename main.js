@@ -73,7 +73,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry'><h1>" +
+                    "<div class='entry' onclick=''><h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
@@ -221,6 +221,16 @@ document.querySelectorAll(".filter").forEach((filter) => {
         }
     });
 });
+
+// Toggle stock details
+function toggleDetails(toggle) {
+    if (toggle == true) {
+        document.querySelector('.details').classList.remove('hidden');
+    }
+    else {
+        document.querySelector('.details').classList.add('hidden');
+    }
+}
 
 /* Main thread */
 
