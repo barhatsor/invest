@@ -170,13 +170,19 @@ function initChart(response) {
 // Inject data into chart
 function updateChart(labels, data) {
     if (chart) {
-        chart.destroy();
+        var gradient = ctx.createLinearGradient(0, 0, 0, can.height);
+        document.querySelector('.chart-wrapper').innerHTML = '';
+        document.querySelector('.chart-wrapper').innerHTML = '<canvas class="chart"><canvas>';
     }
-    var ctx = document.querySelector('.chart').getContext('2d');
+    else {
+        var gradient = ctx.createLinearGradient(0, 0, 0, 800);
+    }
 
-    var gradient = ctx.createLinearGradient(0, 0, 0, 650);
+    var can = document.querySelector('.chart');
+    var ctx = can.getContext('2d');
+
     if (red) {
-        gradient.addColorStop(0, 'rgba(234, 67, 53, 0.2)');
+        gradient.addColorStop(0, 'rgba(234, 67, 53, 0.5)');
     }
     else {
         gradient.addColorStop(0, 'rgba(52, 168, 83, 0.5)');
@@ -190,7 +196,7 @@ function updateChart(labels, data) {
             datasets: [{
                 backgroundColor: gradient,
                 borderColor: red,
-                pointRadius: 5,
+                pointRadius: 0,
                 data: data
             }]
         },
