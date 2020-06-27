@@ -156,80 +156,6 @@ function renderSuggestions(response) {
 }
 
 
-/* Chart */
-
-// Gather data for chart
-function initChart(obj) {
-        document.querySelector('.chart-wrapper').style.opacity = 1;
-        var labels = [];
-        var points = [];
-        if (!obj["Note"]) {
-        // Access time series
-        var ts = obj["Time Series (Daily)"];
-        var i = 0;
-        // For each time
-        for (var prop in ts) {
-            // Push time labels to array
-            labels.push(Object.keys(ts)[i]);
-            // Push points to array
-            points.push(ts[prop]["1. open"]);
-            i++;
-        }
-        // Reverse the chart
-        labels.reverse();
-        points.reverse();
-        // Update chart data
-        updateChart(labels, points);
-    }
-    else {
-        document.querySelector('.details-wrapper').innerHTML += '<p style="margin-top: 70px;color: #737373">No chart... Try again later</p>';
-    }
-}
-
-// Inject data into chart
-function updateChart(labels, data) {
-    if (chart) {
-        var gradient = ctx.createLinearGradient(0, 0, 0, can.height);
-        document.querySelector('.chart-wrapper').innerHTML = '';
-        document.querySelector('.chart-wrapper').innerHTML = '<canvas class="chart"><canvas>';
-    }
-    else {
-        var can = document.querySelector('.chart');
-        var ctx = can.getContext('2d');
-        var gradient = ctx.createLinearGradient(0, 0, 0, 800);
-    }
-
-    var can = document.querySelector('.chart');
-    var ctx = can.getContext('2d');
-
-    if (red) {
-        gradient.addColorStop(0, 'rgba(234, 67, 53, 0.5)');
-    }
-    else {
-        gradient.addColorStop(0, 'rgba(52, 168, 83, 0.5)');
-        red = '#34a853';
-    }
-    gradient.addColorStop(1, 'transparent');
-    var chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                backgroundColor: gradient,
-                borderColor: red,
-                pointRadius: 0,
-                data: data
-            }]
-        },
-        options: {
-            legend: {display: false},
-            grid: {display: false},
-            scales: {xAxes: [{display: false}], yAxes: [{display: false}]}
-        }
-    });
-}
-
-
 /* HTTP Request */
 function httpRequest(type, url, callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -297,7 +223,7 @@ stocks = new stockEntries();
 // Run
 APIhandler.sendAPIReq();
 
-/* Unimplemented (yet!) dividend filter code */
+/* Unimplemented dividend filter - Kosta */
 
 /*
 var xmlhttp = new XMLHttpRequest();
