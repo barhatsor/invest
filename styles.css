@@ -71,8 +71,7 @@
 
 .search {
   position: fixed;
-  background: url("https://investor.netlify.app/images/search.svg") 15px 50% no-repeat, url("https://bassets.github.io/close.svg") calc(100% + 20px) 12px/20px no-repeat #253341;
-  border-radius: 20px;
+  background: url("https://investor.netlify.app/images/search.svg") 15px 50% no-repeat #253341;
   padding: 8px 40px 8px 40px;
   font: inherit;
   font-size: 15px;
@@ -82,16 +81,10 @@
   top: 10px;
   left: 55px;
   border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 20px;
   transition: .2s ease;
   z-index: 2;
-}
-.search.suggestions {
-  width: calc(100% - 60px) !important;
-  background: url("https://investor.netlify.app/images/search-white.svg") 35px 50% no-repeat, url("https://bassets.github.io/close.svg") calc(100% - 30px) 22px/20px no-repeat #253341 !important;
-  padding-left: 60px !important;
-}
-.search.suggestions + .close {
-  right: 0;
 }
 .search:focus {
   width: calc(100% - 110px);
@@ -99,18 +92,30 @@
   top: 0;
   left: -20px;
   padding-left: 115px;
-  background: url("https://investor.netlify.app/images/search.svg") 90px 50% no-repeat, url("https://bassets.github.io/close.svg") calc(100% - 90px) 22px/20px no-repeat #253341;
+  background: url("https://investor.netlify.app/images/search.svg") 90px 50% no-repeat #253341;
+  border-color: #3d5466;
   outline: none;
+}
+.search:focus + .close {
+  opacity: 0.5;
+}
+.search.suggestions {
+  width: calc(100% - 60px);
+  background: url("https://investor.netlify.app/images/search-white.svg") 35px 50% no-repeat #253341;
+  padding-left: 60px;
+}
+.search.suggestions + .close {
+  right: 10px;
+  opacity: 1;
 }
 
 .close {
-  width: 59px;
-  height: 59px;
   position: absolute;
-  top: 0;
-  right: 49px;
+  top: 22px;
+  right: 65px;
   cursor: pointer;
   transition: .2s ease;
+  opacity: 0;
   z-index: 2;
 }
 
