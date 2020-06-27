@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 .header {
   height: 60px;
   width: 100%;
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url("/images/invest-icon.svg") no-repeat 15px 14px/30px black;
+  background: url("https://investor.netlify.app/images/invest-icon.svg") no-repeat 15px 14px/30px black;
   z-index: 2;
 }
 .header .filter-button {
@@ -72,7 +71,7 @@
 
 .search {
   position: fixed;
-  background: url("/images/search.svg") 15px no-repeat, url("/images/search-white.svg") 15px/0px no-repeat #253341;
+  background: url("https://investor.netlify.app/images/search.svg") 15px 50% no-repeat, url("https://bassets.github.io/close.svg") calc(100% + 20px) 12px/20px no-repeat #253341;
   border-radius: 20px;
   padding: 8px 40px 8px 40px;
   font: inherit;
@@ -81,31 +80,49 @@
   width: calc(100% - 212px);
   height: 22px;
   top: 10px;
-  left: 56px;
-  border: 1px solid transparent;
+  left: 55px;
+  border: 0;
+  transition: .2s ease;
   z-index: 2;
 }
 .search.suggestions {
-  border-bottom: none;
-  border-radius: 20px 20px 0px 0px;
+  width: calc(100% - 60px) !important;
+  background: url("https://investor.netlify.app/images/search-white.svg") 35px 50% no-repeat, url("https://bassets.github.io/close.svg") calc(100% - 30px) 22px/20px no-repeat #253341 !important;
+  padding-left: 60px !important;
+}
+.search.suggestions + .close {
+  right: 0;
 }
 .search:focus {
-  background-image: url("/images/search-white.svg");
-  border-color: white;
+  width: calc(100% - 110px);
+  height: 43px;
+  top: 0;
+  left: -20px;
+  padding-left: 115px;
+  background: url("https://investor.netlify.app/images/search.svg") 90px 50% no-repeat, url("https://bassets.github.io/close.svg") calc(100% - 90px) 22px/20px no-repeat #253341;
   outline: none;
+}
+
+.close {
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  top: 0;
+  right: 49px;
+  cursor: pointer;
+  transition: .2s ease;
+  z-index: 2;
 }
 
 .search-wrapper {
   display: none;
   position: fixed;
   background: #253341;
-  width: calc(100% - 132px);
+  width: 100%;
   overflow: hidden;
-  border: 1px solid;
-  border-top: none;
   border-radius: 0px 0px 20px 20px;
-  left: 56px;
-  top: 42.5px;
+  left: 0;
+  top: 59px;
   box-shadow: 10px 10px 10px -10px rgba(255, 255, 255, 0.7);
   z-index: 2;
 }
@@ -115,7 +132,7 @@
   border-top: 1px solid #3d5466;
 }
 .search-wrapper .suggestion {
-  background: url("/images/search.svg") 15px no-repeat;
+  background: url("https://investor.netlify.app/images/search.svg") 15px no-repeat;
   padding: 6px 10px 6px 40px;
 }
 .search-wrapper .suggestion p {
@@ -207,7 +224,7 @@
   float: right;
 }
 .entries .entry {
-  background: url("/images/arrow.svg") no-repeat 50% 50%/20px #15202b;
+  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 50%/20px #15202b;
   color: #737373;
   margin: 10px 5px 10px 5px;
   padding: 10px;
@@ -216,7 +233,7 @@
 }
 .entries .entry h1 {
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 0;
   padding-top: 10px;
   color: #f9f9fa;
