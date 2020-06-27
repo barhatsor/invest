@@ -111,8 +111,9 @@
 
 .close {
   position: fixed;
-  top: 22px;
-  right: 65px;
+  top: 0;
+  right: 45px;
+  padding: 22px 20px 18px 20px;
   cursor: pointer;
   transition: .2s ease;
   opacity: 0;
