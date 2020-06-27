@@ -110,7 +110,7 @@
 }
 
 .close {
-  position: absolute;
+  position: fixed;
   top: 22px;
   right: 65px;
   cursor: pointer;
