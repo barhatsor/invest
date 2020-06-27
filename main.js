@@ -30,14 +30,8 @@ class APIHandler {
 
     // Handle API response
     handleResponse(response) {
-        // Parse response from JSON to array
-        var obj = JSON.parse(response);
-        //this.APIresponse = JSON.parse(this.responseText);
-        // Filter response
-        var filteredResponse = obj;
-        //filteredResponse = this.APIresponse;//this.filterResponse(this.APIresponse);
-        // Finally, build the HTML
-        stocks.buildHTML(filteredResponse);
+        // Build the HTML
+        stocks.buildHTML(response);
     }
 }
 
@@ -99,9 +93,7 @@ class stockEntries {
 
 
 /* Filters */
-function filterStocks(response) {
-    // Parse the response
-    var data = JSON.parse(response);
+function filterStocks(data) {
     var tempData = [];
     // For each stock
     for (var prop in data) {
@@ -167,12 +159,10 @@ function renderSuggestions(response) {
 /* Chart */
 
 // Gather data for chart
-function initChart(response) {
+function initChart(obj) {
         document.querySelector('.chart-wrapper').style.opacity = 1;
         var labels = [];
         var points = [];
-        // Parse response
-        var obj = JSON.parse(response);
         if (!obj["Note"]) {
         // Access time series
         var ts = obj["Time Series (Daily)"];
@@ -245,7 +235,8 @@ function httpRequest(type, url, callback) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() { 
         if (this.readyState == 4 && this.status == 200) {
-           callback(this.responseText);
+            var response = JSON.parse(this.responseText);
+            callback(response);
         }
     }
     xmlhttp.open(type, url, true); 
