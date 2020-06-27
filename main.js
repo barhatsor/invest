@@ -1,4 +1,4 @@
-var v = 2.6;
+var v = 2.7;
 
 /* Handle everything API */
 class APIHandler {
@@ -133,6 +133,35 @@ document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
   document.querySelector(".search-wrapper").style.display = "none";
 });
+
+document.querySelector('.close').addEventListener('click', function (event) {
+  document.querySelector(".search").value = "";
+  document.querySelector(".search").classList.remove("suggestions");
+  document.querySelector(".search-wrapper").style.display = "none";
+})
+
+
+/* Search Suggestions */
+function renderSuggestions(response) {
+  var obj = response;
+  var s = "1. symbol";
+  var n = "2. name";
+  var out = "";
+  if (!obj.Note) {
+    obj.bestMatches.forEach(match => {
+    out += '<div class="suggestion"><p>'+match[s]+'</p><a>'+match[n]+'</a></div>';
+    })
+    if (out == "") {
+      out = '<div class="suggestion"><p>No results</p></div>';
+    }
+  }
+  else {
+    out = '<div class="suggestion"><p>Try again later</p></div>';
+  }
+  document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
+  document.querySelector(".search-wrapper").style.display = "block";
+  document.querySelector(".search").classList.add("suggestions");
+}
 
 
 /* Chart */
