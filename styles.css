@@ -371,12 +371,12 @@
 }
 
 html {
-  position: relative;
-  right: 0;
-  transition: .2s ease;
   background: black;
   color: #f9f9fa;
   font: 400 16px "Inter", sans-serif;
+  position: relative;
+  right: 0;
+  transition: .2s ease;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
