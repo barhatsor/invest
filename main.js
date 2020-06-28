@@ -195,15 +195,15 @@ document.querySelectorAll(".filter").forEach((filter) => {
 // Toggle stock details
 function toggleDetails(toggle, el) {
     if (toggle == true) {
-        document.documentElement.style.overflow = "hidden";
-        document.documentElement.style.right = "50%";
+        document.body.style.overflow = "hidden";
+        document.body.style.right = "50%";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
         renderDetails(apiResponse);
         document.querySelector('.details').classList.remove('hidden');
     }
     else {
-        document.documentElement.style.right = "0";
-        document.documentElement.style.overflow = "auto";
+        document.body.style.right = "0";
+        document.body.style.overflow = "auto";
         document.querySelector('.details').classList.add('hidden');
     }
 }
