@@ -211,16 +211,16 @@ function toggleDetails(toggle, el) {
 function renderDetails(response) {
     var out = '';
     out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
-    out += '<div class="stat"><a>Open</a><p>'+response.quote.open+'</p></div>';
-    out += '<div class="stat"><a>Low</a><p>'+response.quote.low+'</p></div>';
-    out += '<div class="stat"><a>High</a><p>'+response.quote.high+'</p></div>';
-    out += '<div class="stat"><a>52wk Low</a><p>'+response.quote.week52Low+'</p></div>';
-    out += '<div class="stat"><a>52wk High</a><p>'+response.quote.week52High+'</p></div>';
-    out += '<div class="stat"><a>Mkt Cap</a><p>'+response.quote.marketCap+'</p></div>';
-    out += '<div class="stat"><a>Volume</a><p>'+response.quote.volume+'</p></div>';
-    out += '<div class="stat"><a>Avg Vol (3m)</a><p>'+response.quote.avgTotalVolume+'</p></div>';
-    out += '<div class="stat"><a>P/E</a><p>'+response.quote.peRatio+'</p></div>';
-    out += '<div class="stat"><a>Avg Vol (3m)</a><p>'+response.quote.avgTotalVolume+'</p></div>';
+    out += '<div class="stat"><p>Open</p><a>'+response.quote.open+'</a></div>';
+    out += '<div class="stat"><p>Low</p><a>'+response.quote.low+'</a></div>';
+    out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
+    out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
+    out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
+    out += '<div class="stat"><p>Mkt Cap</p><a>'+response.quote.marketCap+'</a></div>';
+    out += '<div class="stat"><p>Volume</p><a>'+response.quote.volume+'</a></div>';
+    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
+    out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
+    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
     document.querySelector('.stats').innerHTML = out;
 }
 
