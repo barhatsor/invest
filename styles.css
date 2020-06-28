@@ -321,7 +321,7 @@
   padding: 10px;
   font-size: 20px;
 }
-.stats .stat span {
+.stats .stat a {
   padding: 7px;
   background: #273b4f;
   border-radius: 10px;
