@@ -80,7 +80,7 @@
   width: calc(100% - 212px);
   height: 22px;
   top: 10px;
-  left: 55px;
+  margin-left: 50px;
   border: 0;
   border-bottom: 1px solid transparent;
   border-radius: 20px;
@@ -164,7 +164,6 @@
   position: fixed;
   display: flex;
   top: 0;
-  left: 0;
   overflow: hidden;
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
