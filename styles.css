@@ -321,10 +321,14 @@
   padding: 10px;
   font-size: 20px;
 }
-.stats .stat a {
+.stats .stat span {
   padding: 7px;
   background: #273b4f;
   border-radius: 10px;
+  float: none;
+  font-size: inherit;
+  line-height: normal;
+  margin-left: auto;
 }
   
 .install-wrapper {
