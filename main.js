@@ -220,7 +220,6 @@ function renderDetails(response) {
     out += '<div class="stat"><p>Volume</p><a>'+response.quote.volume+'</a></div>';
     out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
-    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
     document.querySelector('.stats').innerHTML = out;
 }
 
