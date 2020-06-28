@@ -136,7 +136,7 @@ document.querySelector('.close').addEventListener('click', function (event) {
 
 
 /* Search Suggestions */
-function renderSuggestions(response) {
+function renderSuggestions(response, el) {
   var obj = response;
   var s = "1. symbol";
   var n = "2. name";
