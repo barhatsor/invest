@@ -198,7 +198,7 @@ function toggleDetails(toggle, el) {
         document.body.style.overflow = "hidden";
         document.body.style.right = "50%";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
-        renderDetails(apiResponse);
+        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0]+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
         document.querySelector('.details').classList.remove('hidden');
     }
     else {
@@ -209,7 +209,18 @@ function toggleDetails(toggle, el) {
 }
 
 function renderDetails(response) {
-    
+    var out = '';
+    out += '<div class="stat"><a>Prev Close</a><p>'+response.quote.previousClose+'</p></div>';
+    out += '<div class="stat"><a>Open</a><p>'+response.quote.open+'</p></div>';
+    out += '<div class="stat"><a>Low</a><p>'+response.quote.low+'</p></div>';
+    out += '<div class="stat"><a>High</a><p>'+response.quote.high+'</p></div>';
+    out += '<div class="stat"><a>52wk Low</a><p>'+response.quote.week52Low+'</p></div>';
+    out += '<div class="stat"><a>52wk High</a><p>'+response.quote.week52High+'</p></div>';
+    out += '<div class="stat"><a>Mkt Cap</a><p>'+response.quote.marketCap+'</p></div>';
+    out += '<div class="stat"><a>Volume</a><p>'+response.quote.volume+'</p></div>';
+    out += '<div class="stat"><a>Avg Vol (3m)</a><p>'+response.quote.avgTotalVolume+'</p></div>';
+    out += '<div class="stat"><a>P/E</a><p>'+response.quote.peRatio+'</p></div>';
+    out += '<div class="stat"><a>Avg Vol (3m)</a><p>'+response.quote.avgTotalVolume+'</p></div>';
 }
 
 /* Main thread */
