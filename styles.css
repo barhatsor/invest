@@ -370,9 +370,9 @@
   }
 }
 
-html {
+body {
   background: black;
-  color: #f9f9fa !important;
+  color: #f9f9fa;
   font: 400 16px "Inter", sans-serif;
   position: relative;
   right: 0;
