@@ -322,7 +322,7 @@
 .stats .stat {
   padding: 1rem;
 }
-.stats .stat p {
+.stats .stat a {
   padding: 7px;
   background: #282322;
   border-radius: 10px;
