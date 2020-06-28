@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
 .header {
   height: 60px;
   width: 100%;
@@ -321,7 +322,7 @@
 .stats .stat {
   padding: 1rem;
 }
-.stats .stat a {
+.stats .stat p {
   padding: 7px;
   background: #282322;
   border-radius: 10px;
