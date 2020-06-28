@@ -313,7 +313,7 @@
   border-radius: 15px;
   padding-top: 20px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
 }
 .stats {
   display: grid;
@@ -322,7 +322,7 @@
 }
 .stats .stat {
   padding: 1rem;
-  font-size: 16px;
+  font-size: 1rem;
 }
 .stats .stat a {
   padding: 7px;
