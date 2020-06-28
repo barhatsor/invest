@@ -198,7 +198,7 @@ function toggleDetails(toggle, el) {
         document.body.style.overflow = "hidden";
         document.body.style.right = "50%";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
-        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0]+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
+        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
         document.querySelector('.details').classList.remove('hidden');
     }
     else {
