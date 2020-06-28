@@ -136,7 +136,7 @@ document.querySelector('.close').addEventListener('click', function (event) {
 
 
 /* Search Suggestions */
-function renderSuggestions(response, el) {
+function renderSuggestions(response) {
   var obj = response;
   var s = "1. symbol";
   var n = "2. name";
@@ -193,7 +193,7 @@ document.querySelectorAll(".filter").forEach((filter) => {
 });
 
 // Toggle stock details
-function toggleDetails(toggle) {
+function toggleDetails(toggle, el) {
     if (toggle == true) {
         document.body.style.overflow = "hidden";
         document.body.style.right = "50%";
