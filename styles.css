@@ -317,7 +317,8 @@
   place-content: center;
 }
 .stats .stat {
-  padding: 1rem;
+  margin: 10px 5px 10px 5px;
+  padding: 10px;
 }
 .stats .stat a {
   padding: 7px;
