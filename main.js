@@ -1,4 +1,5 @@
 var v = 2.7;
+var apiResponse;
 
 /* Handle everything API */
 class APIHandler {
@@ -31,7 +32,8 @@ class APIHandler {
     // Handle API response
     handleResponse(response) {
         // Build the HTML
-        stocks.buildHTML(response);
+        apiResponse = response;
+        stocks.buildHTML(apiResponse);
     }
 }
 
@@ -182,34 +184,32 @@ document.querySelectorAll(".filter").forEach((filter) => {
     filter.addEventListener("click", (e) => {
         filter.classList.toggle("active");
         if (filter.className == "filter active") {
-            httpRequest("GET", "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec", filterStocks);
+            filterStocks(apiResponse);
         }
         else {
-            APIhandler.sendAPIReq();
+            stocks.buildHTML(apiResponse);
         }
     });
 });
 
 // Toggle stock details
-var red = null;
-function toggleDetails(toggle, el) {
+function toggleDetails(toggle) {
     if (toggle == true) {
-        if (el.children[2].className == "red") {
-            red = "#ea4335";
-        }
-        else {
-            red = null;
-        }
         document.body.style.overflow = "hidden";
+        document.body.style.right = "50%";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
-        httpRequest("GET", "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol="+el.children[0].innerHTML+"&apikey=XH456FPPVS8MHBXA", initChart);
+        renderDetails(apiResponse);
         document.querySelector('.details').classList.remove('hidden');
     }
     else {
+        document.body.style.right = "0";
         document.body.style.overflow = "auto";
-        document.querySelector('.chart-wrapper').style.opacity = 0;
         document.querySelector('.details').classList.add('hidden');
     }
+}
+
+function renderDetails(response) {
+    
 }
 
 /* Main thread */
