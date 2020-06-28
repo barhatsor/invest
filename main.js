@@ -196,15 +196,13 @@ document.querySelectorAll(".filter").forEach((filter) => {
 function toggleDetails(toggle, el) {
     if (toggle == true) {
         document.body.style.overflow = "hidden";
-        document.body.style.right = "100%";
+        document.body.style.transform = "translateX(-100%)";
         document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
         httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
-        document.querySelector('.details').classList.remove('hidden');
     }
     else {
-        document.body.style.right = "0";
+        document.body.style.transform = "none";
         document.body.style.overflow = "auto";
-        document.querySelector('.details').classList.add('hidden');
     }
 }
 
