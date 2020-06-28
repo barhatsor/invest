@@ -210,7 +210,7 @@ function toggleDetails(toggle, el) {
 
 function renderDetails(response) {
     var out = '';
-    out += '<div class="stat"><a>Prev Close</a><p>'+response.quote.previousClose+'</p></div>';
+    out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
     out += '<div class="stat"><a>Open</a><p>'+response.quote.open+'</p></div>';
     out += '<div class="stat"><a>Low</a><p>'+response.quote.low+'</p></div>';
     out += '<div class="stat"><a>High</a><p>'+response.quote.high+'</p></div>';
