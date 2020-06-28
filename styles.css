@@ -275,7 +275,7 @@
   top: 0;
   left: 0;
   overflow: auto;
-  transition: .2s ease;
+  transition: .5s ease;
   z-index: 2;
 }
 .details .arrow {
@@ -375,7 +375,7 @@ body {
   font: 400 16px "Inter", sans-serif;
   position: relative;
   right: 0;
-  transition: .2s ease;
+  transition: .5s ease;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
