@@ -233,6 +233,7 @@
   float: right;
 }
 .entries .entry {
+  height: 66px;
   background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 50%/20px #15202b;
   color: #737373;
   margin: 10px 5px 10px 5px;
@@ -386,5 +387,4 @@ body {
 ::selection {
   background: #f9f9fa33;
 }
-
 /* Bar Hatsor 2020 */
