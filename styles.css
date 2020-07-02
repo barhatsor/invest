@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 .header {
   height: 60px;
   width: 100%;
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url("https://investor.netlify.app/images/invest-icon.svg") no-repeat 15px 14px/30px black;
+  background: url(https://investor.netlify.app/images/invest-icon.svg) no-repeat 15px 14px/30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
   z-index: 2;
 }
 .header .filter-button {
@@ -169,12 +169,15 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   padding-bottom: 5px;
-  background: linear-gradient(180deg, black, rgba(0, 0, 0, 0.5));
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  opacity: 0;
   transition: .2s ease;
   z-index: 1;
 }
 .filters-wrapper.active {
   top: 55px;
+  opacity: 1;
   overflow: auto;
 }
 .filters-wrapper .filters {
