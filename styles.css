@@ -391,4 +391,13 @@ body {
   background: #f9f9fa33;
 }
 
+@supports(backdrop-filter: opacity( 1.0 )) {
+  .header {
+    background-color: black;
+  }
+  .filters-wrapper {
+    background-color: black;
+  }
+}
+
 /* Bar Hatsor 2020 */
