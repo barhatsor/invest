@@ -275,16 +275,22 @@
   max-height: 420px;
   background-image: url("https://investor.netlify.app/images/arrow-flipped.svg");
 }
+.entries .entry.open .stats {
+  border-color: #2c3e4d;
+}
 
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   margin-bottom: 10px;
+  border-top: 1px solid transparent;
+  transition: .2s ease;
 }
 .stats .stat {
   margin-bottom: 5px;
 }
 .stats .stat p {
+  color: #8c8c8c;
   overflow: inherit;
 }
 .stats .stat a {
