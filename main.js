@@ -177,14 +177,34 @@ function renderDetails(response) {
     out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
     out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
     out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
-    out += '<div class="stat"><p>Mkt Cap</p><a>'+response.quote.marketCap+'</a></div>';
-    out += '<div class="stat"><p>Volume</p><a>'+response.quote.volume+'</a></div>';
-    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
+    out += '<div class="stat"><p>Mkt Cap</p><a>'+MoneyFormat(response.quote.marketCap)+'</a></div>';
+    out += '<div class="stat"><p>Volume</p><a>'+MoneyFormat(response.quote.volume)+'</a></div>';
+    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+MoneyFormat(response.quote.avgTotalVolume)+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
     // Inject finished HTML into stats wrapper
     stock.children[4].innerHTML = out;
     // Open stock
     stock.classList.toggle("open");
+}
+
+
+/* Money format */
+
+function MoneyFormat(labelValue) {
+    // Nine Zeroes for Billions
+    return Math.abs(Number(labelValue)) >= 1.0e+9
+
+       ? Math.abs(Number(labelValue)) / 1.0e+9 + "B"
+       // Six Zeroes for Millions 
+       : Math.abs(Number(labelValue)) >= 1.0e+6
+
+       ? Math.abs(Number(labelValue)) / 1.0e+6 + "M"
+       // Three Zeroes for Thousands
+       : Math.abs(Number(labelValue)) >= 1.0e+3
+
+       ? Math.abs(Number(labelValue)) / 1.0e+3 + "K"
+
+       : Math.abs(Number(labelValue));
 }
 
 
@@ -246,4 +266,5 @@ xmlhttp.onreadystatechange = function() {
     try {console.log(obj[0].amount);} catch {};
   }};
 xmlhttp.open("GET", "https://cloud.iexapis.com/stable/stock/AAPL/dividends/5y?token=pk_370633a589a240f29304a7420b9960ec", true);
-xmlhttp.send();*/
+xmlhttp.send();
+*/
