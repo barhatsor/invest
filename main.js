@@ -154,10 +154,12 @@ function renderSuggestions(response) {
 /* Stock details */
 
 // Toggle stock details
+var stats;
 function toggleDetails(el) {
     el.classList.toggle("open");
     if (el.classList.contains("open")) {
         // If the stock's open, show details
+        stats = el.children[4];
         httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
     }
 }
@@ -178,7 +180,7 @@ function renderDetails(response) {
     out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
     // Inject finished HTML into stats wrapper
-    document.querySelector(".stats").innerHTML = out;
+    stats.innerHTML = out;
 }
 
 
@@ -240,5 +242,4 @@ xmlhttp.onreadystatechange = function() {
     try {console.log(obj[0].amount);} catch {};
   }};
 xmlhttp.open("GET", "https://cloud.iexapis.com/stable/stock/AAPL/dividends/5y?token=pk_370633a589a240f29304a7420b9960ec", true);
-xmlhttp.send();
-*/
+xmlhttp.send();*/
