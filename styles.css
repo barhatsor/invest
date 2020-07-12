@@ -272,7 +272,7 @@
   float: right;
 }
 .entries .entry.open {
-  max-height: 420px;
+  max-height: 450px;
   background-image: url("https://investor.netlify.app/images/arrow-flipped.svg");
 }
 .entries .entry.open .stats {
@@ -282,20 +282,24 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  margin-bottom: 10px;
+  place-content: center;
+  text-align: center;
   border-top: 1px solid transparent;
+  padding-bottom: 10px;
   transition: .2s ease;
 }
 .stats .stat {
-  margin-bottom: 5px;
+  text-align: center;
 }
 .stats .stat p {
   color: #8c8c8c;
-  overflow: inherit;
+  max-width: inherit;
 }
 .stats .stat a {
-  color: white;
+  display: inline-grid;
   background: #273b4f;
+  color: white;
+  min-width: 55px;
   padding: 7px;
   border-radius: 10px;
   float: none;
