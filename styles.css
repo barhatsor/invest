@@ -269,7 +269,7 @@
   float: right;
 }
 .entries .entry.open {
-  max-height: 474px;
+  max-height: 409px;
   background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/0px, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 36px/20px #15202b;
 }
 
