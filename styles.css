@@ -220,7 +220,6 @@
 
 .entries {
   padding-top: 42px;
-  cursor: pointer;
 }
 .entries a {
   color: #737373;
@@ -236,6 +235,7 @@
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border-radius: 10px;
+  cursor: pointer;
   overflow: hidden;
   transition: .2s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
