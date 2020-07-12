@@ -205,8 +205,9 @@ function MoneyFormat(labelValue) {
        ? Math.abs(Number(labelValue)) / 1.0e+3 + "K"
 
        : Math.abs(Number(labelValue));
+    
     // Round to last 2 digits & remove trailing zeros
-    return ((Math.round(foo * 100) / 100).toFixed(1) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
+    return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
 }
 
 
@@ -260,11 +261,13 @@ APIhandler.sendAPIReq();
 
 /* Unimplemented dividend filter */
 
-/* var xmlhttp = new XMLHttpRequest();
+/*
+var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     var obj = JSON.parse(div);
     try {console.log(obj[0].amount);} catch {};
   }};
 xmlhttp.open("GET", "https://cloud.iexapis.com/stable/stock/AAPL/dividends/5y?token=pk_370633a589a240f29304a7420b9960ec", true);
-xmlhttp.send(); */
+xmlhttp.send();
+*/
