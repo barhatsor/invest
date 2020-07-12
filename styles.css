@@ -6,9 +6,7 @@
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url(https://investor.netlify.app/images/invest-icon.svg) no-repeat 15px 14px/30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: url(https://investor.netlify.app/images/invest-icon.svg) no-repeat 15px 14px/30px black;
   z-index: 2;
 }
 .header .filter-button {
@@ -171,16 +169,12 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   padding-bottom: 5px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  opacity: 0;
+  background: black;
   transition: .2s ease;
   z-index: 1;
 }
 .filters-wrapper.active {
   top: 55px;
-  opacity: 1;
   overflow: auto;
 }
 .filters-wrapper .filters {
@@ -236,12 +230,14 @@
   float: right;
 }
 .entries .entry {
-  height: 66px;
-  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 50%/20px #15202b;
+  max-height: 66px;
+  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/20px, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 36px/0px #15202b;
   color: #737373;
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border-radius: 10px;
+  overflow: hidden;
+  transition: .2s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
 .entries .entry h1 {
@@ -272,70 +268,25 @@
   margin: -30px 0 0 0;
   float: right;
 }
+.entries .entry.open {
+  max-height: 474px;
+  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/0px, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 36px/20px #15202b;
+}
 
-.details {
-  height: 100%;
-  width: 100%;
-  background: black;
-  text-align: center;
-  position: fixed;
-  top: 0;
-  left: 100%;
-  overflow: auto;
-  z-index: 2;
-}
-.details .arrow {
-  height: 15px;
-  position: absolute;
-  top: 34px;
-  left: 15px;
-  transform: rotate(90deg);
-  cursor: pointer;
-}
-.details h1 {
-  font-weight: 400;
-}
-.details span {
-  float: left;
-  font-size: 20px;
-  line-height: 2.9;
-  margin-left: 15px;
-}
-.details h2 {
-  float: right;
-  font-size: 20px;
-  font-weight: 400;
-  margin-right: 15px;
-  color: #34a853;
-}
-.details h2.red {
-  color: #ea4335;
-}
-.details h3 {
-  margin-top: 90px;
-  margin-bottom: 0;
-  border-radius: 15px;
-  padding-top: 20px;
-  font-weight: 400;
-}
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  place-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  margin-bottom: 10px;
 }
 .stats .stat {
-  margin: 10px 5px 10px 5px;
-  padding: 10px;
-  font-size: 20px;
+  margin-bottom: 5px;
 }
 .stats .stat a {
-  padding: 7px;
+  color: white;
   background: #273b4f;
+  padding: 7px;
   border-radius: 10px;
   float: none;
-  font-size: inherit;
-  line-height: normal;
-  margin-left: auto;
 }
   
 .install-wrapper {
@@ -389,15 +340,6 @@ body {
 }
 ::selection {
   background: #f9f9fa33;
-}
-
-@supports(backdrop-filter: opacity( 1.0 )) {
-  .header {
-    background-color: black;
-  }
-  .filters-wrapper {
-    background-color: black;
-  }
 }
 
 /* Bar Hatsor 2020 */
