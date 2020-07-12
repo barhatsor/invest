@@ -281,6 +281,9 @@
 .stats .stat {
   margin-bottom: 5px;
 }
+.stats .stat p {
+  overflow: auto;
+}
 .stats .stat a {
   color: white;
   background: #273b4f;
