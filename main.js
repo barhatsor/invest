@@ -62,7 +62,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick='toggleDetails()'><h1>" +
+                    "<div class='entry' onclick='toggleDetails(this)'><h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
@@ -154,11 +154,11 @@ function renderSuggestions(response) {
 /* Stock details */
 
 // Toggle stock details
-function toggleDetails() {
-    this.classList.toggle("open");
-    if (this.classList.contains("open")) {
+function toggleDetails(el) {
+    el.classList.toggle("open");
+    if (el.classList.contains("open")) {
         // If the stock's open, show details
-        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+this.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
+        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
     }
 }
 
