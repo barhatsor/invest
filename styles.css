@@ -282,7 +282,7 @@
   margin-bottom: 5px;
 }
 .stats .stat p {
-  overflow: auto;
+  overflow: inherit;
 }
 .stats .stat a {
   color: white;
