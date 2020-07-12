@@ -233,7 +233,7 @@
 }
 .entries .entry {
   max-height: 66px;
-  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/20px, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 36px/0px #15202b;
+  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/20px #15202b;
   color: #737373;
   margin: 10px 5px 10px 5px;
   padding: 10px;
@@ -272,8 +272,8 @@
   float: right;
 }
 .entries .entry.open {
-  max-height: 409px;
-  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/0px, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 36px/20px #15202b;
+  max-height: 420px;
+  background-image: url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 36px/20px;
 }
 
 .stats {
