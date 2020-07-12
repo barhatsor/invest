@@ -1,4 +1,4 @@
-var v = 2.7;
+var v = 2.8;
 var apiResponse;
 
 /* Handle everything API */
@@ -43,13 +43,6 @@ class stockEntries {
     constructor() {
     }
 
-    scrldIntoView(el) {
-        var rect = el.getBoundingClientRect();
-        var elemTop = rect.top;
-        var isVisible = elemTop < window.screen.height;
-        return isVisible;
-    }
-
     buildHTML(response) {
         // Check for response
         if (response) {
@@ -69,7 +62,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick='toggleDetails(true, this)'><h1>" +
+                    "<div class='entry' onclick='toggleDetails()'><h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
@@ -80,7 +73,7 @@ class stockEntries {
                     "%</h2><span>" +
                     // Do the same for stock prices
                     ((Math.round(response[prop].quote.latestPrice * 100) / 100).toFixed(1) * 1).toString() +
-                    "</span></div>";
+                    "</span><div class='stats'></div></div>";
             }
         }
         // If no response provided, show no stocks message
@@ -158,6 +151,37 @@ function renderSuggestions(response) {
 }
 
 
+/* Stock details */
+
+// Toggle stock details
+function toggleDetails() {
+    this.classList.toggle("open");
+    if (this.classList.contains("open")) {
+        // If the stock's open, show details
+        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+this.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
+    }
+}
+
+// Render stock details
+function renderDetails(response) {
+    // Store finished HTML
+    var out = '';
+    // Add stock stats
+    out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
+    out += '<div class="stat"><p>Open</p><a>'+response.quote.open+'</a></div>';
+    out += '<div class="stat"><p>Low</p><a>'+response.quote.low+'</a></div>';
+    out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
+    out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
+    out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
+    out += '<div class="stat"><p>Mkt Cap</p><a>'+response.quote.marketCap+'</a></div>';
+    out += '<div class="stat"><p>Volume</p><a>'+response.quote.volume+'</a></div>';
+    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
+    out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
+    // Inject finished HTML into stats wrapper
+    document.querySelector(".stats").innerHTML = out;
+}
+
+
 /* HTTP Request */
 function httpRequest(type, url, callback) {
     var xmlhttp = new XMLHttpRequest();
@@ -183,43 +207,17 @@ document.querySelector(".filter-button").addEventListener("click", (e) => {
 document.querySelectorAll(".filter").forEach((filter) => {
     filter.addEventListener("click", (e) => {
         filter.classList.toggle("active");
-        if (filter.className == "filter active") {
+        // If the filter's active
+        if (filter.classList.contains("active")) {
+            // Filter the stocks
             filterStocks(apiResponse);
         }
         else {
+            // Else, revert back to original list
             stocks.buildHTML(apiResponse);
         }
     });
 });
-
-// Toggle stock details
-function toggleDetails(toggle, el) {
-    if (toggle == true) {
-        document.body.style.overflowY = "hidden";
-        document.body.style.transform = "translateX(-100%)";
-        document.querySelector('.details-wrapper').innerHTML = el.innerHTML;
-        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
-    }
-    else {
-        document.body.style.transform = "none";
-        document.body.style.overflow = "auto";
-    }
-}
-
-function renderDetails(response) {
-    var out = '';
-    out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
-    out += '<div class="stat"><p>Open</p><a>'+response.quote.open+'</a></div>';
-    out += '<div class="stat"><p>Low</p><a>'+response.quote.low+'</a></div>';
-    out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
-    out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
-    out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
-    out += '<div class="stat"><p>Mkt Cap</p><a>'+response.quote.marketCap+'</a></div>';
-    out += '<div class="stat"><p>Volume</p><a>'+response.quote.volume+'</a></div>';
-    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
-    out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
-    document.querySelector('.stats').innerHTML = out;
-}
 
 /* Main thread */
 
@@ -232,7 +230,7 @@ stocks = new stockEntries();
 // Run
 APIhandler.sendAPIReq();
 
-/* Unimplemented dividend filter - Kosta */
+/* Unimplemented dividend filter */
 
 /*
 var xmlhttp = new XMLHttpRequest();
