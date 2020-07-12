@@ -6,7 +6,7 @@
   position: fixed;
   font-size: 22px;
   margin: -8px 0 0 -8px;
-  background: url(https://investor.netlify.app/images/invest-icon.svg) no-repeat 15px 14px/30px black;
+  background: url("https://investor.netlify.app/images/invest-icon.svg") no-repeat 15px 14px/30px black;
   z-index: 2;
 }
 .header .filter-button {
