@@ -205,8 +205,8 @@ function MoneyFormat(labelValue) {
        ? Math.abs(Number(labelValue)) / 1.0e+3 + "K"
 
        : Math.abs(Number(labelValue));
-    
-    return parseFloat(foo).toPrecision(3) + foo.replace(/[^B|M|K]/g,"");
+    // Round to last 3 digits & remove trailing zeros
+    return ((Math.round(foo * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
 }
 
 
