@@ -154,13 +154,15 @@ function renderSuggestions(response) {
 /* Stock details */
 
 // Toggle stock details
-var stats;
-function toggleDetails(el) {
-    el.classList.toggle("open");
-    if (el.classList.contains("open")) {
+var stock;
+function toggleDetails(el) {    
+    if (!el.classList.contains("open")) {
         // If the stock's open, show details
-        stats = el.children[4];
+        stock = el;
         httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
+    }
+    else {
+        el.classList.remove("open");
     }
 }
 
@@ -180,7 +182,9 @@ function renderDetails(response) {
     out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+response.quote.avgTotalVolume+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
     // Inject finished HTML into stats wrapper
-    stats.innerHTML = out;
+    stock.children[4].innerHTML = out;
+    // Open stock
+    stock.classList.toggle("open");
 }
 
 
