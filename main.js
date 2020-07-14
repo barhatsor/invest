@@ -160,7 +160,7 @@ function toggleDetails(stock) {
         // Open it
         stock.classList.toggle("open");
         // And show details
-        renderDetails(apiResponse[el.children[0].innerHTML], stock);
+        renderDetails(apiResponse[stock.children[0].innerHTML], stock);
     }
     else {
         // Else, close it
@@ -180,10 +180,7 @@ function renderDetails(response, stock) {
     out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
     out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
     out += '<div class="stat"><p>Mkt Cap</p><a>'+MoneyFormat(response.quote.marketCap)+'</a></div>';
-    // If there's no volume, don't show it
-    try {
-        out += '<div class="stat"><p>Volume</p><a>'+MoneyFormat(response.quote.volume)+'</a></div>';
-    } catch {}
+    out += '<div class="stat"><p>Volume</p><a>'+MoneyFormat(response.quote.volume)+'</a></div>';
     out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+MoneyFormat(response.quote.avgTotalVolume)+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
     // Inject finished HTML into stats wrapper
@@ -210,7 +207,9 @@ function MoneyFormat(labelValue) {
        : Math.abs(Number(labelValue));
     
     // Round to last 2 digits & remove trailing zeros
-    return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
+    try {
+        return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
+    } catch {}
 }
 
 
