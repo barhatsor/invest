@@ -276,7 +276,7 @@
   background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/0, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 37px/20px #15202b;
 }
 .entries .entry.open .stats {
-  border-color: #2c3e4d;
+  border: 1px solid #2c3e4d;
 }
 
 .stats {
