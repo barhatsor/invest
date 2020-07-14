@@ -136,7 +136,7 @@ function renderSuggestions(response) {
   var out = "";
   if (!obj.Note) {
     obj.bestMatches.forEach(match => {
-    out += '<div class="suggestion"><p>'+match[s]+'</p><a>'+match[n]+'</a></div>';
+        out += '<div class="suggestion"><p>'+match[s]+'</p><a>'+match[n]+'</a></div>';
     })
     if (out == "") {
       out = '<div class="suggestion"><p>No results</p></div>';
@@ -154,20 +154,22 @@ function renderSuggestions(response) {
 /* Stock details */
 
 // Toggle stock details
-var stock;
-function toggleDetails(el) {    
-    if (!el.classList.contains("open")) {
-        // If the stock's open, show details
-        stock = el;
-        httpRequest("GET", "https://cloud.iexapis.com/stable/stock/"+el.children[0].innerHTML+"/batch?types=quote&token=pk_370633a589a240f29304a7420b9960ec", renderDetails);
+function toggleDetails(stock) {
+    // If the stock's closed
+    if (!stock.classList.contains("open")) {
+        // Open it
+        stock.classList.toggle("open");
+        // And show details
+        renderDetails(apiResponse[el.children[0].innerHTML], stock);
     }
     else {
-        el.classList.remove("open");
+        // Else, close it
+        stock.classList.remove("open");
     }
 }
 
 // Render stock details
-function renderDetails(response) {
+function renderDetails(response, stock) {
     // Store finished HTML
     var out = '';
     // Add stock stats
@@ -178,13 +180,14 @@ function renderDetails(response) {
     out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
     out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
     out += '<div class="stat"><p>Mkt Cap</p><a>'+MoneyFormat(response.quote.marketCap)+'</a></div>';
-    out += '<div class="stat"><p>Volume</p><a>'+MoneyFormat(response.quote.volume)+'</a></div>';
+    // If there's no volume, don't show it
+    try {
+        out += '<div class="stat"><p>Volume</p><a>'+MoneyFormat(response.quote.volume)+'</a></div>';
+    } catch {}
     out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+MoneyFormat(response.quote.avgTotalVolume)+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
     // Inject finished HTML into stats wrapper
     stock.children[4].innerHTML = out;
-    // Open stock
-    stock.classList.toggle("open");
 }
 
 
