@@ -209,7 +209,7 @@ function MoneyFormat(labelValue) {
     // Round to last 2 digits & remove trailing zeros
     try {
         return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
-    } catch {}
+    } catch { return "null" }
 }
 
 
