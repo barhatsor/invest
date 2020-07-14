@@ -240,7 +240,7 @@
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  transition: .2s ease;
+  transition: max-height .25s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
 .entries .entry h1 {
@@ -284,9 +284,7 @@
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   place-content: center;
   text-align: center;
-  border-top: 1px solid transparent;
   padding-bottom: 10px;
-  transition: .2s ease;
 }
 .stats .stat {
   text-align: center;
@@ -345,6 +343,7 @@
   }
 }
 
+
 html {
   background: black;
   color: #f9f9fa;
@@ -353,6 +352,7 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
 ::selection {
   background: #f9f9fa33;
 }
