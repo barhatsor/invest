@@ -276,7 +276,7 @@
   background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/0, url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 37px/20px #15202b;
 }
 .entries .entry.open .stats {
-  border: 1px solid #2c3e4d;
+  border-color: #2c3e4d;
 }
 
 .stats {
@@ -285,6 +285,8 @@
   place-content: center;
   text-align: center;
   padding-bottom: 10px;
+  transition: .25s ease;
+  border-top: 1px solid transparent;
 }
 .stats .stat {
   text-align: center;
@@ -343,7 +345,6 @@
   }
 }
 
-
 html {
   background: black;
   color: #f9f9fa;
@@ -352,7 +353,6 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
 ::selection {
   background: #f9f9fa33;
 }
