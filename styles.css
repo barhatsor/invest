@@ -282,8 +282,6 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  place-content: center;
-  text-align: center;
   padding-bottom: 10px;
   transition: .25s ease;
   border-top: 1px solid transparent;
@@ -345,6 +343,7 @@
   }
 }
 
+
 html {
   background: black;
   color: #f9f9fa;
@@ -353,6 +352,7 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
 ::selection {
   background: #f9f9fa33;
 }
