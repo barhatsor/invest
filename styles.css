@@ -343,11 +343,12 @@
   }
 }
 
-
 html {
   background: black;
   color: #f9f9fa;
   font: 400 16px "Inter", sans-serif;
+  scrollbar-color: #253341 black;
+  scrollbar-width: thin;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -355,6 +356,13 @@ html {
 
 ::selection {
   background: #f9f9fa33;
+}
+
+::-webkit-scrollbar {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #253341;
 }
 
 /* Bar Hatsor 2020 */
