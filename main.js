@@ -1,32 +1,23 @@
+/* invest.js
+
+   (C) Bar Hatsor 2020
+       MIT License (https://bassets.github.io/mit)
+   */
+
 var v = 2.8;
 var apiResponse;
 
 /* Handle everything API */
 class APIHandler {
 
-    constructor(requestedStocks)
-    {
-        this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
-        // Dividends get a special URL
-        this.APIurl_div = "https://cloud.iexapis.com/stable/stock/AAPL/dividends/5y?token=pk_370633a589a240f29304a7420b9960ec";
+    constructor() {
+      this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
     }
 
     // Send API request
     sendAPIReq(div) {
         // Requested dividends or not
-        if (!div) {
-            httpRequest("GET", this.APIurl, this.handleResponse);
-        } else {
-            httpRequest("GET", this.APIurl_div, this.handleResponse);
-        }
-    }
-
-    // Filter API response
-     filterResponse(response)
-    {
-        //let result = response.filter(peRatio => peRatio < 11);
-        //return result;
-        return response;
+        httpRequest("GET", this.APIurl, this.handleResponse);
     }
 
     // Handle API response
@@ -78,11 +69,11 @@ class stockEntries {
         }
         // If no response provided, show no stocks message
         else {
-            out = '<p style="padding-top: 15px;text-align: center">No stocks</p>';
+            out = "<a>No stocks</a>"
         }
+        
         // Inject the finished HTML into the page
-        document.querySelector(".entries").innerHTML =
-            this.out + "<a href='https://codepen.io/barhatsor' style='float: left;padding-right: 0'>Bar Hatsor V"+v+"</a><a href='https://iexcloud.io'>Data provided by IEX Cloud</a>";
+        document.querySelector(".entries").innerHTML = this.out;
     }
 }
 
@@ -105,43 +96,45 @@ function filterStocks(data) {
 
 /* Search */
 var prevrequest = "";
+// If typed in search
 document.querySelector('.search').addEventListener('input', function (event) {
+  // And if search not empty
   if (this.value != "" && this.value != prevrequest) {
+    // Render suggestions
     prevrequest = this.value;
     httpRequest("GET", "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords="+this.value+"&apikey=XH456FPPVS8MHBXA", renderSuggestions);
   }
   else {
+    // Else, close search
     document.querySelector(".search").classList.remove("suggestions");
     document.querySelector(".search-wrapper").style.display = "none";
   }
 });
 
+// If clicked off search, close it
 document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
   document.querySelector(".search-wrapper").style.display = "none";
-});
-
-document.querySelector('.close').addEventListener('click', function (event) {
   document.querySelector(".search").value = "";
-  document.querySelector(".search").classList.remove("suggestions");
-  document.querySelector(".search-wrapper").style.display = "none";
-})
+});
 
 
 /* Search Suggestions */
-function renderSuggestions(response) {
-  var obj = response;
-  var s = "1. symbol";
-  var n = "2. name";
+function renderSuggestions(resp) {
+  // Store finished HTML
   var out = "";
-  if (!obj.Note) {
-    obj.bestMatches.forEach(match => {
-        out += '<div class="suggestion"><p>'+match[s]+'</p><a>'+match[n]+'</a></div>';
+  // If response
+  if (!resp.Note) {
+    // Add suggestion to finished HTML
+    resp.bestMatches.forEach(match => {
+        out += '<div class="suggestion"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
+    // If no suggestions, show no results message
     if (out == "") {
       out = '<div class="suggestion"><p>No results</p></div>';
     }
   }
+  // If no response provided, show try later message
   else {
     out = '<div class="suggestion"><p>Try again later</p></div>';
   }
@@ -179,9 +172,9 @@ function renderDetails(response, stock) {
     out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
     out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
     out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
-    out += '<div class="stat"><p>Mkt Cap</p><a>'+MoneyFormat(response.quote.marketCap)+'</a></div>';
-    out += '<div class="stat"><p>Volume</p><a>'+MoneyFormat(response.quote.volume)+'</a></div>';
-    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+MoneyFormat(response.quote.avgTotalVolume)+'</a></div>';
+    out += '<div class="stat"><p>Mkt Cap</p><a>'+moneyFormat(response.quote.marketCap)+'</a></div>';
+    out += '<div class="stat"><p>Volume</p><a>'+moneyFormat(response.quote.volume)+'</a></div>';
+    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
     out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
     // Inject finished HTML into stats wrapper
     stock.children[4].innerHTML = out;
@@ -190,7 +183,7 @@ function renderDetails(response, stock) {
 
 /* Money format */
 
-function MoneyFormat(labelValue) {
+function moneyFormat(labelValue) {
     // Nine Zeroes for Billions
     var foo = Math.abs(Number(labelValue)) >= 1.0e+9
 
@@ -255,13 +248,11 @@ document.querySelectorAll(".filter").forEach((filter) => {
 // Initiate API handler
 APIhandler = new APIHandler();
 
-// Initiate View builder
+// Initiate HTML builder
 stocks = new stockEntries();
 
 // Run
 APIhandler.sendAPIReq();
-
-/* Unimplemented dividend filter */
 
 /*
 var xmlhttp = new XMLHttpRequest();
