@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 .header {
   height: 60px;
   width: 100%;
@@ -225,11 +224,10 @@
   padding-top: 42px;
 }
 .entries a {
-  color: #737373;
-  text-decoration: none;
-  padding: 17px 5px 17px 5px;
-  font-size: 15px;
-  float: right;
+  display: block;
+  color: #595959;
+  text-align: center;
+  padding-top: 20px;
 }
 .entries .entry {
   max-height: 66px;
