@@ -108,6 +108,7 @@ document.querySelector('.search').addEventListener('input', function (event) {
     // Else, close search
     document.querySelector(".search").classList.remove("suggestions");
     document.querySelector(".search-wrapper").style.display = "none";
+    document.body.style.overflow = "auto";
   }
 });
 
@@ -116,6 +117,7 @@ document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
   document.querySelector(".search-wrapper").style.display = "none";
   document.querySelector(".search").value = "";
+  document.body.style.overflow = "auto";
 });
 
 
@@ -141,6 +143,7 @@ function renderSuggestions(resp) {
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
   document.querySelector(".search-wrapper").style.display = "block";
   document.querySelector(".search").classList.add("suggestions");
+  document.body.style.overflow = "hidden";
 }
 
 
