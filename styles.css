@@ -100,6 +100,12 @@
   opacity: 0.5;
   pointer-events: auto;
 }
+.search:focus + .entries {
+  filter: blur(10px);
+}
+.search:focus + .footer {
+  filter: blur(10px);
+}
 .search.suggestions {
   width: calc(100% - 60px);
   background: url("https://investor.netlify.app/images/search-white.svg") 35px 50% no-repeat #253341;
@@ -221,7 +227,8 @@
 }
 
 .entries {
-  padding-top: 42px;
+  padding: 42px 0 42px 0;
+  transition: .2s ease;
 }
 .entries a {
   display: block;
