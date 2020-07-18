@@ -100,10 +100,10 @@
   opacity: 0.5;
   pointer-events: auto;
 }
-.search:focus + .entries {
+.search:focus ~ .entries {
   filter: blur(10px);
 }
-.search:focus + .footer {
+.search:focus ~ .footer {
   filter: blur(10px);
 }
 .search.suggestions {
