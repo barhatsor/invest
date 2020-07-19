@@ -27,6 +27,9 @@
   margin-top: 40px;
   cursor: pointer;
 }
+.articles .article .content {
+  min-height: 100px;
+}
 .articles .article .img-wrapper {
   position: relative;
   padding-top: 50%;
