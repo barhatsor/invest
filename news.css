@@ -24,6 +24,7 @@
 }
 .articles .article {
   color: #737373;
+  margin-top: 40px;
   cursor: pointer;
 }
 .articles .article .img-wrapper {
@@ -75,8 +76,8 @@
 .articles .article div.text {
   margin-top: 16px;
 }
-.articles .article:not(first-of-type) {
-  margin-top: 40px;
+.articles .article:first-of-type {
+  margin-top: 0;
 }
 .articles .article:not(first-of-type) img {
   width: 100px;
