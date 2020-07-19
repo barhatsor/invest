@@ -85,6 +85,11 @@
   border-radius: 8px;
   float: right;
 }
+.articles .article div.text img {
+  width: 18px;
+  height: 18px;
+  border-radius: 0;
+}
 .articles .article:not(first-of-type)::before {
   background: #3d5466;
   display: block;
