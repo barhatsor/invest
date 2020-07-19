@@ -45,7 +45,7 @@ class newsArticles {
               // For each article in stock
               for (var props in stock) {
                 // Build news articles
-                if (first) {
+                if (first.length == 2) {
                   first = ["", ""];
                 } 
                 else {
