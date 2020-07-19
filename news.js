@@ -77,6 +77,19 @@ class newsArticles {
     }
 }
 
+/* HTTP Request */
+function httpRequest(type, url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() { 
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            callback(response);
+        }
+    }
+    xmlhttp.open(type, url, true); 
+    xmlhttp.send();
+}
+
 /* Main thread */
 
 // Initiate API handler
