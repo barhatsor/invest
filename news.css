@@ -90,13 +90,16 @@
   height: 18px;
   border-radius: 0;
 }
-.articles .article:not(first-of-type)::before {
+.articles .article::before {
   background: #3d5466;
   display: block;
   height: 1px;
   position: relative;
   top: -20px;
   content: '';
+}
+.articles .article:first-of-type::before {
+  content: none;
 }
 
 .footer {
