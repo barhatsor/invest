@@ -43,7 +43,7 @@ class newsArticles {
             for (var prop in response) {
               stock = response[prop].news;
               // For each article in stock
-              for (var prop in stock) {
+              for (var props in stock) {
                 // Build news articles
                 if (first) {
                   first = ["<div class='img-wrapper'>", "</div>"];
@@ -55,15 +55,21 @@ class newsArticles {
                     "<div class='article'>" +
                     first[0] +
                     "<img src='" +
-                    stock[prop].image +
+                    stock[props].image +
                     "'>" +
                     first[1] +
                     "<a class='text'>" +
-                    stock[prop].source +
+                    stock[props].source +
                     "</a><h4>" +
-                    stock[prop].headline +
+                    stock[props].headline +
                     "</h4><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
+              }
             }
+        }
+        
+        // If no response provided, show no news message
+        else {
+            out = "<p>No news</p>";
         }
         
         // Inject the finished HTML into the page
