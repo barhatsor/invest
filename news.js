@@ -47,7 +47,8 @@ class newsArticles {
                 // Build news articles
                 if (first) {
                   first = ["<div class='img-wrapper'>", "</div>"];
-                } else {
+                } 
+                else {
                   first = ["", ""];
                 }
                 this.out +=
@@ -66,7 +67,7 @@ class newsArticles {
         }
         // If no response provided, show no news message
         else {
-            out = "<p>No news</p>"
+            out = "<p>No news</p>";
         }
         
         // Inject the finished HTML into the page
