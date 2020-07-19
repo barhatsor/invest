@@ -65,10 +65,6 @@ class newsArticles {
                     "</h4><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
             }
         }
-        // If no response provided, show no news message
-        else {
-            out = "<p>No news</p>";
-        }
         
         // Inject the finished HTML into the page
         document.querySelector(".articles").innerHTML = this.out;
