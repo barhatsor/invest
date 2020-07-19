@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+.header {
+  display: grid;
+  place-content: center;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  font-size: 22px;
+  margin: -8px 0 0 -8px;
+  background: url(https://investor.netlify.app/images/invest-icon.svg) no-repeat 15px 14px/30px rgb(0 0 0 / 75%);
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: inset 0 -1px 0 0 rgb(255 255 255 / 0.24);
+  z-index: 2;
+}
+
+.articles {
+  padding: 52px 20px calc(62px + 1em) 20px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.articles p {
+  font-size: 1.125rem;
+}
+.articles .article {
+  color: #737373;
+  cursor: pointer;
+}
+.articles .article .img-wrapper {
+  position: relative;
+  padding-top: 50%;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #3d5466;
+}
+.articles .article .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 175px;
+  max-height: 175px;
+  object-fit: cover;
+  margin: auto;
+}
+.articles .article .img-wrapper::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: '';
+  background: linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,.001));
+}
+.articles .article .text {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  justify-content: space-between;
+}
+.articles .article h4 {
+  font-size: 1rem;
+  font-weight: inherit;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: #f9f9fa;
+}
+.articles .article:first-of-type h4 {
+  font-size: 1.4375rem;
+}
+.articles .article div.text {
+  margin-top: 16px;
+}
+.articles .article:not(first-of-type) {
+  margin-top: 40px;
+}
+.articles .article:not(first-of-type) img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  float: right;
+}
+.articles .article:not(first-of-type)::before {
+  background: #3d5466;
+  display: block;
+  height: 1px;
+  position: relative;
+  top: -20px;
+  content: '';
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  background: rgb(0 0 0 / 75%);
+  transition: .2s ease;
+  z-index: 1;
+  backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.24);
+}
+.footer span {
+  display: table-cell;
+  text-align: center;
+  padding-top: 17px;
+  cursor: pointer;
+}
+.footer span img {
+  height: 25px;
+}
+
+.install-wrapper {
+  position: fixed;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: grid;
+  align-content: center;
+  background: black;
+  padding-left: 15px;
+  transition: .2s ease;
+  z-index: 3;
+}
+.install-wrapper .install {
+  width: 25px;
+  position: absolute;
+  right: 15px;
+  padding: 17px;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.install-wrapper.download {
+  color: transparent;
+}
+.install-wrapper.download .install {
+  pointer-events: none;
+  transform: rotate(45deg);
+}
+.install-wrapper.hidden {
+  bottom: -70px;
+}
+
+html {
+  background: black;
+  color: #f9f9fa;
+  font: 400 16px "Inter", sans-serif;
+  scrollbar-color: #253341 black;
+  scrollbar-width: thin;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #f9f9fa33;
+}
+
+::-webkit-scrollbar {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #253341;
+}
+
+/* Bar Hatsor 2020 */
