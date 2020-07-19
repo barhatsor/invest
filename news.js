@@ -47,8 +47,7 @@ class newsArticles {
                 // Build news articles
                 if (first) {
                   first = ["<div class='img-wrapper'>", "</div>"];
-                }
-                else {
+                } else {
                   first = ["", ""];
                 }
                 this.out +=
