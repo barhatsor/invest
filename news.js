@@ -52,7 +52,7 @@ class newsArticles {
                   first = ["<div class='img-wrapper'>", "</div>"];
                 }
                 this.out +=
-                    "<div class='article'>" +
+                    "<div class='article'><div class='content'>" +
                     first[0] +
                     "<img src='" +
                     stock[props].image +
@@ -62,7 +62,7 @@ class newsArticles {
                     stock[props].source +
                     "</a><h4>" +
                     stock[props].headline +
-                    "</h4><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
+                    "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
               }
             }
         }
