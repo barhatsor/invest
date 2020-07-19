@@ -46,10 +46,10 @@ class newsArticles {
               for (var props in stock) {
                 // Build news articles
                 if (first) {
-                  first = ["<div class='img-wrapper'>", "</div>"];
+                  first = ["", ""];
                 } 
                 else {
-                  first = ["", ""];
+                  first = ["<div class='img-wrapper'>", "</div>"];
                 }
                 this.out +=
                     "<div class='article'>" +
