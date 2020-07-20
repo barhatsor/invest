@@ -81,6 +81,7 @@ class newsArticles {
 
 /* Share */
 async function shareArticle(el) {
+   console.log(el.parentElement.parentElement);
    const shareData = {
      title: 'Share article',
      // Retrieve article title
@@ -89,7 +90,6 @@ async function shareArticle(el) {
      url: el.parentElement.parentElement.onclick.split('window.location.href = "').join('').split('""').join(''),
    }
 
-   console.log(el.parentElement.parentElement);
    try {
       await navigator.share(shareData);
       console.log('Shared successfully');
