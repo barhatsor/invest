@@ -110,12 +110,12 @@ document.querySelector('.search').addEventListener('input', function (event) {
     document.querySelector(".search-wrapper").style.display = "none";
     document.body.style.overflow = "auto";
   }
-});
+})
 
 // If clicked on search, disable scrolling
 document.querySelector('.search').addEventListener('focus', function (event) {
    document.body.style.overflow = "hidden";
-}
+})
 
 // If clicked off search, close it
 document.querySelector('.search').addEventListener('blur', function (event) {
@@ -123,7 +123,7 @@ document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search-wrapper").style.display = "none";
   document.querySelector(".search").value = "";
   document.body.style.overflow = "auto";
-});
+})
 
 
 /* Search Suggestions */
