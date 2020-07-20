@@ -41,7 +41,7 @@ class newsArticles {
               // For each article in news
               for (var props in response.news) {
                 // If article is in english
-                if (stock[props].lang == "en") {
+                if (response.news[props].lang == "en") {
                    // Build news articles
                    if (first.length == 2) {
                      first = ["", ""];
@@ -53,13 +53,13 @@ class newsArticles {
                        "<div class='article'><div class='content'>" +
                        first[0] +
                        "<img src='" +
-                       stock[props].image +
+                       response.news[props].image +
                        "'>" +
                        first[1] +
                        "<a class='text'>" +
-                       stock[props].source +
+                       response.news[props].source +
                        "</a><h4>" +
-                       stock[props].headline +
+                       response.news[props].headline +
                        "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
                 }
              }
