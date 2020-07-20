@@ -112,6 +112,11 @@ document.querySelector('.search').addEventListener('input', function (event) {
   }
 });
 
+// If clicked on search, disable scrolling
+document.querySelector('.search').addEventListener('focus', function (event) {
+   document.body.style.overflow = "hidden";
+}
+
 // If clicked off search, close it
 document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
@@ -143,7 +148,6 @@ function renderSuggestions(resp) {
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
   document.querySelector(".search-wrapper").style.display = "block";
   document.querySelector(".search").classList.add("suggestions");
-  document.body.style.overflow = "hidden";
 }
 
 
