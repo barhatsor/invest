@@ -86,9 +86,10 @@ async function shareArticle(el) {
      // Retrieve article title
      text: el.parentElement.parentElement.children[0].children[2],
      // Retrieve article url
-     url: el.parentElement.parentElement.getAttribute('onclick').split('window.location.href = "').join('').split('""').join(''),
+     url: el.parentElement.parentElement.onclick.split('window.location.href = "').join('').split('""').join(''),
    }
 
+   console.log(el.parentElement.parentElement);
    try {
       await navigator.share(shareData);
       console.log('Shared successfully');
