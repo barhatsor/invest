@@ -39,9 +39,9 @@ class newsArticles {
             this.out = "<p>Headlines</p>";
             var first = [];
               // For each article in news
-              for (var props in response.news) {
+              for (var prop in response.news) {
                 // If article is in english
-                if (response.news[props].lang == "en") {
+                if (response.news[prop].lang == "en") {
                    // Build news articles
                    if (first.length == 2) {
                      first = ["", ""];
@@ -50,16 +50,18 @@ class newsArticles {
                      first = ["<div class='img-wrapper'>", "</div>"];
                    }
                    this.out +=
-                       "<div class='article'><div class='content'>" +
+                       "<div class='article' onclick='window.location.href = \"" +
+                       response.news[prop].url +
+                       "\"'><div class='content'>" +
                        first[0] +
                        "<img src='" +
-                       response.news[props].image +
+                       response.news[prop].image +
                        "'>" +
                        first[1] +
                        "<a class='text'>" +
-                       response.news[props].source +
+                       response.news[prop].source +
                        "</a><h4>" +
-                       response.news[props].headline +
+                       response.news[prop].headline +
                        "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
                 }
              }
