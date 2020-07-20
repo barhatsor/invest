@@ -247,7 +247,7 @@
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  transition: .25s ease;
+  transition: max-height .25s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
 .entries .entry h1 {
