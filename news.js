@@ -50,13 +50,13 @@ class newsArticles {
                   first = ["<div class='img-wrapper'>", "</div>"];
                 }
                 this.out +=
-                    "<div class='article' onclick='window.location.href = \"" +
+                    "<div class='article'><div class='content' onclick='window.location.href = \"" +
                     response.news[prop].url +
-                    "\"'><div class='content'>" +
+                    "\"'>" +
                     first[0] +
                     "<img src='" +
                     response.news[prop].image +
-                    "'>" +
+                    "' alt='thumbnail'>" +
                     first[1] +
                     "<a class='text'>" +
                     response.news[prop].source +
@@ -64,7 +64,7 @@ class newsArticles {
                     response.news[prop].headline +
                     "</h4></div><div class='text'><a>" +
                     timeDifference(response.news[prop].datetime) +
-                    "</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
+                    "</a><img src='https://investor.netlify.app/images/share.svg' alt='share' onclick='shareArticle(this)'></div></div>";
              }
           }
         }
@@ -77,6 +77,24 @@ class newsArticles {
         // Inject the finished HTML into the page
         document.querySelector(".articles").innerHTML = this.out;
     }
+}
+
+/* Share */
+async function shareArticle(el) {
+   const shareData = {
+     title: 'Share article',
+     // Retrieve article title
+     text: el.parentElement.children[0].children[2],
+     // Retrieve article url
+     url: el.parentElement.getAttribute('onclick').split('window.location.href = "').join('').split('""').join(''),
+   }
+
+   try {
+      await navigator.share(shareData);
+      console.log('Shared successfully');
+   } catch(err) {
+      console.log('Error: ' + err);
+   }
 }
 
 /* Time Difference */
