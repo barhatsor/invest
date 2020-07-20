@@ -84,9 +84,9 @@ async function shareArticle(el) {
    const shareData = {
      title: 'Share article',
      // Retrieve article title
-     text: el.parentElement.children[0].children[2],
+     text: el.parentElement.parentElement.children[0].children[2],
      // Retrieve article url
-     url: el.parentElement.getAttribute('onclick').split('window.location.href = "').join('').split('""').join(''),
+     url: el.parentElement.parentElement.getAttribute('onclick').split('window.location.href = "').join('').split('""').join(''),
    }
 
    try {
