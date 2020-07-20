@@ -38,7 +38,6 @@ class newsArticles {
            // Finished HTML goes here
            this.out = "<p>Headlines</p>";
            var first = [];
-           var d = new Date(0);
            // For each article in news
            for (var prop in response.news) {
              // If article is in english
@@ -64,7 +63,7 @@ class newsArticles {
                     "</a><h4>" +
                     response.news[prop].headline +
                     "</h4></div><div class='text'><a>" +
-                    timeDifference(d.setUTCSeconds(response.news[prop].datetime)) +
+                    timeDifference(response.news[prop].datetime) +
                     "</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
              }
           }
@@ -82,31 +81,42 @@ class newsArticles {
 
 /* Time Difference */
 function timeDifference(previous) {
-    var current = new Date();
+  var msPerMinute = 60 * 1000;
+  var msPerHour = msPerMinute * 60;
+  var msPerDay = msPerHour * 24;
+  var msPerMonth = msPerDay * 30;
+  var msPerYear = msPerDay * 365;
 
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
-   
-    var elapsed = current - previous;
+  var current = Date.now();
+  var elapsed = current - previous;
 
-    if (elapsed < msPerMinute) {
-         return Math.round(elapsed/1000) + ' seconds ago';   
+  if (elapsed < msPerMinute) {
+    return Math.round(elapsed / 1000) + ' seconds ago';
+  } else if (elapsed < msPerHour) {
+    if (Math.round(elapsed / msPerMinute) > 1) {
+      return Math.round(elapsed / msPerMinute) + ' minutes ago';
+    } else {
+      return '1 minute ago';
     }
-    else if (elapsed < msPerHour) {
-         return Math.round(elapsed/msPerMinute) + ' minutes ago';   
+  } else if (elapsed < msPerDay) {
+    if (Math.round(elapsed / msPerHour) > 1) {
+      return Math.round(elapsed / msPerHour) + ' hours ago';
+    } else {
+      return '1 hour ago';
     }
-    else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour) + ' hours ago';   
+  } else if (elapsed < msPerMonth) {
+    if (Math.round(elapsed / msPerDay)) {
+      return Math.round(elapsed / msPerDay) + ' days ago';
+    } else {
+      return '1 day ago';
     }
-    else if (elapsed < msPerMonth) {
-        return Math.round(elapsed/msPerDay) + ' days ago';   
+  } else if (elapsed < msPerYear) {
+    if (Math.round(elapsed / msPerMonth) > 1) {
+      return Math.round(elapsed / msPerMonth) + ' months ago';
+    } else {
+      return '1 month ago';
     }
-    else if (elapsed < msPerYear) {
-        return Math.round(elapsed/msPerMonth) + ' months ago';   
-    }
+  }
 }
 
 /* HTTP Request */
