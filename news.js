@@ -37,34 +37,32 @@ class newsArticles {
         if (response) {
             // Finished HTML goes here
             this.out = "<p>Headlines</p>";
-            var stock;
             var first = [];
-            // For each stock in API response
-            for (var prop in response) {
-              stock = response[prop].news;
-              // For each article in stock
-              for (var props in stock) {
-                // Build news articles
-                if (first.length == 2) {
-                  first = ["", ""];
-                } 
-                else {
-                  first = ["<div class='img-wrapper'>", "</div>"];
+              // For each article in news
+              for (var props in response.news) {
+                // If article is in english
+                if (stock[props].lang == "en") {
+                   // Build news articles
+                   if (first.length == 2) {
+                     first = ["", ""];
+                   } 
+                   else {
+                     first = ["<div class='img-wrapper'>", "</div>"];
+                   }
+                   this.out +=
+                       "<div class='article'><div class='content'>" +
+                       first[0] +
+                       "<img src='" +
+                       stock[props].image +
+                       "'>" +
+                       first[1] +
+                       "<a class='text'>" +
+                       stock[props].source +
+                       "</a><h4>" +
+                       stock[props].headline +
+                       "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
                 }
-                this.out +=
-                    "<div class='article'><div class='content'>" +
-                    first[0] +
-                    "<img src='" +
-                    stock[props].image +
-                    "'>" +
-                    first[1] +
-                    "<a class='text'>" +
-                    stock[props].source +
-                    "</a><h4>" +
-                    stock[props].headline +
-                    "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
              }
-           }
         }
         
         // If no response provided, show no news message
