@@ -99,10 +99,14 @@ function timeDifference(previous) {
       return '1 minute ago';
     }
   } else if (elapsed < msPerDay) {
-    if (Math.round(elapsed / msPerHour) > 1) {
+    if (Math.round(elapsed / msPerHour) == 24) {
+      return '1 day ago';
+    }
+    else if (Math.round(elapsed / msPerHour) > 1) {
       return Math.round(elapsed / msPerHour) + ' hours ago';
-    } else {
-      return '1 hour ago';
+    } 
+    else {
+       return '1 hour ago';
     }
   } else if (elapsed < msPerMonth) {
     if (Math.round(elapsed / msPerDay)) {
