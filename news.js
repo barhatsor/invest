@@ -44,25 +44,27 @@ class newsArticles {
               stock = response[prop].news;
               // For each article in stock
               for (var props in stock) {
-                // Build news articles
-                if (first.length == 2) {
-                  first = ["", ""];
-                } 
-                else {
-                  first = ["<div class='img-wrapper'>", "</div>"];
+                if (stock[props].lang == "en") {
+                   // Build news articles
+                   if (first.length == 2) {
+                     first = ["", ""];
+                   } 
+                   else {
+                     first = ["<div class='img-wrapper'>", "</div>"];
+                   }
+                   this.out +=
+                       "<div class='article'><div class='content'>" +
+                       first[0] +
+                       "<img src='" +
+                       stock[props].image +
+                       "'>" +
+                       first[1] +
+                       "<a class='text'>" +
+                       stock[props].source +
+                       "</a><h4>" +
+                       stock[props].headline +
+                       "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
                 }
-                this.out +=
-                    "<div class='article'><div class='content'>" +
-                    first[0] +
-                    "<img src='" +
-                    stock[props].image +
-                    "'>" +
-                    first[1] +
-                    "<a class='text'>" +
-                    stock[props].source +
-                    "</a><h4>" +
-                    stock[props].headline +
-                    "</h4></div><div class='text'><a>1 hour ago</a><img src='https://investor.netlify.app/images/share.svg' width='18px'></div></div>";
               }
             }
         }
