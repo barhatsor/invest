@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "com.beta.invest",
+                   "sha256_cert_fingerprints": ["73:25:F4:A4:6D:FE:5A:9C:C3:77:5D:61:8F:BB:6E:DF:A8:48:E9:20:36:2D:35:0A:66:3A:59:8A:CF:09:F3:7B"] }
+    }]
