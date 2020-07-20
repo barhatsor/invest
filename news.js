@@ -81,7 +81,6 @@ class newsArticles {
 
 /* Share */
 async function shareArticle(el) {
-   console.log(el.parentElement.parentElement);
    const shareData = {
      title: 'Share article',
      // Retrieve article title
