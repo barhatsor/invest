@@ -83,7 +83,7 @@ class newsArticles {
 /* Time Difference */
 function timeDifference(previous) {
     var current = new Date();
-   
+
     var msPerMinute = 60 * 1000;
     var msPerHour = msPerMinute * 60;
     var msPerDay = msPerHour * 24;
