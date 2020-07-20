@@ -10,7 +10,7 @@ var v = 1.1;
 class APIHandler {
 
     constructor() {
-      this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=news&token=pk_370633a589a240f29304a7420b9960ec";
+      this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?types=news&token=pk_370633a589a240f29304a7420b9960ec";
     }
 
     // Send API request
