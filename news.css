@@ -48,6 +48,7 @@
   max-height: 175px;
   object-fit: cover;
   margin: auto;
+  border-radius: 0;
 }
 .articles .article .img-wrapper::before {
   position: absolute;
