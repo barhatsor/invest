@@ -4,7 +4,7 @@
        MIT License (https://bassets.github.io/mit)
    */
 
-var v = 1.1;
+var v = 1.2;
 
 /* Handle everything API */
 class APIHandler {
@@ -89,8 +89,6 @@ async function shareArticle(el) {
      url: el.parentElement.parentElement.children[0].getAttribute('onclick').split('window.location.href = "').join('').split('""').join('')
    }
    
-   console.log(el.parentElement.parentElement.children[0].getAttribute('onclick').split('window.location.href = "').join('').split('""').join(''));
-
    try {
       await navigator.share(shareData);
       console.log('Shared successfully');
@@ -154,6 +152,14 @@ function httpRequest(type, url, callback) {
     }
     xmlhttp.open(type, url, true); 
     xmlhttp.send();
+}
+
+/* Header UI */
+if (window.scrollY > 0) {
+   document.querySelector('.header').style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
+}
+else {
+   document.querySelector('.header').style.boxShadow = 'none';
 }
 
 /* Main thread */
