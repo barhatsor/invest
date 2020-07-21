@@ -83,7 +83,6 @@ class newsArticles {
 
 /* Share */
 async function shareArticle(el) {
-   console.log(el.parentElement.parentElement.children[0].getAttribute('onclick').split('window.location.href = "').join(''));
    const shareData = {
      title: 'Share article',
      // Retrieve article title
