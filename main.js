@@ -11,13 +11,12 @@ var apiResponse;
 class APIHandler {
 
     constructor() {
-      this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
     }
 
     // Send API request
-    sendAPIReq(div) {
-        // Requested dividends or not
-        httpRequest("GET", this.APIurl, this.handleResponse);
+    sendAPIReq(tickers) {
+        var APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
+        httpRequest("GET", APIurl, this.handleResponse);
     }
 
     // Handle API response
@@ -168,22 +167,16 @@ if (localStorage.getItem('tickers')) {
 localStorage.setItem('tickers', tickers);
 
 function addStock(el) {
-   APIhandler = new APIHandler();
-   // Initiate HTML builder
-   stocks = new stockEntries();
    // Add stock to array
    tArray.push(el.children[0].innerHTML);
    // Update localStorage
    tickers = tArray.join(',');
    localStorage.setItem('tickers', tickers);
    // Refresh the page
-   APIhandler.sendAPIReq();
+   APIhandler.sendAPIReq(tickers);
 }
 
 function removeStock(el) {
-   APIhandler = new APIHandler();
-   // Initiate HTML builder
-   stocks = new stockEntries();
    // Remove stock from array
    var index = tArray.indexOf(el.children[0].innerHTML);
    if (index > -1) {
@@ -193,7 +186,7 @@ function removeStock(el) {
    tickers = tArray.join(',');
    localStorage.setItem('tickers', tickers);
    // Refresh the page
-   APIhandler.sendAPIReq();
+   APIhandler.sendAPIReq(tickers);
 }
 
 
@@ -304,7 +297,7 @@ APIhandler = new APIHandler();
 stocks = new stockEntries();
 
 // Run
-APIhandler.sendAPIReq();
+APIhandler.sendAPIReq(tickers);
 
 /*
 var xmlhttp = new XMLHttpRequest();
