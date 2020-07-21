@@ -247,7 +247,7 @@
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  transition: max-height .25s ease;
+  transition: max-height .5s cubic-bezier(0.07, 0.95, 0, 1);
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
 .entries .entry h1 {
@@ -280,6 +280,7 @@
 }
 .entries .entry.open {
   max-height: 450px;
+  transition: max-height .25s ease;
   background: url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 37px/20px #15202b;
 }
 .entries .entry.open .stats {
@@ -382,7 +383,6 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
 ::selection {
   background: #f9f9fa33;
 }
