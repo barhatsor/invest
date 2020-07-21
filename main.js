@@ -97,7 +97,7 @@ class stockEntries {
            // Open it
            stock.classList.toggle("open");
            // And show details
-           this.renderDetails(apiResponse[stock.children[0].innerHTML], stock);
+           this.renderDetails(apiResponse[stock.children[1].innerHTML], stock);
        }
        else {
            // Else, close it
