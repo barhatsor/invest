@@ -40,10 +40,10 @@ class stockEntries {
     }
 
     buildHTML(response) {
+        // Finished HTML goes here
+        this.out = "";
         // Check for response
         if (response.length > 0) {
-            // Finished HTML goes here
-            this.out = "";
             // Create precent var to track negative precentages
             var precent;
             // For each stock in API response
@@ -74,7 +74,7 @@ class stockEntries {
         }
         // If no response provided, show no stocks message
         else {
-            out = "<a>No stocks</a>";
+            out = "<a>No stocks matching filter</a>";
         }
         
         // Inject the finished HTML into the page
