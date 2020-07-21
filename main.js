@@ -162,7 +162,7 @@ document.querySelector('.search').addEventListener('input', function (event) {
 document.querySelector('.search').addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
        // Add the first result and close search
-       document.querySelector('.search-wrapper').children[0].children[0].innerHTML.click();
+       document.querySelector('.search-wrapper').children[0].click();
     }
 });
 
