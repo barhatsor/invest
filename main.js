@@ -11,12 +11,12 @@ var apiResponse;
 class APIHandler {
 
     constructor() {
+       this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
     }
 
     // Send API request
-    sendAPIReq(tickers) {
-        var APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
-        httpRequest("GET", APIurl, this.handleResponse);
+    sendAPIReq() {
+        httpRequest("GET", this.APIurl, this.handleResponse);
     }
 
     // Handle API response
@@ -116,8 +116,8 @@ document.querySelector('.search').addEventListener('focus', function (event) {
    document.body.style.overflow = "hidden";
 })
 
-// If clicked off search, close it
-document.querySelector('.search').addEventListener('blur', function (event) {
+// If clicked on close button, close search
+document.querySelector('.close').addEventListener('click', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
   document.querySelector(".search-wrapper").style.display = "none";
   document.querySelector(".search").value = "";
@@ -173,7 +173,7 @@ function addStock(el) {
    tickers = tArray.join(',');
    localStorage.setItem('tickers', tickers);
    // Refresh the page
-   APIhandler.sendAPIReq(tickers);
+   APIhandler.sendAPIReq();
 }
 
 function removeStock(el) {
@@ -186,7 +186,7 @@ function removeStock(el) {
    tickers = tArray.join(',');
    localStorage.setItem('tickers', tickers);
    // Refresh the page
-   APIhandler.sendAPIReq(tickers);
+   APIhandler.sendAPIReq();
 }
 
 
@@ -297,7 +297,7 @@ APIhandler = new APIHandler();
 stocks = new stockEntries();
 
 // Run
-APIhandler.sendAPIReq(tickers);
+APIhandler.sendAPIReq();
 
 /*
 var xmlhttp = new XMLHttpRequest();
