@@ -168,6 +168,9 @@ if (localStorage.getItem('tickers')) {
 localStorage.setItem('tickers', tickers);
 
 function addStock(el) {
+   APIhandler = new APIHandler();
+   // Initiate HTML builder
+   stocks = new stockEntries();
    // Add stock to array
    tArray.push(el.children[0].innerHTML);
    // Update localStorage
@@ -178,6 +181,9 @@ function addStock(el) {
 }
 
 function removeStock(el) {
+   APIhandler = new APIHandler();
+   // Initiate HTML builder
+   stocks = new stockEntries();
    // Remove stock from array
    var index = tArray.indexOf(el.children[0].innerHTML);
    if (index > -1) {
