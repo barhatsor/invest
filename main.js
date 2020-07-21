@@ -15,8 +15,14 @@ class APIHandler {
 
     // Send API request
     sendAPIReq(tickers) {
-        var APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
-        httpRequest("GET", APIurl, this.handleResponse);
+       if (tickers) {
+          var APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
+          httpRequest("GET", APIurl, this.handleResponse);
+       }
+       // If no tickers provided, show no stocks message
+       else {
+          document.querySelector(".entries").innerHTML = "<a>No stocks</a>";
+       }
     }
 
     // Handle API response
@@ -68,7 +74,7 @@ class stockEntries {
         }
         // If no response provided, show no stocks message
         else {
-            out = "<a>No stocks</a>"
+            out = "<a>No stocks</a>";
         }
         
         // Inject the finished HTML into the page
@@ -116,22 +122,13 @@ document.querySelector('.search').addEventListener('focus', function (event) {
    document.body.style.overflow = "hidden";
 })
 
-// If clicked on close button, close search
-document.querySelector('.close').addEventListener('click', function (event) {
+// If clicked off search, close it
+document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
   document.querySelector(".search-wrapper").style.display = "none";
   document.querySelector(".search").value = "";
   document.body.style.overflow = "auto";
 })
-
-// If clicked on suggestions, close search
-document.querySelector('.search-wrapper').addEventListener('click', function (event) {
-  document.querySelector(".search").classList.remove("suggestions");
-  document.querySelector(".search-wrapper").style.display = "none";
-  document.querySelector(".search").value = "";
-  document.body.style.overflow = "auto";
-})
-
 
 /* Search Suggestions */
 function renderSuggestions(resp) {
@@ -159,7 +156,7 @@ function renderSuggestions(resp) {
 
 
 /* Portfolio local storage */
-var tArray = ['aapl','mcd','amzn','cost','lmt','fb','msft','ba','wmt','t'];
+var tArray = [];
 var tickers;
 
 if (localStorage.getItem('tickers')) {  
@@ -176,11 +173,18 @@ localStorage.setItem('tickers', tickers);
 
 function addStock(el) {
    // Add stock to array
-   tArray.push(el.children[0].innerHTML);
+   tArray.unshift(el.children[0].innerHTML);
+   
+   // Add skeleton stock to entries
+   document.querySelector('.entries').innerHTML =
+      '<div class="entry" style="background-image:none"><h1></h1><p>.</p></div>' + 
+      document.querySelector('.entries').innerHTML;
+   
    // Update localStorage
    tickers = tArray.join(',');
    localStorage.setItem('tickers', tickers);
-   // Refresh the page
+   
+   // Refresh entries
    APIhandler.sendAPIReq(tickers);
 }
 
@@ -190,11 +194,13 @@ function removeStock(el) {
    if (index > -1) {
      tArray.splice(index, 1);
    }
+   
+   // Remove stock from entries
+   el.remove();
+   
    // Update localStorage
    tickers = tArray.join(',');
    localStorage.setItem('tickers', tickers);
-   // Refresh the page
-   APIhandler.sendAPIReq(tickers);
 }
 
 
