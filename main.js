@@ -38,7 +38,16 @@ class stockEntries {
     
     constructor() {
     }
-
+   
+    renderSkeleton(num) {
+       for (var i, i < num, i++) {
+          // Insert stock at start of entries
+          document.querySelector('.entries').innerHTML =
+             '<div class="entry" style="background-image:none"><h1></h1><p>.</p></div>' +
+             document.querySelector('.entries').innerHTML;
+       }
+    }
+   
     buildHTML(response) {
         // Finished HTML goes here
         this.out = "";
@@ -58,7 +67,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick='toggleDetails(this)'><h1>" +
+                    "<div class='entry' onclick='stocks.toggleDetails(this)'><h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
@@ -80,6 +89,40 @@ class stockEntries {
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML = this.out;
     }
+
+    // Toggle stock details
+    toggleDetails(stock) {
+       // If the stock's closed
+       if (!stock.classList.contains("open")) {
+           // Open it
+           stock.classList.toggle("open");
+           // And show details
+           this.renderDetails(apiResponse[stock.children[0].innerHTML], stock);
+       }
+       else {
+           // Else, close it
+           stock.classList.remove("open");
+       }
+   }
+
+   // Render stock details
+   renderDetails(response, stock) {
+       // Store finished HTML
+       this.out = '';
+       // Add stock stats
+       this.out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
+       this.out += '<div class="stat"><p>Open</p><a>'+response.quote.open+'</a></div>';
+       this.out += '<div class="stat"><p>Low</p><a>'+response.quote.low+'</a></div>';
+       this.out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
+       this.out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
+       this.out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
+       this.out += '<div class="stat"><p>Mkt Cap</p><a>'+moneyFormat(response.quote.marketCap)+'</a></div>';
+       this.out += '<div class="stat"><p>Volume</p><a>'+moneyFormat(response.quote.volume)+'</a></div>';
+       this.out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
+       this.out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
+       // Inject finished HTML into stats wrapper
+       stock.children[4].innerHTML = this.out;
+   }
 }
 
 
@@ -181,9 +224,8 @@ function addStock(el) {
    tArray.unshift(el.children[0].innerHTML);
    
    // Add skeleton stock to entries
-   document.querySelector('.entries').innerHTML =
-      '<div class="entry" style="background-image:none"><h1></h1><p>.</p></div>' + 
-      document.querySelector('.entries').innerHTML;
+   stocks.renderSkeleton(1);
+   document.querySelector('.entries a').remove();
    
    // Update localStorage
    tickers = tArray.join(',');
@@ -209,45 +251,7 @@ function removeStock(el) {
 }
 
 
-/* Stock details */
-
-// Toggle stock details
-function toggleDetails(stock) {
-    // If the stock's closed
-    if (!stock.classList.contains("open")) {
-        // Open it
-        stock.classList.toggle("open");
-        // And show details
-        renderDetails(apiResponse[stock.children[0].innerHTML], stock);
-    }
-    else {
-        // Else, close it
-        stock.classList.remove("open");
-    }
-}
-
-// Render stock details
-function renderDetails(response, stock) {
-    // Store finished HTML
-    var out = '';
-    // Add stock stats
-    out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
-    out += '<div class="stat"><p>Open</p><a>'+response.quote.open+'</a></div>';
-    out += '<div class="stat"><p>Low</p><a>'+response.quote.low+'</a></div>';
-    out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
-    out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
-    out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
-    out += '<div class="stat"><p>Mkt Cap</p><a>'+moneyFormat(response.quote.marketCap)+'</a></div>';
-    out += '<div class="stat"><p>Volume</p><a>'+moneyFormat(response.quote.volume)+'</a></div>';
-    out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
-    out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
-    // Inject finished HTML into stats wrapper
-    stock.children[4].innerHTML = out;
-}
-
-
 /* Money format */
-
 function moneyFormat(labelValue) {
     // Nine Zeroes for Billions
     var foo = Math.abs(Number(labelValue)) >= 1.0e+9
@@ -314,6 +318,9 @@ APIhandler = new APIHandler();
 
 // Initiate HTML builder
 stocks = new stockEntries();
+
+// Generate skeleton screen
+stocks.renderSkeleton(tArray.length);
 
 // Run
 APIhandler.sendAPIReq(tickers);
