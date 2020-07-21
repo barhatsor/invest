@@ -167,6 +167,7 @@ document.querySelector('.search').addEventListener("keyup", function(event) {
        document.querySelector(".search-wrapper").style.display = "none";
        document.querySelector(".search").classList.remove("suggestions");
        document.querySelector(".search").value = "";
+       document.querySelector(".search").blur();
        document.body.style.overflow = "auto";
     }
 });
