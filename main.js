@@ -1,4 +1,4 @@
-/* invest.js
+/* main.js
 
    (C) Bar Hatsor 2020
        MIT License (https://bassets.github.io/mit)
