@@ -130,7 +130,7 @@ document.querySelector('.search').addEventListener('blur', function (event) {
 })
 
 // If clicked on suggestions, close search
-document.querySelector('.search-wrapper').addEventListener('blur', function (event) {
+document.querySelector('.search-wrapper').addEventListener('click', function (event) {
    document.querySelector(".search-wrapper").style.display = "none";
 })
 
