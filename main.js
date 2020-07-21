@@ -121,7 +121,7 @@ class stockEntries {
        this.out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
        this.out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
        // Inject finished HTML into stats wrapper
-       stock.children[4].innerHTML = this.out;
+       stock.children[5].innerHTML = this.out;
    }
 }
 
