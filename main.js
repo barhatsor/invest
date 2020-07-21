@@ -43,7 +43,7 @@ class stockEntries {
         // Finished HTML goes here
         this.out = "";
         // Check for response
-        if (response.length > 0) {
+        if (response.length != 0) {
             // Create precent var to track negative precentages
             var precent;
             // For each stock in API response
