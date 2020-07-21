@@ -172,8 +172,11 @@ document.querySelector('.search').addEventListener('blur', function (event) {
   document.body.style.overflow = "auto";
 })
 
-// If clicked on suggestions, close search
+// If clicked on suggestions or close, hide suggestions
 document.querySelector('.search-wrapper').addEventListener('click', function (event) {
+   document.querySelector(".search-wrapper").style.display = "none";
+})
+document.querySelector('.close').addEventListener('click', function (event) {
    document.querySelector(".search-wrapper").style.display = "none";
 })
 
