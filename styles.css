@@ -240,14 +240,14 @@
 }
 .entries .entry {
   max-height: 66px;
-  background: url("https://investor.netlify.app/images/arrow.svg") no-repeat 50% 37px/20px #15202b;
+  background: #15202b;
   color: #737373;
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
-  transition: max-height .5s cubic-bezier(0.07, 0.95, 0, 1);
+  transition: max-height .25s cubic-bezier(0.07, 0.95, 0, 1);
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
 .entries .entry h1 {
@@ -278,10 +278,18 @@
   margin: -30px 0 0 0;
   float: right;
 }
+.entries .entry .arrow {
+  position: absolute;
+  left: calc(100% - 539px);
+  margin-top: 27px;
+  transition: .25s cubic-bezier(0.07, 0.95, 0, 1);
+}
 .entries .entry.open {
   max-height: 450px;
-  transition: max-height .5s ease-in-out;
-  background: url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 37px/20px #15202b;
+  transition: max-height .25s ease;
+}
+.entries .entry.open .arrow {
+  transform: rotate(180deg);
 }
 .entries .entry.open .stats {
   border-color: #2c3e4d;
@@ -383,6 +391,7 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
+
 ::selection {
   background: #f9f9fa33;
 }
