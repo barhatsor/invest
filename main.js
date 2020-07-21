@@ -226,7 +226,6 @@ function addStock(el) {
    
    // Add skeleton stock to entries
    stocks.renderSkeleton();
-   document.querySelector('.entries a').remove();
    
    // Update localStorage
    tickers = tArray.join(',');
