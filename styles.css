@@ -280,7 +280,7 @@
 }
 .entries .entry.open {
   max-height: 450px;
-  transition: max-height .25s ease;
+  transition: max-height .5s ease-in-out;
   background: url("https://investor.netlify.app/images/arrow-flipped.svg") no-repeat 50% 37px/20px #15202b;
 }
 .entries .entry.open .stats {
