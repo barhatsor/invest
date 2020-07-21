@@ -161,8 +161,13 @@ document.querySelector('.search').addEventListener('input', function (event) {
 // If enter key pressed
 document.querySelector('.search').addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
-       // Add the first result and close search
-       document.querySelector('.search-wrapper').children[0].click();
+       // Add the first result
+       addStock(document.querySelector('.search-wrapper').children[0].children[0].innerHTML);
+       // And close search
+       document.querySelector(".search-wrapper").style.display = "none";
+       document.querySelector(".search").classList.remove("suggestions");
+       document.querySelector(".search").value = "";
+       document.body.style.overflow = "auto";
     }
 });
 
