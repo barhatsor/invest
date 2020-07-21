@@ -125,10 +125,15 @@ document.querySelector('.search').addEventListener('focus', function (event) {
 // If clicked off search, close it
 document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
-  document.querySelector(".search-wrapper").style.display = "none";
   document.querySelector(".search").value = "";
   document.body.style.overflow = "auto";
 })
+
+// If clicked on suggestions, close search
+document.querySelector('.search-wrapper').addEventListener('blur', function (event) {
+   document.querySelector(".search-wrapper").style.display = "none";
+})
+
 
 /* Search Suggestions */
 function renderSuggestions(resp) {
