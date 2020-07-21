@@ -158,6 +158,14 @@ document.querySelector('.search').addEventListener('input', function (event) {
   }
 })
 
+// If enter key pressed
+document.querySelector('.search').addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+       // Add the first result and close search
+       document.querySelector('.search-wrapper').children[0].children[0].innerHTML.click();
+    }
+});
+
 // If clicked on search, disable scrolling
 document.querySelector('.search').addEventListener('focus', function (event) {
    document.body.style.overflow = "hidden";
