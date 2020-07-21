@@ -41,7 +41,7 @@ class stockEntries {
 
     buildHTML(response) {
         // Check for response
-        if (response) {
+        if (response.length > 0) {
             // Finished HTML goes here
             this.out = "";
             // Create precent var to track negative precentages
