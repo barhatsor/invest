@@ -1,7 +1,6 @@
 /* Bar Hatsor 2020 */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 .header {
   height: 60px;
   width: 100%;
@@ -297,16 +296,12 @@
 .entries .entry.open .arrow {
   transform: rotate(180deg);
 }
-.entries .entry.open .stats {
-  border-color: #2c3e4d;
-}
 
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   padding-bottom: 10px;
   transition: .25s ease;
-  border-top: 1px solid transparent;
 }
 .stats .stat {
   text-align: center;
