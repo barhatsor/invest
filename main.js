@@ -74,7 +74,7 @@ class stockEntries {
         }
         // If no response provided, show no stocks message
         else {
-            out = "<a>No stocks matching filter</a>";
+            this.out = "<a>No stocks matching filter</a>";
         }
         
         // Inject the finished HTML into the page
