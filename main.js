@@ -40,7 +40,7 @@ class stockEntries {
     }
    
     renderSkeleton(num) {
-       for (var i, i < num, i++) {
+       for (var i; i < num; i++) {
           // Insert stock at start of entries
           document.querySelector('.entries').innerHTML =
              '<div class="entry" style="background-image:none"><h1></h1><p>.</p></div>' +
