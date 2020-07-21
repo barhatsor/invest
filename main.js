@@ -11,7 +11,7 @@ var apiResponse;
 class APIHandler {
 
     constructor() {
-      this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols=aapl,mcd,amzn,cost,lmt,fb,msft,ba,wmt,t&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
+      this.APIurl = "https://cloud.iexapis.com/stable/stock/market/batch?symbols="+tickers+"&types=quote&displayPercent=true&token=pk_370633a589a240f29304a7420b9960ec";
     }
 
     // Send API request
@@ -134,7 +134,7 @@ function renderSuggestions(resp) {
   if (!resp.Note) {
     // Add suggestion to finished HTML
     resp.bestMatches.forEach(match => {
-        out += '<div class="suggestion"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
+        out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
     // If no suggestions, show no results message
     if (out == "") {
@@ -148,6 +148,46 @@ function renderSuggestions(resp) {
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
   document.querySelector(".search-wrapper").style.display = "block";
   document.querySelector(".search").classList.add("suggestions");
+}
+
+
+/* Portfolio local storage */
+var tArray = ['aapl','mcd','amzn','cost','lmt','fb','msft','ba','wmt','t'];
+var tickers;
+
+if (localStorage.getItem('tickers')) {  
+  // If portfolio in in storage, set variable to it
+  tArray = localStorage.getItem('tickers').split(',');
+  tickers = tArray.join(',');
+} else {
+  // If portfolio is not in storage, set variable to default tickers
+  tickers = tArray.join(',');
+}
+
+// Set new localStorage value
+localStorage.setItem('tickers', tickers);
+
+function addStock(el) {
+   // Add stock to array
+   tArray.push(el.children[0].innerHTML);
+   // Update localStorage
+   tickers = tArray.join(',');
+   localStorage.setItem('tickers', tickers);
+   // Refresh the page
+   APIhandler.sendAPIReq();
+}
+
+function removeStock(el) {
+   // Remove stock from array
+   var index = tArray.indexOf(el.children[0].innerHTML);
+   if (index > -1) {
+     tArray.splice(index, 1);
+   }
+   // Update localStorage
+   tickers = tArray.join(',');
+   localStorage.setItem('tickers', tickers);
+   // Refresh the page
+   APIhandler.sendAPIReq();
 }
 
 
@@ -211,7 +251,6 @@ function moneyFormat(labelValue) {
         return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
     } catch { return "null" }
 }
-
 
 /* HTTP Request */
 function httpRequest(type, url, callback) {
