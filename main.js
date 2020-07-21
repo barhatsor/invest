@@ -42,7 +42,7 @@ class stockEntries {
     renderSkeleton(num) {
        // Insert stock at start of entries
        document.querySelector('.entries').innerHTML =
-          '<div class="entry" style="background-image:none"><h1></h1><p>.</p></div>' +
+          '<div class="entry"><h1></h1><p>.</p></div>' +
           document.querySelector('.entries').innerHTML;
     }
    
@@ -65,7 +65,9 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick='stocks.toggleDetails(this)'><h1>" +
+                    "<div class='entry' onclick='stocks.toggleDetails(this)'>" +
+                    '<svg class="arrow" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="-122.9 121.1 105.9 61.9"><path d="M-63.2 180.3l43.5-43.5c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7L-69.9 161l-37.2-37.2c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.6c-1.9 1.8-2.8 4.2-2.8 6.6 0 2.3.9 4.6 2.6 6.5 11.4 11.5 41 41.2 43 43.3l.2.2c3.6 3.6 10.3 3.6 13.9 0z" fill="#fff"/></svg>' +
+                    "<h1>" +
                     response[prop].quote.symbol +
                     "</h1><p>" +
                     response[prop].quote.companyName +
