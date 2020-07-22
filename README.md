@@ -1,5 +1,5 @@
 # <img src="https://investor.netlify.app/images/icons/invest-icon.svg" alt="Invest Logo" height="32"/> Invest
-Application for investing in the stock market. [investor.netlify.app](https://investor.netlify.app) or [get it on Google Play](https://play.google.com/store/apps/details?id=com.BHMGaming.VarMyCar).
+Application for investing in the stock market. [investor.netlify.app](https://investor.netlify.app) or [get it on Google Play](https://play.google.com/store/apps/details?id=com.beta.invest).
 
 ## 🛠️ Changelog
 
