@@ -1,7 +1,7 @@
 # <img src="https://investor.netlify.app/images/icons/invest-icon.svg" alt="Invest Logo" height="32"/> Invest
 Progressive Web App for investing in the stock market. [investor.netlify.app](https://investor.netlify.app)
 
-## 🛣️ Changelog
+## 🛠️ Changelog
 
 #### **v2.8** // 7/12/20
 - Added news tab
