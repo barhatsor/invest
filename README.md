@@ -4,8 +4,9 @@ Progressive Web App for investing in the stock market. [investor.netlify.app](ht
 ## 🛣️ Roadmap
 
 #### **v2.8** // 7/12/20
-- Improved stock details
+- Added news tab
 - Javascript changes
+- Improved stock details
 
 #### **v2.7** // 6/27/20
 - Improved search
