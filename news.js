@@ -79,6 +79,7 @@ class newsArticles {
         
         // Inject the finished HTML into the page
         document.querySelector(".articles").innerHTML = this.out;
+        document.querySelector(".articles").style.opacity = 1;
     }
 }
 
