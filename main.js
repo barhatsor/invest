@@ -222,6 +222,8 @@ function renderSuggestions(resp) {
 document.addEventListener('touchstart', handleTouchStart, false);        
 document.addEventListener('touchmove', handleTouchMove, false);
 
+var currentElement = null;
+
 var xDown = null;                                                        
 var yDown = null;
 
@@ -231,7 +233,7 @@ function getTouches(evt) {
 }                                                     
 
 function handleTouchStart(evt) {
-    var currentElement = evt.target;
+    currentElement = evt.target;
     const firstTouch = getTouches(evt)[0];                                      
     xDown = firstTouch.clientX;                                      
     yDown = firstTouch.clientY;                                      
