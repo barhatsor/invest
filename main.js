@@ -268,7 +268,7 @@ function removeStock(el) {
 
 /* Switch Tab */
 function switchTab(url) {
-   document.querySelector('.entries').innerHTML = '';
+   document.querySelector('.entries').style.opacity = 0;
    document.querySelector('.footer').style.backgroundColor = '#111';
    document.querySelector('.footer').style.boxShadow = 'inset 0 1px 0 0 rgb(255 255 255 / 0.24)';
    document.querySelector('.footer').children[0].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 23" stroke-linecap="round" stroke-linejoin="round"><path d="M26.985,8.979c0,-2.265 -1.838,-4.104 -4.103,-4.104l-17.653,0c-2.265,0 -4.104,1.839 -4.104,4.104l0,8.207c0,2.265 1.839,4.103 4.104,4.103l17.653,0c2.265,0 4.103,-1.838 4.103,-4.103l0,-8.207Z" fill="none" stroke="#fff" stroke-width="1.5px"></path><path d="M19.609,4.537c0,-1.883 -1.244,-3.412 -2.777,-3.412l-5.554,0c-1.532,0 -2.777,1.529 -2.777,3.412" fill="none" stroke="#fff" stroke-width="1.5px"></path><path d="M24.392,9.331l-10.598,5.365l-10.076,-5.392" fill="none" stroke="#fff" stroke-width="1.5px"></path></svg>';
