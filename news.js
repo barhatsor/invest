@@ -154,7 +154,6 @@ window.addEventListener('scroll', function(e) {
 function switchTab(url) {
    document.querySelector('.header').style.background = '#000';
    document.querySelector('.header').style.boxShadow = 'none';
-   document.querySelector('.header').innerHTML = '';
    document.querySelector('.articles').style.opacity = 0;
    document.querySelector('.footer').style.boxShadow = 'none';
    document.querySelector('.footer').style.background = '#000';
