@@ -75,7 +75,7 @@ class stockEntries {
                     precent +
                     round(response[prop].quote.changePercent, 1) +
                     "%</h2><span>" +
-                    round(response[prop].quote.latestPrice) +
+                    round(response[prop].quote.latestPrice, 1) +
                     "</span><div class='stats'></div></div>";
             }
         }
@@ -117,7 +117,7 @@ class stockEntries {
        this.out += '<div class="stat"><p>Mkt Cap</p><a>'+moneyFormat(response.quote.marketCap)+'</a></div>';
        this.out += '<div class="stat"><p>Volume</p><a>'+moneyFormat(response.quote.volume)+'</a></div>';
        this.out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
-       this.out += '<div class="stat"><p>P/E</p><a>'+round(response.quote.peRatio)+'</a></div>';
+       this.out += '<div class="stat"><p>P/E</p><a>'+round(response.quote.peRatio, 1)+'</a></div>';
        // Inject finished HTML into stats wrapper
        stock.children[5].innerHTML = this.out;
    }
