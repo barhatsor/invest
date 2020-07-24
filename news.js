@@ -4,7 +4,7 @@
        MIT License (https://bassets.github.io/mit)
    */
 
-var v = 1.2;
+var v = 1.3;
 
 /* Handle everything API */
 class APIHandler {
@@ -25,6 +25,7 @@ class APIHandler {
         news.buildHTML(response);
     }
 }
+
 
 /* Handle everything HTML */
 class newsArticles {
@@ -81,6 +82,7 @@ class newsArticles {
     }
 }
 
+
 /* Share */
 async function shareArticle(el) {
    const shareData = {
@@ -99,7 +101,23 @@ async function shareArticle(el) {
    }
 }
 
-/* Time Difference */
+
+/* Utility Functions */
+
+// HTTP Request
+function httpRequest(type, url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() { 
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            callback(response);
+        }
+    }
+    xmlhttp.open(type, url, true); 
+    xmlhttp.send();
+}
+
+// Time Difference
 function timeDifference(previous) {
   var msPerMinute = 60 * 1000;
   var msPerHour = msPerMinute * 60;
@@ -143,28 +161,19 @@ function timeDifference(previous) {
   }
 }
 
-/* HTTP Request */
-function httpRequest(type, url, callback) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() { 
-        if (this.readyState == 4 && this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            callback(response);
-        }
-    }
-    xmlhttp.open(type, url, true); 
-    xmlhttp.send();
-}
 
 /* Header UI */
 window.addEventListener('scroll', function(e) {
    if (window.scrollY > 0) {
+      document.querySelector('.header').style.background = '#111';
       document.querySelector('.header').style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
    }
    else {
+      document.querySelector('.header').style.background = '#000';
       document.querySelector('.header').style.boxShadow = 'none';
    }
 })
+
 
 /* Main thread */
 
