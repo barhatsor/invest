@@ -269,6 +269,8 @@ function removeStock(el) {
 
 /* Switch Tab */
 function switchTab(url) {
+   document.querySelector('.filter-button').style.opacity = 0;
+   document.querySelector('.search').style.opacity = 0;
    document.querySelector('.entries').style.opacity = 0;
    document.querySelector('.footer').style.backgroundColor = '#111';
    document.querySelector('.footer').style.boxShadow = 'inset 0 1px 0 0 rgb(255 255 255 / 0.24)';
@@ -319,7 +321,7 @@ function moneyFormat(labelValue) {
     // Round to last 2 digits & remove trailing zeros
     try {
         return round(parseFloat(foo)) + foo.replace(/[^B|M|K]/g,"");
-    } catch { return "" }
+    } catch { return 0 }
 }
 
 
