@@ -200,14 +200,16 @@
   padding-top: 20px;
 }
 .entries .entry {
-  max-height: 66px;
+  position: relative;
   background: #15202b;
   color: #737373;
+  left: 0;
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   overflow: hidden;
+  max-height: 66px;
   transition: max-height .25s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
@@ -241,7 +243,7 @@
 }
 .entries .entry .arrow-wrapper {
   position: absolute;
-  width: calc(100% - 46px);
+  width: calc(100% - 21px);
 }
 .entries .entry .arrow {
   display: block;
