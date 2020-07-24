@@ -25,7 +25,7 @@
 }
 .header .filter-button .fill {
   opacity: 0;
-	transition: .2s ease;
+  transition: .2s ease;
 }
 .header .filter-button.active .fill {
   opacity: 1;
@@ -203,7 +203,6 @@
   position: relative;
   background: #15202b;
   color: #737373;
-  left: 0;
   margin: 10px 5px 10px 5px;
   padding: 10px;
   border-radius: 10px;
