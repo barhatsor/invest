@@ -108,8 +108,7 @@ class stockEntries {
        // Store finished HTML
        this.out = '';
        // Add stock stats
-       this.out += '<div class="stat"><p>Prev Close</p><a>'+
-((Math.round(parseFloat(response.quote.previousClose) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>Prev Close</p><a>'+round(response.quote.previousClose)+'</a></div>';
        this.out += '<div class="stat"><p>Open</p><a>'+round(response.quote.open)+'</a></div>';
        this.out += '<div class="stat"><p>Low</p><a>'+round(response.quote.low)+'</a></div>';
        this.out += '<div class="stat"><p>High</p><a>'+round(response.quote.high)+'</a></div>';
