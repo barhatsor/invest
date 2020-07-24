@@ -23,16 +23,11 @@
   top: 13.7px;
   transition: .2s ease;
 }
-.header .filter-button path {
-  transition: .2s ease;
-}
-.header .filter-button .b {
+.header .filter-button .fill {
   opacity: 0;
+	transition: .2s ease;
 }
-.header .filter-button.active .a {
-  opacity: 0;
-}
-.header .filter-button.active .b {
+.header .filter-button.active .fill {
   opacity: 1;
 }
 
