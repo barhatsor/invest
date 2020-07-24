@@ -20,6 +20,8 @@
   max-width: 560px;
   margin-left: auto;
   margin-right: auto;
+  transition: .2s ease;
+  opacity: 0;
 }
 .articles p {
   font-size: 1.125rem;
