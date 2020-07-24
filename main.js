@@ -73,11 +73,9 @@ class stockEntries {
                     response[prop].quote.companyName +
                     "</p>" +
                     precent +
-                    // Round precentages to 2 digits & remove trailing zeros
-                    ((Math.round(response[prop].quote.changePercent * 100) / 100).toFixed(1) * 1).toString() +
+                    round(response[prop].quote.changePercent, 1) +
                     "%</h2><span>" +
-                    // Do the same for stock prices
-                    ((Math.round(response[prop].quote.latestPrice * 100) / 100).toFixed(1) * 1).toString() +
+                    round(response[prop].quote.latestPrice) +
                     "</span><div class='stats'></div></div>";
             }
         }
@@ -112,15 +110,15 @@ class stockEntries {
        // Add stock stats
        this.out += '<div class="stat"><p>Prev Close</p><a>'+
 ((Math.round(parseFloat(response.quote.previousClose) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
-       this.out += '<div class="stat"><p>Open</p><a>'+((Math.round(parseFloat(response.quote.open) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
-       this.out += '<div class="stat"><p>Low</p><a>'+((Math.round(parseFloat(response.quote.low) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
-       this.out += '<div class="stat"><p>High</p><a>'+((Math.round(parseFloat(response.quote.high) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
-       this.out += '<div class="stat"><p>52wk Low</p><a>'+((Math.round(parseFloat(response.quote.week52Low) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
-       this.out += '<div class="stat"><p>52wk High</p><a>'+((Math.round(parseFloat(response.quote.week52High) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>Open</p><a>'+round(response.quote.open)+'</a></div>';
+       this.out += '<div class="stat"><p>Low</p><a>'+round(response.quote.low)+'</a></div>';
+       this.out += '<div class="stat"><p>High</p><a>'+round(response.quote.high)+'</a></div>';
+       this.out += '<div class="stat"><p>52wk Low</p><a>'+round(response.quote.week52Low)+'</a></div>';
+       this.out += '<div class="stat"><p>52wk High</p><a>'+round(response.quote.week52High)+'</a></div>';
        this.out += '<div class="stat"><p>Mkt Cap</p><a>'+moneyFormat(response.quote.marketCap)+'</a></div>';
        this.out += '<div class="stat"><p>Volume</p><a>'+moneyFormat(response.quote.volume)+'</a></div>';
        this.out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
-       this.out += '<div class="stat"><p>P/E</p><a>'+((Math.round(parseFloat(response.quote.peRatio) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>P/E</p><a>'+round(response.quote.peRatio)+'</a></div>';
        // Inject finished HTML into stats wrapper
        stock.children[5].innerHTML = this.out;
    }
@@ -268,7 +266,28 @@ function removeStock(el) {
 }
 
 
-/* Money format */
+/* Utility Functions */
+
+// Round
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
+
+// HTTP Request
+function httpRequest(type, url, callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() { 
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            callback(response);
+        }
+    }
+    xmlhttp.open(type, url, true); 
+    xmlhttp.send();
+}
+
+// Money format
 function moneyFormat(labelValue) {
     // Nine Zeroes for Billions
     var foo = Math.abs(Number(labelValue)) >= 1.0e+9
@@ -287,22 +306,10 @@ function moneyFormat(labelValue) {
     
     // Round to last 2 digits & remove trailing zeros
     try {
-        return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(1) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
-    } catch { return "null" }
+        return round(parseFloat(foo)) + foo.replace(/[^B|M|K]/g,"");
+    } catch { return "" }
 }
 
-/* HTTP Request */
-function httpRequest(type, url, callback) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() { 
-        if (this.readyState == 4 && this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            callback(response);
-        }
-    }
-    xmlhttp.open(type, url, true); 
-    xmlhttp.send();
-}
 
 /* --UI-related JS-- */
 
