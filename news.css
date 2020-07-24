@@ -14,6 +14,11 @@
   transition: background .2s ease, box-shadow .2s ease;
   z-index: 2;
 }
+.header .icon {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+}
 
 .articles {
   padding: 52px 20px calc(62px + 1em) 20px;
