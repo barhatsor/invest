@@ -162,14 +162,48 @@ function timeDifference(previous) {
 }
 
 
-/* Header UI */
+/* Header */
+var header = document.querySelector('.header');
+var lastScrollTop = 0;
+var scrldDown = false;
+var scrldUp = false;
+
+// Hide header on scroll
+window.addEventListener('scroll', function() {
+  var st = window.pageYOffset || document.documentElement.scrollTop;
+  if (st < lastScrollTop) {
+    header.style.position = 'fixed';
+    if (scrldUp == false) {
+      header.style.top = '-60px';
+      scrldUp = !scrldUp;
+    }
+    if (Number(header.style.top.replace('px', '')) < -10) {
+      header.style.top = Number(header.style.top.replace('px', '')) + (lastScrollTop - st) + 'px';
+    }
+    else {
+      header.style.top = '0px';
+    }
+    scrldDown = false;
+  }
+  else {
+    header.style.position = 'absolute';
+    if (scrldDown == false) {
+      header.style.top = st+'px';
+      scrldDown = !scrldDown;
+    }
+    scrldUp = false;
+  }
+  lastScrollTop = st <= 0 ? 0 : st;
+})
+
+// Header effects on scroll
 window.addEventListener('scroll', function(e) {
-   if (window.scrollY > 0) {
-      document.querySelector('.header').style.background = '#111';
+   if (window.scrollY > 60) {
+      document.querySelector('.header').style.backgroundColor = '#111';
       document.querySelector('.header').style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
    }
    else {
-      document.querySelector('.header').style.background = '#000';
+      document.querySelector('.header').style.backgroundColor = '#000';
       document.querySelector('.header').style.boxShadow = 'none';
    }
 })
