@@ -112,7 +112,7 @@
   height: 60px;
   display: table;
   table-layout: fixed;
-  background: black;
+  background: #111;
   transition: .2s ease;
   z-index: 1;
   box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.24);
