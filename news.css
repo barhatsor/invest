@@ -10,7 +10,7 @@
   position: fixed;
   font-size: 22px;
   margin-left: -8px;
-  background: url(https://investor.netlify.app/images/invest-icon.svg) no-repeat 15px 14px/30px black;
+  background: black;
   transition: background .2s ease, box-shadow .2s ease;
   z-index: 2;
 }
