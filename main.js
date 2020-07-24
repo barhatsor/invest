@@ -86,6 +86,7 @@ class stockEntries {
         
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML = this.out;
+        document.querySelector(".entries").style.opacity = 1;
     }
 
     // Toggle stock details
