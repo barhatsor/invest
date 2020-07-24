@@ -22,6 +22,7 @@ class APIHandler {
        // If no tickers provided, show no stocks message
        else {
           document.querySelector(".entries").innerHTML = "<a>Add some stocks by searching above</a>";
+          document.querySelector(".entries").style.opacity = 1;
        }
     }
 
