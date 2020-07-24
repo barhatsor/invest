@@ -296,7 +296,7 @@
   transition: .25s ease;
 }
 .entries .entry.open {
-  max-height: 450px;
+  max-height: 470px;
 }
 .entries .entry.open .arrow {
   transform: rotate(180deg);
