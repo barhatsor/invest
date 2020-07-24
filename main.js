@@ -110,16 +110,17 @@ class stockEntries {
        // Store finished HTML
        this.out = '';
        // Add stock stats
-       this.out += '<div class="stat"><p>Prev Close</p><a>'+response.quote.previousClose+'</a></div>';
-       this.out += '<div class="stat"><p>Open</p><a>'+response.quote.open+'</a></div>';
-       this.out += '<div class="stat"><p>Low</p><a>'+response.quote.low+'</a></div>';
-       this.out += '<div class="stat"><p>High</p><a>'+response.quote.high+'</a></div>';
-       this.out += '<div class="stat"><p>52wk Low</p><a>'+response.quote.week52Low+'</a></div>';
-       this.out += '<div class="stat"><p>52wk High</p><a>'+response.quote.week52High+'</a></div>';
+       this.out += '<div class="stat"><p>Prev Close</p><a>'+
+((Math.round(parseFloat(response.quote.previousClose) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>Open</p><a>'+((Math.round(parseFloat(response.quote.open) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>Low</p><a>'+((Math.round(parseFloat(response.quote.low) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>High</p><a>'+((Math.round(parseFloat(response.quote.high) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>52wk Low</p><a>'+((Math.round(parseFloat(response.quote.week52Low) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
+       this.out += '<div class="stat"><p>52wk High</p><a>'+((Math.round(parseFloat(response.quote.week52High) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
        this.out += '<div class="stat"><p>Mkt Cap</p><a>'+moneyFormat(response.quote.marketCap)+'</a></div>';
        this.out += '<div class="stat"><p>Volume</p><a>'+moneyFormat(response.quote.volume)+'</a></div>';
        this.out += '<div class="stat"><p>Avg Vol (3m)</p><a>'+moneyFormat(response.quote.avgTotalVolume)+'</a></div>';
-       this.out += '<div class="stat"><p>P/E</p><a>'+response.quote.peRatio+'</a></div>';
+       this.out += '<div class="stat"><p>P/E</p><a>'+((Math.round(parseFloat(response.quote.peRatio) * 100) / 100).toFixed(1) * 1).toString()+'</a></div>';
        // Inject finished HTML into stats wrapper
        stock.children[5].innerHTML = this.out;
    }
@@ -286,7 +287,7 @@ function moneyFormat(labelValue) {
     
     // Round to last 2 digits & remove trailing zeros
     try {
-        return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(2) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
+        return ((Math.round(parseFloat(foo) * 100) / 100).toFixed(1) * 1).toString() + foo.replace(/[^B|M|K]/g,"");
     } catch { return "null" }
 }
 
