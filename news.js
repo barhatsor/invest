@@ -152,7 +152,7 @@ window.addEventListener('scroll', function(e) {
 
 /* Switch Tab */
 function switchTab(url) {
-   document.querySelector('.header').style.color = 'transparent';
+   document.querySelector('.header p').style.opacity = 0;
    document.querySelector('.header').style.background = '#000';
    document.querySelector('.header').style.boxShadow = 'none';
    document.querySelector('.articles').style.opacity = 0;
