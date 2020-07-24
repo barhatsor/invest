@@ -251,7 +251,9 @@ function handleTouchMove(evt) {
     var yDiff = yDown - yUp;
 
     if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
-        if ( xDiff < 0 ) {
+        if ( xDiff > 0 ) {
+            console.log(currentElement);
+            console.log(xDiff);
             currentElement.style.left = xDiff;
         }
     }
