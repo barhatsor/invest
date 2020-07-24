@@ -22,7 +22,6 @@ class APIHandler {
        // If no tickers provided, show no stocks message
        else {
           document.querySelector(".entries").innerHTML = "<a>Add some stocks by searching above</a>";
-          document.querySelector(".entries").style.opacity = 1;
        }
     }
 
@@ -87,7 +86,6 @@ class stockEntries {
         
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML = this.out;
-        document.querySelector(".entries").style.opacity = 1;
     }
 
     // Toggle stock details
@@ -358,6 +356,7 @@ APIhandler = new APIHandler();
 stocks = new stockEntries();
 
 // Generate skeleton screen
+document.querySelector('.entries').style.opacity = 1;
 for (var i = 0; i < tArray.length; i++) {
    stocks.renderSkeleton();
 }
