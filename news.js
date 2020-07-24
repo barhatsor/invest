@@ -102,6 +102,62 @@ async function shareArticle(el) {
 }
 
 
+/* Header */
+var header = document.querySelector('.header');
+var lastScrollTop = 0;
+var scrldDown = false;
+var scrldUp = false;
+
+// Hide header on scroll
+window.addEventListener('scroll', function() {
+  var st = window.pageYOffset || document.documentElement.scrollTop;
+  if (st < lastScrollTop) {
+    header.style.position = 'fixed';
+    if (scrldUp == false) {
+      header.style.top = '-60px';
+      scrldUp = !scrldUp;
+    }
+    if (Number(header.style.top.replace('px', '')) < -10) {
+      header.style.top = Number(header.style.top.replace('px', '')) + (lastScrollTop - st) + 'px';
+    }
+    else {
+      header.style.top = '0px';
+    }
+    scrldDown = false;
+  }
+  else {
+    header.style.position = 'absolute';
+    if (scrldDown == false) {
+      header.style.top = st+'px';
+      scrldDown = !scrldDown;
+    }
+    scrldUp = false;
+  }
+  lastScrollTop = st <= 0 ? 0 : st;
+})
+
+// Header effects on scroll
+window.addEventListener('scroll', function(e) {
+   if (window.scrollY > 60) {
+      document.querySelector('.header').style.backgroundColor = '#111';
+      document.querySelector('.header').style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
+   }
+   else {
+      document.querySelector('.header').style.backgroundColor = '#000';
+      document.querySelector('.header').style.boxShadow = 'none';
+   }
+})
+
+
+/* Switch Tab */
+function switchTab(url) {
+   document.querySelector('.footer').children[0].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 23" stroke-linecap="round" stroke-linejoin="round"><path d="M26.985,8.979c0,-2.265 -1.838,-4.104 -4.103,-4.104l-17.653,0c-2.265,0 -4.104,1.839 -4.104,4.104l0,8.207c0,2.265 1.839,4.103 4.104,4.103l17.653,0c2.265,0 4.103,-1.838 4.103,-4.103l0,-8.207Z" fill="#fff" stroke="#fff"/><path d="M19.609,4.537c0,-1.883 -1.244,-3.412 -2.777,-3.412l-5.554,0c-1.532,0 -2.777,1.529 -2.777,3.412" fill="none" stroke="#fff" stroke-width="1.5px"/><path d="M24.392,9.331l-10.598,5.365l-10.076,-5.392" fill="none" stroke="#000" stroke-width="1.5px"/></svg>';
+   document.querySelector('.footer').children[2].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 359"><path d="M372.75,78l-85.5,0l0,-66.75c0,-6.213 -5.037,-11.25 -11.25,-11.25l-264.75,0c-6.213,0 -11.25,5.037 -11.25,11.25l0,291c0,31.016 25.234,56.25 56.25,56.25l271.5,0c31.016,0 56.25,-25.234 56.25,-56.25l0,-213c0,-6.213 -5.037,-11.25 -11.25,-11.25Zm-316.5,258c-18.61,0 -33.75,-15.14 -33.75,-33.75l0,-279.75l242.25,0c0,297.35 -0.142,280.818 0.258,285.058c0.978,10.429 4.868,20.264 11.018,28.442l-219.776,0Zm305.25,-33.75c0,18.61 -15.14,33.75 -33.75,33.75c-2.524,0 -4.271,0 -6.75,0c-18.61,0 -33.75,-15.14 -33.75,-33.75l0,-201.75l74.25,0l0,201.75Z" fill="#fff" fill-rule="nonzero"></path><path d="M228,54l-168,0c-6.213,0 -11.25,5.037 -11.25,11.25c0,6.213 5.037,11.25 11.25,11.25l168,0c6.213,0 11.25,-5.037 11.25,-11.25c0,-6.213 -5.037,-11.25 -11.25,-11.25Z" fill="#fff" fill-rule="nonzero"></path><path d="M228,102l-168,0c-6.213,0 -11.25,5.037 -11.25,11.25c0,6.213 5.037,11.25 11.25,11.25l168,0c6.213,0 11.25,-5.037 11.25,-11.25c0,-6.213 -5.037,-11.25 -11.25,-11.25Z" fill="#fff" fill-rule="nonzero"></path><path d="M228,282l-168,0c-6.213,0 -11.25,5.037 -11.25,11.25c0,6.213 5.037,11.25 11.25,11.25l168,0c6.213,0 11.25,-5.037 11.25,-11.25c0,-6.213 -5.037,-11.25 -11.25,-11.25Z" fill="#fff" fill-rule="nonzero"></path><path d="M228,150l-84,0c-6.213,0 -11.25,5.037 -11.25,11.25l0,84c0,6.213 5.037,11.25 11.25,11.25l84,0c6.213,0 11.25,-5.037 11.25,-11.25l0,-84c0,-6.213 -5.037,-11.25 -11.25,-11.25Zm-11.25,84l-61.5,0l0,-61.5l61.5,0l0,61.5Z" fill="#fff" fill-rule="nonzero"></path><path d="M60,190.5l36,0c6.213,0 11.25,-5.037 11.25,-11.25c0,-6.213 -5.037,-11.25 -11.25,-11.25l-36,0c-6.213,0 -11.25,5.037 -11.25,11.25c0,6.213 5.037,11.25 11.25,11.25Z" fill="#fff" fill-rule="nonzero"></path><path d="M60,238.5l36,0c6.213,0 11.25,-5.037 11.25,-11.25c0,-6.213 -5.037,-11.25 -11.25,-11.25l-36,0c-6.213,0 -11.25,5.037 -11.25,11.25c0,6.213 5.037,11.25 11.25,11.25Z" fill="#fff"></path></svg>';
+   document.querySelector('.articles').innerHTML = '';
+   window.location.href = url;
+}
+
+
 /* Utility Functions */
 
 // HTTP Request
@@ -160,53 +216,6 @@ function timeDifference(previous) {
     }
   }
 }
-
-
-/* Header */
-var header = document.querySelector('.header');
-var lastScrollTop = 0;
-var scrldDown = false;
-var scrldUp = false;
-
-// Hide header on scroll
-window.addEventListener('scroll', function() {
-  var st = window.pageYOffset || document.documentElement.scrollTop;
-  if (st < lastScrollTop) {
-    header.style.position = 'fixed';
-    if (scrldUp == false) {
-      header.style.top = '-60px';
-      scrldUp = !scrldUp;
-    }
-    if (Number(header.style.top.replace('px', '')) < -10) {
-      header.style.top = Number(header.style.top.replace('px', '')) + (lastScrollTop - st) + 'px';
-    }
-    else {
-      header.style.top = '0px';
-    }
-    scrldDown = false;
-  }
-  else {
-    header.style.position = 'absolute';
-    if (scrldDown == false) {
-      header.style.top = st+'px';
-      scrldDown = !scrldDown;
-    }
-    scrldUp = false;
-  }
-  lastScrollTop = st <= 0 ? 0 : st;
-})
-
-// Header effects on scroll
-window.addEventListener('scroll', function(e) {
-   if (window.scrollY > 60) {
-      document.querySelector('.header').style.backgroundColor = '#111';
-      document.querySelector('.header').style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
-   }
-   else {
-      document.querySelector('.header').style.backgroundColor = '#000';
-      document.querySelector('.header').style.boxShadow = 'none';
-   }
-})
 
 
 /* Main thread */
