@@ -9,12 +9,7 @@ installButton.addEventListener('click', installPWA);
 
 window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 
-/**
- * Event handler for beforeinstallprompt event.
- *   Saves the event & shows install button.
- *
- * @param {Event} evt
- */
+// Saves the event & shows install button.
 function saveBeforeInstallPromptEvent(evt) {
   evt.preventDefault();
   deferredInstallPrompt = evt;
@@ -22,11 +17,7 @@ function saveBeforeInstallPromptEvent(evt) {
 }
 
 
-/**
- * Event handler for butInstall - Does the PWA installation.
- *
- * @param {Event} evt
- */
+// Event handler for butInstall - Does the PWA installation.
 function installPWA(evt) {
   deferredInstallPrompt.prompt();
   // Log user response to prompt.
@@ -48,12 +39,7 @@ function installPWA(evt) {
 
 window.addEventListener('appinstalled', logAppInstalled);
 
-/**
- * Event handler for appinstalled event.
- *   Log the installation to analytics or save the event somehow.
- *
- * @param {Event} evt
- */
+// Log the installation to analytics or save the event somehow.
 function logAppInstalled(evt) {
   installWrapper.classList.add('hidden');
   console.log('Invest installed succesfully.', evt);
@@ -69,4 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   // Log launch display mode to analytics
   console.log('DISPLAY_MODE_LAUNCH:', displayMode);
+  if (displayMode == 'browser tab') {
+    window.location.href = '/app';
+  }
 });
