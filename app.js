@@ -12,27 +12,26 @@ var hero = document.querySelector('.hero');
 
 window.addEventListener('scroll', function(e) {
    if (window.scrollY > hero.clientHeight) {
-      header.style.background = '#111';
-      header.style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
+      header.classList.add('a');
+      header.classList.remove('b');
    }
    else if (window.scrollY > 0) {
-      header.style.background = 'rgba(29,29,31,0.72)';
-      header.style.backdropFilter = 'saturate(180%) blur(20px)';
-      header.style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
+      header.classList.remove('a');
+      header.classList.add('b');
    }
    else {
-      header.style.background = 'transparent';
-      header.style.backdropFilter = 'none';
-      header.style.boxShadow = 'none';
+      header.classList.remove('a');
+      header.classList.remove('b');
    }
 })
 
 // PWA Installation
 let deferredInstallPrompt = null;
 
-const installButton = document.querySelector('.install');
+const installButton = document.querySelectorAll('.install');
 
-installButton.addEventListener('click', installPWA);
+installButton[0].addEventListener('click', installPWA);
+installButton[1].addEventListener('click', installPWA);
 
 window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 
@@ -40,7 +39,8 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 function saveBeforeInstallPromptEvent(evt) {
   evt.preventDefault();
   deferredInstallPrompt = evt;
-  installButton.classList.remove('disabled');
+  installButton[0].classList.remove('disabled');
+  installButton[1].classList.remove('disabled');
 }
 
 
@@ -51,7 +51,8 @@ function installPWA(evt) {
   deferredInstallPrompt.userChoice
     .then((choice) => {
       if (choice.outcome === 'accepted') {
-        installButton.classList.add('download');
+        installButton[0].classList.add('download');
+        installButton[1].classList.add('download');
         console.log('User accepted the A2HS prompt');
       } else {
         console.log('User dismissed the A2HS prompt');
