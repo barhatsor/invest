@@ -8,6 +8,20 @@
 @font-face {
   font-family: 'Euclid';
   font-style: normal;
+  font-weight: 100;
+  src: url(/fonts/euclid-light.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Euclid';
+  font-style: normal;
   font-weight: 400;
-  src: url(/fonts/euclid.woff) format('woff');
+  src: url(/fonts/euclid-regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Euclid';
+  font-style: normal;
+  font-weight: 700;
+  src: url(/fonts/euclid-medium.woff) format('woff');
 }
