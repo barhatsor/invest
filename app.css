@@ -62,6 +62,7 @@ html {
   background: black;
   color: #f9f9fa;
   font: 400 16px "Euclid", sans-serif;
+  scroll-behavior: smooth;
   scrollbar-color: #253341 black;
   scrollbar-width: thin;
   -webkit-tap-highlight-color: transparent;
