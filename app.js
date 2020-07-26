@@ -12,12 +12,12 @@ var hero = document.querySelector('.hero');
 
 window.addEventListener('scroll', function(e) {
    if (window.scrollY > hero.clientHeight) {
-      header.classList.add('a');
-      header.classList.remove('b');
-   }
-   else if (window.scrollY > 0) {
       header.classList.remove('a');
       header.classList.add('b');
+   }
+   else if (window.scrollY > 0) {
+      header.classList.add('a');
+      header.classList.remove('b');
    }
    else {
       header.classList.remove('a');
