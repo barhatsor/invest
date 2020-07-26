@@ -55,7 +55,4 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   // Log launch display mode to analytics
   console.log('DISPLAY_MODE_LAUNCH:', displayMode);
-  if (displayMode == 'browser tab') {
-    window.location.href = '/app';
-  }
 });
