@@ -1,0 +1,82 @@
+/* Bar Hatsor 2020 */
+
+@import url("/fonts/fonts.css");
+.header {
+  position: fixed;
+  width: 100%;
+  height: 65px;
+}
+.header .icon {
+  position: absolute;
+  top: 17px;
+  left: 18px;
+}
+
+.hero {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: 54px;
+  height: 100vh;
+  background: linear-gradient(315deg, #0cbaba 0%, #380036 74%) fixed;
+}
+.hero a {
+  margin-bottom: 17px;
+  font-weight: 600;
+  /* color: mediumseagreen; */
+}
+.hero span {
+  font-size: 21.5px;
+  font-weight: 100;
+}
+.hero button-wrapper {
+  margin: 9px;
+}
+.hero button {
+  padding: 10px 15px 10px 15px;
+  box-shadow: 3px 4px 5px 2px #00000012;
+  width: max-content;
+  border: none;
+  outline: none;
+  background: #31b46c;
+  color: white;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 100;
+  border-radius: 10px;
+  transition: .2s ease;
+  cursor: pointer;
+}
+.hero button:hover {
+  background: #36c476;
+}
+.hero .arrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 27px;
+  cursor: pointer;
+}
+
+html {
+  background: black;
+  color: #f9f9fa;
+  font: 400 16px "Euclid", sans-serif;
+  scrollbar-color: #253341 black;
+  scrollbar-width: thin;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+}
+
+::selection {
+  background: #f9f9fa33;
+}
+
+::-webkit-scrollbar {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #253341;
+}
