@@ -5,6 +5,7 @@
   position: fixed;
   width: 100%;
   height: 65px;
+  transition: .2s ease;
 }
 .header .icon {
   position: absolute;
