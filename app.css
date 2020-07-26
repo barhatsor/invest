@@ -59,6 +59,11 @@
   cursor: pointer;
 }
 
+.screening {
+  background: black;
+  height: 100vh;
+}
+
 html {
   background: black;
   color: #f9f9fa;
