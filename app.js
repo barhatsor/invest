@@ -11,7 +11,11 @@ var header = document.querySelector('.header');
 var hero = document.querySelector('.hero');
 
 window.addEventListener('scroll', function(e) {
-   if (window.scrollY > 0) {
+   if (window.scrollY > hero.clientHeight) {
+      header.style.background = '#111';
+      header.style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
+   }
+   else if (window.scrollY > 0) {
       header.style.background = 'rgba(29,29,31,0.72)';
       header.style.backdropFilter = 'saturate(180%) blur(20px)';
       header.style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
@@ -19,17 +23,6 @@ window.addEventListener('scroll', function(e) {
    else {
       header.style.background = 'transparent';
       header.style.backdropFilter = 'none';
-      header.style.boxShadow = 'none';
-   }
-})
-
-window.addEventListener('scroll', function(e) {
-   if (window.scrollY > hero.clientHeight) {
-      header.style.background = '#111';
-      header.style.boxShadow = 'inset 0 -1px 0 0 rgb(255 255 255 / 0.24)';
-   }
-   else {
-      header.style.background = 'transparent';
       header.style.boxShadow = 'none';
    }
 })
