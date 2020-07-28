@@ -3,7 +3,7 @@ Application for investing in the stock market. [investor.netlify.app](https://in
 
 ## 🛠️ Changelog
 
-#### **v2.9** // 7/28/20
+#### **v3.0** // 7/28/20
 - Uploaded to App Store and Google Play
 - Added portfolio saving in local storage
 - Minor UI changes
@@ -35,7 +35,7 @@ Application for investing in the stock market. [investor.netlify.app](https://in
 - Added search
 - Javascript changes
   
-#### **v2** // 4/26/20
+#### **v2.0** // 4/26/20
 - Major UI changes
 - Added version number  
 
@@ -43,7 +43,7 @@ Application for investing in the stock market. [investor.netlify.app](https://in
 - UI Tweaks
 - Minified Javascript
 
-#### **v1** // 4/2/20
+#### **v1.0** // 4/2/20
 - Initial commit
 
 ## 📤 Contributing
