@@ -1,7 +1,12 @@
 # <img src="https://investor.netlify.app/images/icons/invest-icon.svg" alt="Invest Logo" height="32"/> Invest
-Application for investing in the stock market. [investor.netlify.app](https://investor.netlify.app) or [get it on Google Play](https://play.google.com/store/apps/details?id=com.beta.invest).
+Application for investing in the stock market. [investor.netlify.app](https://investor.netlify.app), [get it on Google Play](https://play.google.com/store/apps/details?id=com.beta.invest) or [Download from the App Store](https://apple.com/).
 
 ## 🛠️ Changelog
+
+#### **v2.9** // 7/28/20
+- Uploaded to App Store and Google Play
+- Added portfolio saving in local storage
+- Minor UI changes
 
 #### **v2.8** // 7/12/20
 - Added news tab
@@ -36,10 +41,10 @@ Application for investing in the stock market. [investor.netlify.app](https://in
 
 #### **v1.5** // 4/13/20
 - UI Tweaks
-- Minified Javascript.
+- Minified Javascript
 
-#### **v1.2** // 4/2/20
-- Published project.
+#### **v1** // 4/2/20
+- Initial commit
 
 ## 📤 Contributing
 Open an [issue](https://github.com/barhatsor/invest/issues) or send a push request.
