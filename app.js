@@ -11,6 +11,7 @@ var header = document.querySelector('.header');
 var hero = document.querySelector('.hero');
 
 window.addEventListener('scroll', function(e) {
+   hero.style.bottom = window.scrollY / 2;
    if (window.scrollY > hero.clientHeight) {
       header.classList.remove('a');
       header.classList.add('b');
