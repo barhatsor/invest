@@ -11,12 +11,16 @@ var header = document.querySelector('.header');
 var hero = document.querySelector('.hero');
 
 window.addEventListener('scroll', function(e) {
-   hero.style.bottom = window.scrollY / 2;
-   if (window.scrollY > hero.clientHeight) {
+   // Window scroll position
+   var scrolled = window.scrollY || window.pageYOffset;
+   // Parallax effect
+   hero.style.top = - (scrolled * 0.2) + 'px';
+   // Apply CSS classes depending on scroll position
+   if (hero.clientHeight < scrolled) {
       header.classList.remove('a');
       header.classList.add('b');
    }
-   else if (window.scrollY > 0) {
+   else if (0 < scrolled) {
       header.classList.add('a');
       header.classList.remove('b');
    }
