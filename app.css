@@ -112,15 +112,24 @@
   margin-top: 0;
   margin-bottom: 0;
   font-size: 2.2em;
+  position: relative;
+  opacity: 0;
+  transition: .2s ease;
 }
 #screening .left p {
   font-weight: 100;
   font-size: 1.3em;
   margin-top: 0.4em;
+  position: relative;
+  opacity: 0;
+  transition: .2s .05s ease;
 }
 #screening .left a {
   font-size: 1em;
   font-weight: 100;
+  position: relative;
+  opacity: 0;
+  transition: .2s .1s ease;
 }
 #screening .right {
   position: absolute;
