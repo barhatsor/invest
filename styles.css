@@ -54,13 +54,16 @@
   top: 0;
   left: -20px;
   padding-left: 115px;
-  background: url("https://investor.netlify.app/images/search.svg") 90px 50% no-repeat #253341;
-  border-color: #3d5466;
+  background-position-x: 90px;
+  /* border-color: #3d5466; */
   outline: none;
 }
 .search:focus + .close {
   opacity: 0.5;
   pointer-events: auto;
+}
+.search:focus ~ .filters-wrapper {
+  filter: blur(10px);
 }
 .search:focus ~ .entries {
   filter: blur(10px);
