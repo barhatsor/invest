@@ -5,10 +5,11 @@
    */
 
 var v = 1.1;
+const $ = document.querySelector.bind(document);
 
 // Header effects on scroll
-var header = document.querySelector('.header');
-var hero = document.querySelector('.hero');
+var header = $('.header');
+var hero = $('.hero');
 
 window.addEventListener('scroll', function(e) {
    // Window scroll position
@@ -30,10 +31,33 @@ window.addEventListener('scroll', function(e) {
    }
 })
 
+// Text effects on scroll
+var text = [$('.left h1'), $('.left p'), $('.left a')];
+
+window.addEventListener('scroll', function(e) {
+   // Window scroll position
+   var scrolled = window.scrollY || window.pageYOffset;
+   // Parallax effect
+   hero.style.top = - (scrolled * 0.2) + 'px';
+   // Apply CSS classes depending on scroll position
+   if (hero.clientHeight < scrolled) {
+      text.forEach(element => {
+         element.style.opacity = 1;
+         element.style.top = 0;
+      })
+   }
+   else {
+      text.forEach(element => {
+         element.style.opacity = 0;
+         element.style.top = '-10px';
+      })
+   }
+})
+
 // PWA Installation
 let deferredInstallPrompt = null;
 
-const installButton = document.querySelectorAll('.install');
+const installButton = $('.install');
 
 installButton[0].addEventListener('click', installPWA);
 installButton[1].addEventListener('click', installPWA);
