@@ -327,7 +327,7 @@ function switchTab(url) {
 // Round
 function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
-    return Math.round(value * multiplier) / multiplier;
+    return if (Math.round(value * multiplier) / multiplier < 0) Math.round(value * multiplier) / multiplier ? '-';
 }
 
 // HTTP Request
@@ -363,7 +363,7 @@ function moneyFormat(labelValue) {
     // Round to last 2 digits & remove trailing zeros
     try {
         return round(parseFloat(foo)) + foo.replace(/[^B|M|K]/g,"");
-    } catch { return 0 }
+    } catch { return '-' }
 }
 
 
