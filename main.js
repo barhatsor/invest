@@ -361,7 +361,9 @@ function moneyFormat(labelValue) {
        : Math.abs(Number(labelValue));
     
     // Round to last 2 digits & remove trailing zeros
-    return round(parseFloat(foo)) + foo.replace(/[^B|M|K]/g,"");
+    try {
+      return round(parseFloat(foo)) + foo.replace(/[^B|M|K]/g,"");
+    } catch { return '-' }
 }
 
 
