@@ -15,7 +15,7 @@
   left: 25px;
 }
 .header .install {
-  padding: 7px 12px 7px 12px;
+  padding: 7px 12px;
   width: max-content;
   border: none;
   outline: none;
@@ -64,7 +64,7 @@
   margin: 9px;
 }
 .hero .install {
-  padding: 10px 15px 10px 15px;
+  padding: 10px 15px;
   box-shadow: 3px 4px 5px 2px #00000012;
   width: max-content;
   border: none;
@@ -88,8 +88,7 @@
 }
 .hero .arrow {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   margin-top: 27px;
   cursor: pointer;
 }
@@ -97,7 +96,7 @@
 #screening {
   position: relative;
   top: 100vh;
-  height: 810px;
+  height: calc(810px + 1vh);
   background: black;
   padding: 40px;
   overflow: hidden;
