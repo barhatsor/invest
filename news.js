@@ -83,7 +83,9 @@ class newsArticles {
         
         // Images fade in when loaded
         document.querySelector(".articles .article img").forEach(image => {
-           image.onload = function() {
+           var newImg = new Image;
+           newImg.onload = function() {
+              image.src = this.src;
               image.style.opacity = 1;
            }
         })
