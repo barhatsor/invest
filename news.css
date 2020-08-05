@@ -7,9 +7,9 @@
   height: 60px;
   width: 100%;
   top: 0;
+  left: 0;
   position: fixed;
   font-size: 22px;
-  margin-left: -8px;
   background: black;
   transition: background .2s ease, box-shadow .2s ease;
   z-index: 2;
