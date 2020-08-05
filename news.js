@@ -82,11 +82,9 @@ class newsArticles {
         document.querySelector(".articles").style.opacity = 1;
         
         // Images fade in when loaded
-        document.querySelector(".articles .article img").forEach(image => {
-           var newImg = new Image;
-           newImg.onload = function() {
-              image.src = this.src;
-              image.style.opacity = 1;
+        document.querySelectorAll(".articles .article img").forEach(image => {
+           image.onload = function() {
+               image.style.opacity = 1;
            }
         })
     }
