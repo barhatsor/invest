@@ -49,7 +49,7 @@ window.addEventListener('scroll', function(e) {
    else {
       text.forEach(element => {
          element.style.opacity = 0;
-         element.style.top = '-10px';
+         element.style.top = '10px';
       })
    }
 })
