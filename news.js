@@ -80,6 +80,13 @@ class newsArticles {
         // Inject the finished HTML into the page
         document.querySelector(".articles").innerHTML = this.out;
         document.querySelector(".articles").style.opacity = 1;
+        
+        // Images fade in when loaded
+        document.querySelector(".articles .article img").forEach(image => {
+           image.onload = function() {
+              image.style.opacity = 1;
+           }
+        })
     }
 }
 
