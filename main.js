@@ -327,7 +327,7 @@ function switchTab(url) {
 // Round
 function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
-    return (value ? Math.round(value * multiplier) / multiplier : '-');
+    return (value != null ? Math.round(value * multiplier) / multiplier : '-');
 }
 
 // HTTP Request
