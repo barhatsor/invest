@@ -95,7 +95,7 @@
   border-top: 1px solid #3d5466;
 }
 .search-wrapper .suggestion {
-  background: url(/images/search.svg) 15px no-repeat;
+  background: url(/images/search.svg) 13px/13px no-repeat;
   padding: 10px;
   padding-left: 40px;
   transition: .2s ease;
