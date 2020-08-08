@@ -160,17 +160,9 @@ document.querySelector('.search').addEventListener("keyup", function(event) {
        addStock(document.querySelector('.search-wrapper').children[1]);
        // And close search
        document.querySelector(".search-wrapper").style.display = "none";
-       document.querySelector(".search").classList.remove("suggestions");
-       document.querySelector(".search").value = "";
        document.querySelector(".search").blur();
-       document.body.style.overflow = "auto";
     }
 });
-
-// If clicked on search, disable scrolling
-document.querySelector('.search').addEventListener('focus', function (event) {
-   document.body.style.overflow = "hidden";
-})
 
 // If clicked off search, close it
 document.querySelector('.search').addEventListener('blur', function (event) {
@@ -207,8 +199,9 @@ function renderSuggestions(resp) {
   else {
     out = '<div class="suggestion"><p>Try again later</p></div>';
   }
+  document.body.style.overflow = "hidden";
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
-  document.querySelector(".search-wrapper").style.display = "block";
+  document.querySelector(".search-wrapper").classList.add("suggestions");
   document.querySelector(".search").classList.add("suggestions");
 }
 
