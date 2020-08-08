@@ -90,16 +90,11 @@ class stockEntries {
 
     // Toggle stock details
     toggleDetails(stock) {
-       // If the stock's closed
-       if (!stock.classList.contains("open")) {
-           // Open it
-           stock.classList.toggle("open");
-           // And show details
+       var toggle = stock.classList.toggle("open");
+       // If the stock's open
+       if (toggle) {
+           // Show details
            this.renderDetails(apiResponse[stock.children[1].innerHTML], stock);
-       }
-       else {
-           // Else, close it
-           stock.classList.remove("open");
        }
    }
 
@@ -378,9 +373,9 @@ document.querySelector(".filter-button").addEventListener("click", (e) => {
 // Toggle each filter
 document.querySelectorAll(".filter").forEach((filter) => {
     filter.addEventListener("click", (e) => {
-        filter.classList.toggle("active");
+        var toggle = filter.classList.toggle("active");
         // If the filter's active
-        if (filter.classList.contains("active")) {
+        if (toggle) {
             // Filter the stocks
             filterStocks(apiResponse);
         }
