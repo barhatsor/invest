@@ -62,7 +62,7 @@
 }
 .search.suggestions + .close {
   right: 21px;
-  opacity: .5;
+  opacity: 1;
 }
 .close {
   position: absolute;
