@@ -41,7 +41,7 @@
 .header .search:focus {
   caret-color: currentColor;
   background-position-x: 13px;
-  box-shadow: inset 0 0 0 1px hsl(203deg 89% 43%), 0 0 0 2px hsl(203deg 89% 33%);
+  box-shadow: inset 0 0 0 1px #137ffb, 0 0 0 2px #0366d6;
   outline: none;
 }
 .header .search:focus::placeholder {
@@ -56,7 +56,7 @@
   background-image: url(/images/search-white.svg);
   padding: 10px 130px 10px 35px;
   border-radius: 10px 10px 0 0;
-  box-shadow: inset 0 1px 0 1px hsl(203deg 89% 43%), 0 0 0 2px hsl(203deg 89% 33%);
+  box-shadow: 0 0 0 1px #137ffb, 0 0 0 3px #0366d6;
   left: 15px;
 }
 .header .search.suggestions + .close {
@@ -79,7 +79,7 @@
   width: calc(100% - 36px);
   overflow: hidden;
   border-radius: 0 0 20px 20px;
-  box-shadow: inset 0 -1px 0 1px hsl(203deg 89% 43%), 0 2px 0 2px hsl(203deg 89% 33%);
+  box-shadow: 0 1px 0 1px #137ffb, 0 3px 0 3px #0366d6;
   left: 15px;
   top: 54px;
   opacity: 0;
