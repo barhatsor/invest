@@ -30,7 +30,6 @@
   border: 0;
   border-radius: 10px;
   caret-color: transparent;
-  transition: .2s ease, caret-color 0s .2s;
   z-index: 1;
 }
 .header .search::placeholder {
@@ -42,6 +41,7 @@
   caret-color: currentColor;
   background-position-x: 13px;
   box-shadow: inset 0 0 0 1px #137ffb, 0 0 0 2px #0366d6;
+  transition: .2s ease, caret-color 0s .2s;
   outline: none;
 }
 .header .search:focus::placeholder {
