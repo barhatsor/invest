@@ -48,7 +48,7 @@
   left: 0;
 }
 .header .search:focus + .close {
-  top: 9px;
+  top: 8px;
   right: 70px;
   opacity: 1;
 }
