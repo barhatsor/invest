@@ -88,7 +88,7 @@
 .header .search-wrapper .suggestion {
   background: url(/images/search.svg) 13px/13px no-repeat;
   padding: 10px;
-  padding-left: 40px;
+  padding-left: 35px;
 }
 .header .search-wrapper .suggestion p {
   margin: 15px 0;
