@@ -148,7 +148,7 @@ document.querySelector('.search').addEventListener('input', function (event) {
   else {
     // Else, close search
     document.querySelector(".search").classList.remove("suggestions");
-    document.querySelector(".search-wrapper").style.display = "none";
+    document.querySelector(".search-wrapper").classList.remove("suggestions");
     document.body.style.overflow = "auto";
   }
 })
