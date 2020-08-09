@@ -63,6 +63,7 @@
 .header .search.suggestions + .close {
   top: 12px;
   right: 21px;
+  z-index: 1;
 }
 .header .close {
   position: absolute;
