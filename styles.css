@@ -55,14 +55,12 @@
   left: 15px;
 }
 .header .search.suggestions + .close {
-  top: 12px;
-  right: 13px;
   opacity: 1;
 }
 .header .close {
   position: absolute;
   top: 12px;
-  right: 70px;
+  right: 13px;
   padding: 16px 12px 12px 16px;
   cursor: pointer;
   transition: .2s ease;
