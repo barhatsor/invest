@@ -23,7 +23,7 @@
   font: inherit;
   font-size: 15px;
   color: inherit;
-  width: calc(100% - 201px);
+  width: calc(100% - 190px);
   height: 22px;
   top: 12px;
   left: 59px;
@@ -55,12 +55,16 @@
   left: 15px;
 }
 .header .search.suggestions + .close {
+  right: 13px;
   opacity: 1;
+}
+.header .search.suggestions + .filter-button {
+  opacity: 0;
 }
 .header .close {
   position: absolute;
   top: 12px;
-  right: 13px;
+  right: 43px;
   padding: 16px 12px 12px 16px;
   cursor: pointer;
   transition: .2s ease;
