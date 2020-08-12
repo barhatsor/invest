@@ -88,6 +88,7 @@ class stockEntries {
         document.querySelector(".entries").innerHTML = this.out;
        
         // Add swipe eventListener for stocks
+        console.log('a');
         document.querySelectorAll(".entry").forEach(entry => {
            addSwipeListener(entry);
         })
