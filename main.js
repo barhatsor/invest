@@ -90,7 +90,7 @@ class stockEntries {
         // Add swipe eventListener for stocks
         document.querySelectorAll(".entry").forEach(entry => {
            addSwipeListener(entry);
-        }
+        })
     }
 
     // Toggle stock details
