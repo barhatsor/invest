@@ -260,8 +260,8 @@ function swipedetect(el, callback){
 }
 
 function addSwipeListener(el) {
-   swipedetect(el, function(swipedir) {
-       swipedir contains either "none", "left", "right", "top", or "down"
+   swipedetect(el, function(swipedir){
+       swipedir contains either "none", "left", "right", "top", or "down";
        if (swipedir =='left')
            alert('You just swiped left!');
    })
