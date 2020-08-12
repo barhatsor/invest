@@ -58,7 +58,7 @@
   right: 13px;
   opacity: 1;
 }
-.header .search.suggestions + .filter-button {
+.header .search.suggestions ~ .filter-button {
   opacity: 0;
 }
 .header .close {
@@ -180,9 +180,9 @@
   transition: .2s ease;
 }
 .filters-wrapper .filters .filter.active {
-  background: #3d5466;
-  color: #f9f9fa;
-  border-color: #1da1f2;
+  background: #374c62;
+  color: #fff;
+  border-color: #137ffb;
   box-shadow: 0 1px 7px 0 rgba(0, 0, 255, 0.2);
 }
 .filters-wrapper .filters .filter:active {
