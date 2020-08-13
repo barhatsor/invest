@@ -131,8 +131,7 @@ class stockEntries {
 
 
 /* Filters */
-function filterStocks(response) {
-    var data = response;
+function filterStocks(data) {
     var tempData = [];
     // For each stock
     for (var prop in data) {
@@ -382,7 +381,8 @@ document.querySelectorAll(".filter").forEach((filter) => {
         // If the filter's active
         if (toggle) {
             // Filter the stocks
-            filterStocks(apiResponse);
+            var tempResponse = apiResponse;
+            filterStocks(tempResponse);
         }
         else {
             // Else, revert back to original list
