@@ -126,13 +126,12 @@ class stockEntries {
 
 /* Filters */
 function filterStocks(data) {
-    var tempData = [];
     // For each stock
     for (var prop in data) {
         // If not filter condition 
         if (!(data[prop].quote.peRatio < 20)) {
             document.querySelectorAll('.entry').forEach(entry => {
-                if (entry.children[1] == data[prop].quote.symbol) {
+                if (entry.children[1].innerHTML == data[prop].quote.symbol) {
                    // Filter it out
                    entry.style.animation = 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)';
                 }
