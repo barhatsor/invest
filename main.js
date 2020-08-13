@@ -381,11 +381,13 @@ document.querySelectorAll(".filter").forEach((filter) => {
         // If the filter's active
         if (toggle) {
             // Filter the stocks
-            filterStocks(tempResponse);
+            filterStocks(apiResponse);
         }
         else {
             // Else, revert back to original list
-            for (var prop in apiResponse) { apiResponse[prop].filter = false }
+            for (var prop in apiResponse) {
+               apiResponse[prop].filter = false
+            }
             stocks.buildHTML(apiResponse);
         }
     });
