@@ -175,7 +175,7 @@ document.querySelector('.search').addEventListener("keyup", function(event) {
        // Add the first result
        addStock(document.querySelector('.search-wrapper').children[1]);
        // And close search
-       document.querySelector(".search-wrapper").style.display = "none";
+       document.querySelector(".search-wrapper").classList.remove("suggestions");
        document.querySelector(".search").blur();
     }
 });
