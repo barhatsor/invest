@@ -55,12 +55,6 @@ class stockEntries {
             var precent;
             // For each stock in API response
             for (var prop in response) {
-                // If filtered stock
-                var filter = "";
-                if (response[prop].filter) {
-                    // Play filter animation
-                    filter = "animation: filter .5s forwards cubic-bezier(.79,.14,.15,.86)";
-                }
                 // If precent is negative, color it red
                 if (response[prop].quote.changePercent < 0) {
                     precent = "<h2 class='red'>";
