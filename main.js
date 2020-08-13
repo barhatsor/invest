@@ -59,7 +59,7 @@ class stockEntries {
                 var filter = "";
                 if (response[prop].filter) {
                     // Play filter animation
-                    filter = "filter .5s forwards cubic-bezier(.79,.14,.15,.86)";
+                    filter = "animation: filter .5s forwards cubic-bezier(.79,.14,.15,.86)";
                 }
                 // If precent is negative, color it red
                 if (response[prop].quote.changePercent < 0) {
