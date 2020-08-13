@@ -131,7 +131,8 @@ class stockEntries {
 
 
 /* Filters */
-function filterStocks(data) {
+function filterStocks(response) {
+    var data = response;
     var tempData = [];
     // For each stock
     for (var prop in data) {
