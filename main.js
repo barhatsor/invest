@@ -39,10 +39,10 @@ class stockEntries {
     constructor() {
     }
    
-    renderSkeleton(num) {
+    renderSkeleton(symbol) {
        // Insert stock at start of entries
        document.querySelector('.entries').innerHTML =
-          '<div class="entry"><h1></h1><p>.</p></div>' +
+          '<div class="entry"><h1>'+symbol+'</h1><p>.</p></div>' +
           document.querySelector('.entries').innerHTML;
     }
    
@@ -77,6 +77,11 @@ class stockEntries {
                     "%</h2><span>" +
                     round(response[prop].quote.latestPrice, 1) +
                     "</span><div class='stats'></div></div>";
+                // If filtered stock
+                if (response[prop].filter) {
+                    // Play filter animation
+                    response[prop].style.animation = "filter .5s forwards cubic-bezier(.79,.14,.15,.86)";
+                }
             }
         }
         // If no response provided, show no stocks message
@@ -88,7 +93,6 @@ class stockEntries {
         document.querySelector(".entries").innerHTML = this.out;
        
         // Add swipe eventListener for stocks
-        console.log('a');
         document.querySelectorAll(".entry").forEach(entry => {
            addSwipeListener(entry);
         })
@@ -132,6 +136,11 @@ function filterStocks(data) {
     for (var prop in data) {
         // Only add it to the list if filter condition is true
         if (data[prop].quote.peRatio < 20) {
+            tempData.push(data[prop]);
+        }
+       // Else, filter it out
+        else {
+            data[prop].filter = true;
             tempData.push(data[prop]);
         }
     }
@@ -272,7 +281,7 @@ function addStock(el) {
    tArray.unshift(el.children[0].innerHTML);
    
    // Add skeleton stock to entries
-   stocks.renderSkeleton();
+   stocks.renderSkeleton(el.children[0].innerHTML);
    
    // Update localStorage
    tickers = tArray.join(',');
@@ -391,7 +400,7 @@ stocks = new stockEntries();
 // Generate skeleton screen
 document.querySelector('.entries').style.opacity = 1;
 for (var i = 0; i < tArray.length; i++) {
-   stocks.renderSkeleton();
+   stocks.renderSkeleton(tArray[i]);
 }
 
 // Run
