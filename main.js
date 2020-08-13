@@ -126,19 +126,28 @@ class stockEntries {
 
 /* Filters */
 function filterStocks(data) {
+    var tempData = [];
     // For each stock
     for (var prop in data) {
-        // If not filter condition 
-        if (!(data[prop].quote.peRatio < 20)) {
-            document.querySelectorAll('.entry').forEach(entry => {
+        // Only add it to the list if filter condition is true
+        if (data[prop].quote.peRatio < 20) {
+            tempData.push(data[prop]);
+        }
+        else {
+           document.querySelectorAll('.entry').forEach(entry => {
                 if (entry.children[1].innerHTML == data[prop].quote.symbol) {
                    // Filter it out
                    entry.style.animation = 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)';
-                   window.setTimeout(function() { entry.style.animation = ''; } , 500);
                 }
             })
         }
     }
+    data = tempData;
+    // Rebuild entries
+    window.setTimeout(function() {
+       stocks.buildHTML(data);
+       entry.style.animation = '';
+    }, 500);
 }
 
 
