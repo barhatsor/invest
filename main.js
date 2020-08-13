@@ -376,7 +376,7 @@ document.querySelectorAll(".filter").forEach((filter) => {
         else {
             // Else, revert back to original list
             document.querySelectorAll('.entry').forEach(entry => {
-                if (entry.style.animation == 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)') {
+                if (entry.style.animationFillMode == 'forwards') {
                     entry.style.animation = 'filter .5s reverse cubic-bezier(.79,.14,.15,.86)';
                 }
             })
