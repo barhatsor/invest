@@ -133,6 +133,7 @@ function filterStocks(data) {
             document.querySelectorAll('.entry').forEach(entry => {
                 if (entry.children[1].innerHTML == data[prop].quote.symbol) {
                    // Filter it out
+                   entry.style.animation = '';
                    entry.style.animation = 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)';
                 }
             })
@@ -377,6 +378,7 @@ document.querySelectorAll(".filter").forEach((filter) => {
             // Else, revert back to original list
             document.querySelectorAll('.entry').forEach(entry => {
                 if (entry.style.animationFillMode == 'forwards') {
+                    entry.style.animation = '';
                     entry.style.animation = 'filter .5s reverse cubic-bezier(.79,.14,.15,.86)';
                 }
             })
