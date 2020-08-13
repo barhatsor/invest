@@ -142,7 +142,7 @@ function filterStocks(data) {
                    // Filter it out
                    entry.style.animation = 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)';
                 }
-            }
+            })
         }
     }
 }
@@ -386,7 +386,7 @@ document.querySelectorAll(".filter").forEach((filter) => {
                 if (entry.style.animation == 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)') {
                     entry.style.animation = 'filter .5s reverse cubic-bezier(.79,.14,.15,.86)';
                 }
-            }
+            })
         }
     });
 });
