@@ -383,7 +383,7 @@ document.querySelectorAll(".filter").forEach((filter) => {
                // If filtered stock
                if (entry.style.display == 'none') {
                  // Show stock
-                 entry.style.display = 'block';
+                 entry.style.display = '';
                  entry.style.animation = 'filter .5s reverse cubic-bezier(.79,.14,.15,.86)';
                  // Reset animation
                  window.setTimeout(function() { entry.style.animation = ''; } , 500);
