@@ -402,8 +402,7 @@ APIhandler = new APIHandler();
 stocks = new stockEntries();
 
 // Generate skeleton screen
-document.querySelector('.entries').style.opacity = 1;
-for (var i = 0; i < tArray.length; i++) {
+for (var i = tArray.length; i > 0; i--) {
    stocks.renderSkeleton(tArray[i]);
 }
 
