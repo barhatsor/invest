@@ -402,7 +402,7 @@ APIhandler = new APIHandler();
 stocks = new stockEntries();
 
 // Generate skeleton screen
-for (var i = tArray.length; i > 0; i--) {
+for (var i = tArray.length; i >= 0; i--) {
    stocks.renderSkeleton(tArray[i]);
 }
 
