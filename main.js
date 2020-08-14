@@ -40,10 +40,8 @@ class stockEntries {
     }
    
     renderSkeleton(symbol) {
-       // Insert stock at start of entries
-       document.querySelector('.entries').innerHTML =
-          '<div class="entry"><h1>'+symbol+'</h1><p>.</p></div>' +
-          document.querySelector('.entries').innerHTML;
+       // Return skeleton entry
+       return '<div class="entry"><h1>'+symbol+'</h1><p>.</p></div>';
     }
    
     buildHTML(response) {
@@ -276,7 +274,9 @@ function addStock(el) {
    tArray.unshift(el.children[0].innerHTML);
    
    // Add skeleton stock to entries
-   stocks.renderSkeleton(el.children[0].innerHTML);
+   document.querySelector('.entries').innerHTML =
+      renderSkeleton(el.children[0].innerHTML) +
+      document.querySelector('.entries').innerHTML;
    
    // Update localStorage
    tickers = tArray.join(',');
@@ -402,8 +402,8 @@ APIhandler = new APIHandler();
 stocks = new stockEntries();
 
 // Generate skeleton screen
-for (var i = tArray.length; i >= 0; i--) {
-   stocks.renderSkeleton(tArray[i]);
+for (var i = 0; i < tArray.length; i++) {
+   document.querySelector('.entries').innerHTML += stocks.renderSkeleton(tArray[i]);
 }
 
 // Run
