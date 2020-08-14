@@ -126,7 +126,6 @@ class stockEntries {
 
 /* Filters */
 function filterStocks(data) {
-    var tempData = [];
     // For each stock
     for (var prop in data) {
         // If filter condition is false, filter it out
@@ -134,8 +133,11 @@ function filterStocks(data) {
            document.querySelectorAll('.entry').forEach(entry => {
                 if (entry.children[1].innerHTML == data[prop].quote.symbol) {
                    entry.style.animation = 'filter .5s forwards cubic-bezier(.79,.14,.15,.86)';
-                   // Reset animation
-                   window.setTimeout(function() { entry.style.animation = 'none'; }, 500);
+                   // Hide stock
+                   window.setTimeout(function() {
+                      entry.style.animation = '';
+                      entry.style.display = 'none';
+                   }, 500);
                 }
             })
         }
@@ -377,13 +379,15 @@ document.querySelectorAll(".filter").forEach((filter) => {
         }
         else {
             // Else, revert back to original list
-            stocks.buildHTML(apiResponse);
             document.querySelectorAll('.entry').forEach(entry => {
-                 if (entry.style.animation == 'none') {
-                    entry.style.animation = 'filter .5s reverse cubic-bezier(.79,.14,.15,.86)';
-                    // Reset animation
-                    window.setTimeout(function() { entry.style.animation = ''; } , 500);
-                 }
+               // If filtered stock
+               if (entry.style.display == 'none') {
+                 // Show stock
+                 entry.style.display = 'block';
+                 entry.style.animation = 'filter .5s reverse cubic-bezier(.79,.14,.15,.86)';
+                 // Reset animation
+                 window.setTimeout(function() { entry.style.animation = ''; } , 500);
+               }
             })
         }
     });
