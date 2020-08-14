@@ -137,13 +137,16 @@
   overflow: hidden;
   width: 100%;
   padding-bottom: 5px;
-  background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0) 80px);
+  background: black;
   transition: .2s ease;
   z-index: 1;
 }
 .filters-wrapper.active {
-  top: 55px;
+  top: 60px;
   overflow: auto;
+}
+.filters-wrapper.active + .entries {
+  margin-top: 111px;
 }
 .filters-wrapper .filters {
   padding: 0 13px;
@@ -151,7 +154,7 @@
 }
 .filters-wrapper .filters::before, .filters-wrapper .filters::after {
   width: 18px;
-  height: 48px;
+  height: 41px;
   position: fixed;
   content: "";
 }
@@ -171,6 +174,7 @@
   color: #f9f9facc;
   font-size: 15px;
   margin: 5px;
+  margin-top: 0;
   padding: 10px;
   box-shadow: 0 1px 1px 0 rgba(12, 12, 13, 0.2);
   cursor: pointer;
@@ -188,6 +192,7 @@
 
 .entries {
   margin: 60px 0;
+  transition: margin .2s ease;
 }
 .entries a {
   display: block;
