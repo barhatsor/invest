@@ -31,7 +31,7 @@
   border: 0;
   border-radius: 10px;
   caret-color: transparent;
-  transition: .2s ease, caret-color 0s .2s;
+  transition: .2s ease, caret-color 0s .2s, opacity 0s;
   z-index: 1;
 }
 .header .search::placeholder {
@@ -123,7 +123,6 @@
   cursor: pointer;
   right: 13px;
   top: 13.7px;
-  transition: .2s ease;
 }
 .header .filter-button .fill {
   opacity: 0;
@@ -367,3 +366,4 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #253341;
 }
+
