@@ -191,8 +191,6 @@
 
 .entries {
   margin: 60px 0;
-  transition: .2s ease;
-  opacity: 0;
 }
 .entries a {
   display: block;
