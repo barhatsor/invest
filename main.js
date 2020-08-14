@@ -190,6 +190,10 @@ document.querySelector('.close').addEventListener('click', function (event) {
 
 /* Search Suggestions */
 function renderSuggestions(resp) {
+  // Change UI
+  document.querySelector(".search-wrapper").classList.add("suggestions");
+  document.querySelector(".search").classList.add("suggestions");
+  document.body.style.overflow = "hidden";
   // Store finished HTML
   var out = "";
   // If response
@@ -198,19 +202,12 @@ function renderSuggestions(resp) {
     resp.bestMatches.forEach(match => {
         out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
-    // If no suggestions, show no results message
-    if (out == "") {
-      out = '<div class="suggestion"><p>No results</p></div>';
-    }
   }
   // If no response provided, show try later message
   else {
-    out = '<div class="suggestion"><p>Try again later</p></div>';
+    out = '<div class="suggestion"><p>No internet</p></div>';
   }
-  document.body.style.overflow = "hidden";
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
-  document.querySelector(".search-wrapper").classList.add("suggestions");
-  document.querySelector(".search").classList.add("suggestions");
 }
 
 
