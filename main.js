@@ -275,7 +275,7 @@ function addStock(el) {
    
    // Add skeleton stock to entries
    document.querySelector('.entries').innerHTML =
-      renderSkeleton(el.children[0].innerHTML) +
+      stocks.renderSkeleton(el.children[0].innerHTML) +
       document.querySelector('.entries').innerHTML;
    
    // Update localStorage
