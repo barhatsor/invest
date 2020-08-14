@@ -4,7 +4,7 @@
        MIT License (https://bassets.github.io/mit)
    */
 
-var v = 1.3;
+var v = 1.4;
 
 /* Handle everything API */
 class APIHandler {
@@ -79,7 +79,6 @@ class newsArticles {
         
         // Inject the finished HTML into the page
         document.querySelector(".articles").innerHTML = this.out;
-        document.querySelector(".articles").style.opacity = 1;
         
         // Images fade in when loaded
         document.querySelectorAll(".articles .article img").forEach(image => {
@@ -92,21 +91,14 @@ class newsArticles {
 
 
 /* Share */
-async function shareArticle(el) {
+function shareArticle(el) {
    const shareData = {
-     title: 'Share article',
      // Retrieve article title
-     text: unescape(el.parentElement.parentElement.children[0].children[2].innerHTML)+'\n',
+     text: el.parentElement.parentElement.children[0].children[2].innerHTML+'\n\n',
      // Retrieve article url
      url: el.parentElement.parentElement.children[0].getAttribute('onclick').split('window.location.href = "').join('').split('"').join('')
    }
-   
-   try {
-      await navigator.share(shareData);
-      console.log('Shared successfully');
-   } catch(err) {
-      console.log('Error: ' + err);
-   }
+   navigator.share(shareData);
 }
 
 
@@ -160,6 +152,8 @@ window.addEventListener('scroll', function(e) {
 /* Switch Tab */
 function switchTab(url) {
    document.querySelector('.header p').style.opacity = 0;
+   document.querySelector('.header').style.top = 0;
+   document.querySelector('.header').style.position = 'fixed';
    document.querySelector('.header').style.background = '#000';
    document.querySelector('.header').style.boxShadow = 'none';
    document.querySelector('.articles').style.opacity = 0;
