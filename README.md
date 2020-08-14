@@ -1,10 +1,15 @@
 # <img src="https://investor.netlify.app/images/icons/google-touch-icon.png" alt="Invest Logo" height="32"/> Invest
-Application for investing in the stock market. [investor.netlify.app](https://investor.netlify.app), [get it on Google Play](https://play.google.com/store/apps/details?id=com.beta.invest) or [Download from the App Store](https://apple.com/).
+Application for investing in the stock market. [investor.netlify.app](https://investor.netlify.app)
 
 ## 🛠️ Changelog
 
+#### **v3.1** // 8/14/20
+- Added stock skeleton screen
+- Improved search
+- Tweaked news Javascript
+- Added filter animation
+
 #### **v3.0** // 7/28/20
-- Uploaded to App Store and Google Play
 - Added portfolio saving in local storage
 - Minor UI changes
 
@@ -52,4 +57,3 @@ Open an [issue](https://github.com/barhatsor/invest/issues) or send a push reque
 ## 🗃️ Credits
 - Uses the [IEX Cloud API](https://iexcloud.io)
 - Uses the [Alpha Vantage API](https://www.alphavantage.co)
-- Uses the [Intrinio API](https://intrinio.com)
