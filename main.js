@@ -29,7 +29,7 @@ class APIHandler {
     handleResponse(response) {
         // Build the HTML
         apiResponse = response;
-        //stocks.buildHTML(apiResponse);
+        stocks.buildHTML(apiResponse);
     }
 }
 
@@ -86,9 +86,9 @@ class stockEntries {
         document.querySelector(".entries").innerHTML = this.out;
        
         // Add swipe eventListener for stocks
-        //document.querySelectorAll(".entry").forEach(entry => {
+        /* document.querySelectorAll(".entry").forEach(entry => {
         //   addSwipeListener(entry);
-        //})
+        }) */
     }
 
     // Toggle stock details
