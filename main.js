@@ -202,6 +202,11 @@ function renderSuggestions(resp) {
     resp.bestMatches.forEach(match => {
         out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
+    // If no suggestions, remove suggestion classes
+    if (out == "") {
+       document.querySelector(".search-wrapper").classList.remove("suggestions");
+       document.querySelector(".search").classList.remove("suggestions");
+    }
   }
   // If no response provided, show try later message
   else {
