@@ -19,17 +19,12 @@
   top: 14px;
   left: 15px;
 }
-.header p {
-  transition: .2s ease;
-}
 
 .articles {
   padding: 52px 15px calc(62px + 1em) 15px;
   max-width: 560px;
   margin-left: auto;
   margin-right: auto;
-  transition: .2s ease;
-  opacity: 0;
 }
 .articles p {
   font-size: 1.125rem;
@@ -61,8 +56,6 @@
   max-height: 175px;
   object-fit: cover;
   margin: auto;
-  opacity: 0;
-  transition: .2s ease;
 }
 .articles .article .img-wrapper::before {
   position: absolute;
@@ -96,7 +89,7 @@
 .articles .article:first-of-type {
   margin-top: 0;
 }
-.articles .article:not(first-of-type) img {
+.articles .article img {
   background: #15202b;
   width: 100px;
   height: 100px;
@@ -127,7 +120,6 @@
   display: table;
   table-layout: fixed;
   background: #111;
-  transition: .2s ease;
   z-index: 1;
   box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.24);
 }
