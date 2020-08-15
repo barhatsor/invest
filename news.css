@@ -144,9 +144,6 @@ html {
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-body {
-  margin: 0;
-}
 
 ::selection {
   background: #f9f9fa33;
