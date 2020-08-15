@@ -355,7 +355,7 @@ html {
   background: black;
   color: #f9f9fa;
   font-family: 'Inter', sans-serif;
-  scrollbar-color: #253341 black;
+  scrollbar-color: #202c39 black;
   scrollbar-width: thin;
   user-select: none;
   -webkit-user-select: none;
@@ -370,5 +370,6 @@ html {
   background: black;
 }
 ::-webkit-scrollbar-thumb {
-  background: #253341;
+  background: #202c39;
+  border-radius: 10px;
 }
