@@ -151,12 +151,12 @@ window.addEventListener('scroll', function(e) {
 
 /* Switch Tab */
 function switchTab(url) {
-   document.querySelector('.header p').style.opacity = 0;
+   document.querySelector('.header p').style.display = 'none';
    document.querySelector('.header').style.top = 0;
    document.querySelector('.header').style.position = 'fixed';
    document.querySelector('.header').style.background = '#000';
    document.querySelector('.header').style.boxShadow = 'none';
-   document.querySelector('.articles').style.opacity = 0;
+   document.querySelector('.articles').style.display = 'none';
    document.querySelector('.footer').style.boxShadow = 'none';
    document.querySelector('.footer').style.background = '#000';
    document.querySelector('.footer').children[0].innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 23" stroke-linecap="round" stroke-linejoin="round"><path d="M26.985,8.979c0,-2.265 -1.838,-4.104 -4.103,-4.104l-17.653,0c-2.265,0 -4.104,1.839 -4.104,4.104l0,8.207c0,2.265 1.839,4.103 4.104,4.103l17.653,0c2.265,0 4.103,-1.838 4.103,-4.103l0,-8.207Z" fill="#fff" stroke="#fff"/><path d="M19.609,4.537c0,-1.883 -1.244,-3.412 -2.777,-3.412l-5.554,0c-1.532,0 -2.777,1.529 -2.777,3.412" fill="none" stroke="#fff" stroke-width="1.5px"/><path d="M24.392,9.331l-10.598,5.365l-10.076,-5.392" fill="none" stroke="#000" stroke-width="1.5px"/></svg>';
