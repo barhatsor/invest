@@ -35,6 +35,7 @@
   border-radius: 10px;
   caret-color: transparent;
   transition: .2s ease, caret-color 0s .2s, opacity 0s;
+  box-sizing: inherit;
   z-index: 1;
 }
 .header .search::placeholder {
