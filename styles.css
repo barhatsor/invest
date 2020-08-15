@@ -1,7 +1,6 @@
 /* Bar Hatsor 2020 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
 .header {
   position: fixed;
   top: 0;
@@ -299,7 +298,6 @@
   display: table;
   table-layout: fixed;
   background: black;
-  transition: .2s ease;
   z-index: 1;
 }
 .footer span {
