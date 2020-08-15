@@ -1,16 +1,17 @@
 /* Bar Hatsor 2020 */
 
-@import url("/fonts/fonts.css");
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 .header {
-  display: grid;
-  place-content: center;
+  position: fixed;
   height: 60px;
   width: 100%;
   top: 0;
   left: 0;
-  position: fixed;
-  font-size: 22px;
+  display: grid;
+  place-content: center;
   background: black;
+  font-size: 22px;
   transition: background .2s ease, box-shadow .2s ease;
   z-index: 2;
 }
@@ -136,12 +137,15 @@
 html {
   background: black;
   color: #f9f9fa;
-  font: 400 16px "Inter", sans-serif;
-  scrollbar-color: #253341 black;
+  font-family: 'Inter', sans-serif;
+  scrollbar-color: #202c39 black;
   scrollbar-width: thin;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
 }
 
 ::selection {
@@ -152,5 +156,5 @@ html {
   background: black;
 }
 ::-webkit-scrollbar-thumb {
-  background: #253341;
+  background: #202c39;
 }
