@@ -95,6 +95,7 @@
   padding-left: 35px;
 }
 .header .search-wrapper .suggestion p {
+  font-size: 16px;
   margin: 15px 0;
   line-height: 0;
 }
