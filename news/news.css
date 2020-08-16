@@ -1,0 +1,157 @@
+/* Bar Hatsor 2020 */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+.header {
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-content: center;
+  background: black;
+  font-size: 22px;
+  transition: background .2s ease, box-shadow .2s ease;
+  z-index: 2;
+}
+.header .icon {
+  position: absolute;
+  top: 14px;
+  left: 15px;
+}
+
+.articles {
+  padding: 52px 15px calc(62px + 1em) 15px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.articles p {
+  font-size: 1.125rem;
+}
+.articles .article {
+  color: #737373;
+  margin-top: 40px;
+  cursor: pointer;
+}
+.articles .article .content {
+  min-height: 100px;
+}
+.articles .article .img-wrapper {
+  position: relative;
+  padding-top: 50%;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #3d5466;
+}
+.articles .article .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 175px;
+  max-height: 175px;
+  object-fit: cover;
+  margin: auto;
+}
+.articles .article .img-wrapper::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: '';
+  background: linear-gradient(to top,rgba(0,0,0,.45),rgba(0,0,0,.001));
+}
+.articles .article .text {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  justify-content: space-between;
+}
+.articles .article h4 {
+  font-size: 1rem;
+  font-weight: inherit;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: #f9f9fa;
+}
+.articles .article:first-of-type h4 {
+  font-size: 1.4375rem;
+}
+.articles .article div.text {
+  margin-top: 16px;
+}
+.articles .article:first-of-type {
+  margin-top: 0;
+}
+.articles .article img {
+  background: #15202b;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  float: right;
+  opacity: 0;
+  transition: .2s ease;
+}
+.articles .article::before {
+  background: #3d5466;
+  display: block;
+  height: 1px;
+  position: relative;
+  top: -20px;
+  content: '';
+}
+.articles .article:first-of-type::before {
+  content: none;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: table;
+  table-layout: fixed;
+  background: #111;
+  z-index: 1;
+  box-shadow: inset 0 1px 0 0 rgb(255 255 255 / 0.24);
+}
+.footer span {
+  display: table-cell;
+  text-align: center;
+  padding-top: 17px;
+  cursor: pointer;
+}
+.footer span svg {
+  height: 25px;
+}
+
+html {
+  background: black;
+  color: #f9f9fa;
+  font-family: 'Inter', sans-serif;
+  scrollbar-color: #202c39 black;
+  scrollbar-width: thin;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: #f9f9fa33;
+}
+
+::-webkit-scrollbar {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #202c39;
+}
