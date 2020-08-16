@@ -274,20 +274,23 @@ if (localStorage.getItem('tickers')) {
 localStorage.setItem('tickers', tickers);
 
 function addStock(el) {
-   // Add stock to array
-   tArray.unshift(el.children[0].innerHTML);
-   
-   // Add skeleton stock to entries
-   document.querySelector('.entries').innerHTML =
-      stocks.renderSkeleton(el.children[0].innerHTML) +
-      document.querySelector('.entries').innerHTML;
-   
-   // Update localStorage
-   tickers = tArray.join(',');
-   localStorage.setItem('tickers', tickers);
-   
-   // Refresh entries
-   APIhandler.sendAPIReq(tickers);
+   // Check if stock exists
+   if (!tArray.includes(el.children[0].innerHTML)) {
+      // Add stock to array
+      tArray.unshift(el.children[0].innerHTML);
+
+      // Add skeleton stock to entries
+      document.querySelector('.entries').innerHTML =
+         stocks.renderSkeleton(el.children[0].innerHTML) +
+         document.querySelector('.entries').innerHTML;
+
+      // Update localStorage
+      tickers = tArray.join(',');
+      localStorage.setItem('tickers', tickers);
+
+      // Refresh entries
+      APIhandler.sendAPIReq(tickers);
+   }
 }
 
 function removeStock(el) {
