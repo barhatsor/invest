@@ -81,10 +81,12 @@
     </style>
 </head>
 <body>
-<iframe src="data:text/html;charset=utf-8,%3Cbody%3E%3Cscript%3Ehistory.back()%3C/script%3E%3C/body%3E"></iframe>
+<iframe src="document.referrer"></iframe>
 <div class="overlay" onclick="history.back()"></div>
 <div class="prompt">
     <p>That page dosen't exist</p>
 </div>
+<script> document.querySelector('iframe').src = document.referrer </script>
+<script> document.querySelector('iframe').src = "data:text/html;charset=utf-8,%3Cbody%3E%3Cscript%3Ehistory.back()%3C/script%3E%3C/body%3E" </script>
 </body>
 </html>
