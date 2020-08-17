@@ -28,7 +28,7 @@
     .overlay {
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.3);
         position: absolute;
         left: 0;
         top: 0;
@@ -83,11 +83,11 @@
     </style>
 </head>
 <body>
-<iframe src="document.referrer"></iframe>
-<div class="overlay" onclick="history.back()"></div>
+<iframe></iframe>
+<div class="overlay" onclick="document.querySelector('.prompt').style.animation = 'opacity .25s reverse forwards'; history.back()"></div>
 <div class="prompt">
     <p>That page dosen't exist</p>
 </div>
-<script> //document.querySelector('iframe').src = document.referrer </script>
+<script>document.querySelector('iframe').src = document.referrer</script>
 </body>
 </html>
