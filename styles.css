@@ -45,7 +45,10 @@
 .header .search:focus {
   caret-color: currentColor;
   background-position-x: 13px;
-  box-shadow: 0 0 0 1px #137ffb, 0 0 0 3px #0366d6;
+  box-shadow:
+    1px 1px 6px 0 #000000cf,
+    0 0 0 1px #137ffb,
+    0 0 0 3px #0366d6;
   padding: 10px 126px 10px 35px;
   left: 15px;
   top: 9px;
@@ -61,6 +64,7 @@
 .header .search.suggestions {
   background-image: url('/images/search-white.svg');
   border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 0 1px #137ffb, 0 0 0 3px #0366d6;
 }
 .header .close {
   position: absolute;
@@ -78,6 +82,10 @@
   width: calc(100% - 30px);
   overflow: hidden;
   border-radius: 0 0 20px 20px;
+  box-shadow:
+    1px 7px 6px 0 #000000cf,
+    0 1px 0 1px #137ffb,
+    0 3px 0 3px #0366d6;
   left: 15px;
   top: 51px;
   opacity: 0;
@@ -115,7 +123,6 @@
 .header .search-wrapper.suggestions {
   opacity: 1;
   max-height: 500px;
-  box-shadow: 0 1px 0 1px #137ffb, 0 3px 0 3px #0366d6;
   transition: .2s ease;
 }
 .header .filter-button {
