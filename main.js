@@ -265,9 +265,9 @@ function makeDraggable(dragItem) {
       else {
         direction = 'right';
       }
-      dragItem.style.left = currentX + 'px';    
-      click = false;
+      dragItem.style.left = currentX + 'px';
    }
+   click = false;
   }
    
   function dragEnd(e) {
@@ -304,19 +304,15 @@ function makeDraggable(dragItem) {
          }, 400);
        }
        active = false;
-       // If just clicked, open stock details
-       if (click == true) {
-         stocks.toggleDetails(dragItem);
-       }
     }
     else {
       // Snap back to starting position
       xOffset = 0;
       dragItem.style.left = 0;
-      // Remove transition when done
-      window.setTimeout(function() {
-        dragItem.style.transition = '';
-      }, 200);
+    }
+    // If just clicked, open stock details
+    if (click == true) {
+      stocks.toggleDetails(dragItem);
     }
   }
 }
