@@ -34,6 +34,7 @@
   border-radius: 10px;
   caret-color: transparent;
   transition: .2s ease, caret-color 0s .2s, opacity 0s;
+  -webkit-appearance: none;
   box-sizing: inherit;
   z-index: 1;
 }
@@ -221,6 +222,7 @@
   cursor: pointer;
   overflow: hidden;
   max-height: 66px;
+  touch-action: none;
   transition: max-height .25s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
