@@ -178,7 +178,7 @@ document.querySelector('.search').addEventListener("keyup", function(event) {
 document.querySelector('.search').addEventListener('blur', function (event) {
   document.querySelector(".search").classList.remove("suggestions");
   document.querySelector(".search").value = "";
-  document.body.style.overflowY = "auto";
+  document.body.style.overflow = "";
 })
 
 // If clicked on suggestions or close, hide suggestions
@@ -195,7 +195,7 @@ function renderSuggestions(resp) {
   // Change UI
   document.querySelector(".search-wrapper").classList.add("suggestions");
   document.querySelector(".search").classList.add("suggestions");
-  document.body.style.overflowY = "hidden";
+  document.body.style.overflow = "hidden";
   // Store finished HTML
   var out = "";
   // If response
