@@ -220,7 +220,6 @@ function renderSuggestions(resp) {
 
 /* Swipe to remove stocks */
 function makeDraggable(dragItem) {
-  var active = false;
   var click = false;
   var currentX;
   var initialX;
@@ -231,32 +230,23 @@ function makeDraggable(dragItem) {
   dragItem.addEventListener("touchstart", dragStart, false);
   dragItem.addEventListener("touchend", dragEnd, false);
   dragItem.addEventListener("touchmove", drag, false);
-   
-  dragItem.addEventListener("scroll", function() {
-     active = false;
-  }, false);
 
   function dragStart(e) {
     initialX = e.touches[0].clientX - xOffset;
-
-    active = true;
     click = true;
   }
 
   function drag(e) {
-    if (active) {
-      e.preventDefault();
-      currentX = e.touches[0].clientX - initialX;
-      xOffset = currentX;
-      if (xOffset < 0) {
-        direction = 'left';
-      }
-      else {
-        direction = 'right';
-      }
-      dragItem.style.left = currentX + 'px';    
-      click = false;
-    }
+   currentX = e.touches[0].clientX - initialX;
+   xOffset = currentX;
+   if (xOffset < 0) {
+     direction = 'left';
+   }
+   else {
+     direction = 'right';
+   }
+   dragItem.style.left = currentX + 'px';    
+   click = false;
   }
    
   function dragEnd(e) {
@@ -291,7 +281,6 @@ function makeDraggable(dragItem) {
         removeStock(dragItem);
       }, 400);
     }
-    active = false;
     // If just clicked, open stock details
     if (click == true) {
       stocks.toggleDetails(dragItem);
