@@ -231,6 +231,10 @@ function makeDraggable(dragItem) {
   dragItem.addEventListener("touchstart", dragStart, false);
   dragItem.addEventListener("touchend", dragEnd, false);
   dragItem.addEventListener("touchmove", drag, false);
+   
+  dragItem.addEventListener("scroll", function() {
+     active = false;
+  }, false);
 
   function dragStart(e) {
     initialX = e.touches[0].clientX - xOffset;
