@@ -65,7 +65,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' onclick='stocks.toggleDetails(this)'>" +
+                    "<div class='entry'>" +
                     '<div class="arrow-wrapper"><svg class="arrow" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="-122.9 121.1 105.9 61.9"><path d="M-63.2 180.3l43.5-43.5c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7L-69.9 161l-37.2-37.2c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.6c-1.9 1.8-2.8 4.2-2.8 6.6 0 2.3.9 4.6 2.6 6.5 11.4 11.5 41 41.2 43 43.3l.2.2c3.6 3.6 10.3 3.6 13.9 0z" fill="#fff"/></svg></div>' +
                     "<h1>" +
                     response[prop].quote.symbol +
@@ -88,9 +88,9 @@ class stockEntries {
         document.querySelector(".entries").innerHTML = this.out;
        
         // Add swipe eventListener for stocks
-        /* document.querySelectorAll(".entry").forEach(entry => {
-        //   addSwipeListener(entry);
-        }) */
+        document.querySelectorAll(".entry").forEach(entry => {
+           makeDraggable(entry);
+        })
     }
 
     // Toggle stock details
@@ -219,42 +219,69 @@ function renderSuggestions(resp) {
 
 
 /* Swipe to remove stocks */
-function addSwipeListener(gesuredZone) {
-   var touchstartX = 0;
-   var touchstartY = 0;
-   var touchendX = 0;
-   var touchendY = 0;
-
-   gesuredZone.addEventListener('touchstart', function(event) {
-       touchstartX = event.screenX;
-       touchstartY = event.screenY;
-   }, false);
-
-   gesuredZone.addEventListener('touchend', function(event) {
-       touchendX = event.screenX;
-       touchendY = event.screenY;
-       handleGesure();
-   }, false); 
-
-   function handleGesure() {
-       var swiped = 'swiped: ';
-       if (touchendX < touchstartX) {
-           console.log(swiped + 'left!');
-       }
-       if (touchendX > touchstartX) {
-           console.log(swiped + 'right!');
-       }
-       if (touchendY < touchstartY) {
-           console.log(swiped + 'down!');
-       }
-       if (touchendY > touchstartY) {
-           console.log(swiped + 'left!');
-       }
-       if (touchendY == touchstartY) {
-           console.log('tap!');
-       }
-   }
+function makeDraggable(el) {
+  // Add a new draggabilly instance
+  var draggie = new Draggabilly(el, {
+    axis: 'x'
+  });
+   
+  // If just clicked, open stock details
+  draggie.on('staticClick', function(e) {
+     stocks.toggleDetails(el);
+  });
+   
+  // When dragging, determine direction of stock
+  var direction;
+  draggie.on('dragMove', function(a, b, moveVector) {
+    if (moveVector.x < 0) {
+      direction = 'left';
+    }
+    else {
+      direction = 'right';
+    }
+  })
+  
+  // When stopped dragging
+  draggie.on('dragEnd', function(e) {
+    // Add transition for stock animation
+    el.style.transition = '.2s ease';
+    // If stock is in view
+    if (isInViewport(el)) {
+      // Snap back to start position
+      el.style.left = 0;
+      // Remove transition when done
+      window.setTimeout(function() {
+        el.style.transition = '';
+      }, 200);
+    }
+    // If stock is not in view
+    else {
+      // Move it according to direction
+      if (direction == 'left') {
+        el.style.left = 'calc(-100% - 3px)';
+      }
+      else {
+        el.style.left = 'calc(100% + 3px)';
+      }
+      // Animate stock removal
+      window.setTimeout(function() {
+        el.style.marginTop = '-95.8px';
+      }, 200);
+      // When done, remove stock
+      window.setTimeout(function() {
+        removeStock(el);
+      }, 400);
+    }
+  })
 }
+
+var isInViewport = function(el) {
+    var bounding = el.getBoundingClientRect();
+    return (
+        bounding.left >= 0 &&
+        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
 
 
 /* Portfolio local storage */
