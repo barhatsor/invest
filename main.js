@@ -239,54 +239,58 @@ function makeDraggable(dragItem) {
   }
 
   function drag(e) {
-   currentX = e.touches[0].clientX - initialX;
-   xOffset = currentX;
-   if (xOffset < 0) {
-     direction = 'left';
+   if (active) {
+      currentX = e.touches[0].clientX - initialX;
+      xOffset = currentX;
+      if (xOffset < 0) {
+        direction = 'left';
+      }
+      else {
+        direction = 'right';
+      }
+      dragItem.style.left = currentX + 'px';    
+      click = false;
    }
-   else {
-     direction = 'right';
-   }
-   dragItem.style.left = currentX + 'px';    
-   click = false;
   }
    
   function dragEnd(e) {
-    initialX = currentX;
-    // Add transition for stock animation
-    dragItem.style.transition = '.2s ease';
-    // If stock is in view
-    if (isInViewport(dragItem)) {
-      // Snap back to starting position
-      xOffset = 0;
-      dragItem.style.left = 0;
-      // Remove transition when done
-      window.setTimeout(function() {
-        dragItem.style.transition = '';
-      }, 200);
-    }
-    // If stock is not in view
-    else {
-      // Leave left or right, according to direction
-      if (direction == 'left') {
-        dragItem.style.left = 'calc(-100% - 3px)';
-      }
-      else {
-        dragItem.style.left = 'calc(100% + 3px)';
-      }
-      // Animate removal
-      window.setTimeout(function() {
-        dragItem.style.marginTop = '-95.8px';
-      }, 200);
-      // When done, remove stock
-      window.setTimeout(function() {
-        removeStock(dragItem);
-      }, 400);
-    }
-    active = false;
-    // If just clicked, open stock details
-    if (click == true) {
-      stocks.toggleDetails(dragItem);
+    if (active) {
+       initialX = currentX;
+       // Add transition for stock animation
+       dragItem.style.transition = '.2s ease';
+       // If stock is in view
+       if (isInViewport(dragItem)) {
+         // Snap back to starting position
+         xOffset = 0;
+         dragItem.style.left = 0;
+         // Remove transition when done
+         window.setTimeout(function() {
+           dragItem.style.transition = '';
+         }, 200);
+       }
+       // If stock is not in view
+       else {
+         // Leave left or right, according to direction
+         if (direction == 'left') {
+           dragItem.style.left = 'calc(-100% - 3px)';
+         }
+         else {
+           dragItem.style.left = 'calc(100% + 3px)';
+         }
+         // Animate removal
+         window.setTimeout(function() {
+           dragItem.style.marginTop = '-95.8px';
+         }, 200);
+         // When done, remove stock
+         window.setTimeout(function() {
+           removeStock(dragItem);
+         }, 400);
+       }
+       active = false;
+       // If just clicked, open stock details
+       if (click == true) {
+         stocks.toggleDetails(dragItem);
+       }
     }
   }
 }
