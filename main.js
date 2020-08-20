@@ -257,7 +257,6 @@ function makeDraggable(dragItem) {
 
   function drag(e) {
    if (active && !scrolling) {
-      e.preventDefault();
       currentX = e.touches[0].clientX - initialX;
       xOffset = currentX;
       if (xOffset < 0) {
@@ -272,7 +271,7 @@ function makeDraggable(dragItem) {
   }
    
   function dragEnd(e) {
-    if (active) {
+    if (active && !scrolling) {
        initialX = currentX;
        // Add transition for stock animation
        dragItem.style.transition = '.2s ease';
@@ -309,6 +308,15 @@ function makeDraggable(dragItem) {
        if (click == true) {
          stocks.toggleDetails(dragItem);
        }
+    }
+    else {
+      // Snap back to starting position
+      xOffset = 0;
+      dragItem.style.left = 0;
+      // Remove transition when done
+      window.setTimeout(function() {
+        dragItem.style.transition = '';
+      }, 200);
     }
   }
 }
