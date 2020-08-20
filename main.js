@@ -232,16 +232,8 @@ var active = false;
   dragItem.addEventListener("touchend", dragEnd, false);
   dragItem.addEventListener("touchmove", drag, false);
 
-  dragItem.addEventListener("mousedown", dragStart, false);
-  dragItem.addEventListener("mouseup", dragEnd, false);
-  dragItem.addEventListener("mousemove", drag, false);
-
   function dragStart(e) {
-    if (e.type === "touchstart") {
-      initialX = e.touches[0].clientX - xOffset;
-    } else {
-      initialX = e.clientX - xOffset;
-    }
+    initialX = e.touches[0].clientX - xOffset;
 
     active = true;
     click = true;
@@ -250,11 +242,7 @@ var active = false;
   function drag(e) {
     if (active) {
       e.preventDefault();
-      if (e.type === "touchmove") {
-        currentX = e.touches[0].clientX - initialX;
-      } else {
-        currentX = e.clientX - initialX;
-      }
+      currentX = e.touches[0].clientX - initialX;
       xOffset = currentX;
       if (xOffset < 0) {
         direction = -1;
