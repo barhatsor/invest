@@ -220,7 +220,7 @@ function renderSuggestions(resp) {
 
 /* Swipe to remove stocks */
 function makeDraggable(dragItem) {
-var active = false;
+  var active = false;
   var click = false;
   var currentX;
   var initialX;
@@ -245,10 +245,10 @@ var active = false;
       currentX = e.touches[0].clientX - initialX;
       xOffset = currentX;
       if (xOffset < 0) {
-        direction = -1;
+        direction = 'left';
       }
       else {
-        direction = 1;
+        direction = 'right';
       }
       dragItem.style.left = currentX + 'px';    
       click = false;
