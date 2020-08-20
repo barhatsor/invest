@@ -247,7 +247,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: calc(50% + 20px);
+  max-width: calc(50% - 20px);
 }
 .entries .entry span {
   margin-top: -30px;
