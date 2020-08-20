@@ -219,63 +219,83 @@ function renderSuggestions(resp) {
 
 
 /* Swipe to remove stocks */
-function makeDraggable(el) {
-  // Add a new draggabilly instance
-  var draggie = new Draggabilly(el, {
-    axis: 'x'
-  });
-   
-  // If just clicked, open stock details
-  draggie.on('staticClick', function(e) {
-     stocks.toggleDetails(el);
-  });
-   
-  // When dragging, determine direction of stock
+function makeDraggable(dragItem) {
+  var active = false;
+  var click = false;
+  var currentX;
+  var initialX;
+  var xOffset = 0;
   var direction;
-  draggie.on('dragMove', function(a, b, moveVector) {
-    if (moveVector.x < 0) {
-      direction = 'left';
+
+  // Add event listeners
+  dragItem.addEventListener("touchstart", dragStart, false);
+  dragItem.addEventListener("touchend", dragEnd, false);
+  dragItem.addEventListener("touchmove", drag, false);
+
+  function dragStart(e) {
+    initialX = e.touches[0].clientX - xOffset;
+    active = true;
+    click = true;
+  }
+
+  function drag(e) {
+    if (active) {
+      e.preventDefault();
+      currentX = e.touches[0].clientX - initialX;
+      xOffset = currentX;
+      // Determine direction
+      if (xOffset < 0) {
+        direction = 'left';
+      }
+      else {
+        direction = 'right';
+      }
+      dragItem.style.left = currentX + 'px';      
+      click = false;
     }
-    else {
-      direction = 'right';
-    }
-  })
-  
-  // When stopped dragging
-  draggie.on('dragEnd', function(e) {
+  } 
+   
+  function dragEnd(e) {
+    initialX = currentX;
     // Add transition for stock animation
-    el.style.transition = '.2s ease';
+    dragItem.style.transition = '.2s ease';
     // If stock is in view
-    if (isInViewport(el)) {
-      // Snap back to start position
-      el.style.left = 0;
+    if (isInViewport(dragItem)) {
+      // Snap back to starting position
+      xOffset = 0;
+      dragItem.style.left = 0;
       // Remove transition when done
       window.setTimeout(function() {
-        el.style.transition = '';
+        dragItem.style.transition = '';
       }, 200);
     }
     // If stock is not in view
     else {
-      // Move it according to direction
+      // Leave left or right, according to direction
       if (direction == 'left') {
-        el.style.left = 'calc(-100% - 3px)';
+        dragItem.style.left = 'calc(-100% - 3px)';
       }
       else {
-        el.style.left = 'calc(100% + 3px)';
+        dragItem.style.left = 'calc(100% + 3px)';
       }
-      // Animate stock removal
+      // Animate removal
       window.setTimeout(function() {
-        el.style.marginTop = '-95.8px';
+        dragItem.style.marginTop = '-95.8px';
       }, 200);
       // When done, remove stock
       window.setTimeout(function() {
-        removeStock(el);
+        removeStock(dragItem);
       }, 400);
     }
-  })
+    active = false;
+    // If just clicked, open stock details
+    if (click == true) {
+      stocks.toggleDetails(dragItem);
+    }
+  }
 }
 
-var isInViewport = function(el) {
+var isInViewport = function (el) {
     var bounding = el.getBoundingClientRect();
     return (
         bounding.left >= 0 &&
