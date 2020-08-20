@@ -230,7 +230,6 @@ window.addEventListener("scroll", function(e) {
       scrolling = true;
    }
    else {
-      e.preventDefault();
       scrolling = false;
    }
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
@@ -265,6 +264,7 @@ function makeDraggable(dragItem) {
       }
       else {
         direction = 'right';
+        e.preventDefault();
       }
       dragItem.style.left = currentX + 'px';
    }
@@ -272,7 +272,7 @@ function makeDraggable(dragItem) {
   }
    
   function dragEnd(e) {
-    if (active && !scrolling) {
+    if (!scrolling) {
        initialX = currentX;
        // Add transition for stock animation
        dragItem.style.transition = '.2s ease';
