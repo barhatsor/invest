@@ -322,7 +322,7 @@ function addStock(el) {
 
 function removeStock(el) {
    // Remove stock from array
-   var index = tArray.indexOf(el.children[0].innerHTML);
+   var index = tArray.indexOf(el.children[1].innerHTML);
    if (index > -1) {
      tArray.splice(index, 1);
    }
