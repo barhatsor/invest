@@ -363,6 +363,7 @@ html {
   font-family: 'Inter', sans-serif;
   scrollbar-color: #202c39 black;
   scrollbar-width: thin;
+  overflow-x: hidden;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
