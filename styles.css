@@ -222,7 +222,6 @@
   cursor: pointer;
   overflow: hidden;
   max-height: 66px;
-  touch-action: none;
   transition: max-height .25s ease;
   box-shadow: 0 4px 4px rgba(21, 32, 43, 0.06);
 }
