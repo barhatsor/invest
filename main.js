@@ -219,6 +219,23 @@ function renderSuggestions(resp) {
 
 
 /* Swipe to remove stocks */
+
+// Check if scrolling vertically
+var lastScrollTop = 0;
+var scrolling = false;
+
+window.addEventListener("scroll", function() {
+   var st = window.pageYOffset || document.documentElement.scrollTop;
+   if (st != lastScrollTop) {
+      scrolling = true;
+   }
+   else {
+      scrolling = false;
+   }
+   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+}, false);
+
+
 function makeDraggable(dragItem) {
   var active = false;
   var click = false;
@@ -239,7 +256,8 @@ function makeDraggable(dragItem) {
   }
 
   function drag(e) {
-   if (active) {
+   if (active && !scrolling) {
+      e.preventDefault();
       currentX = e.touches[0].clientX - initialX;
       xOffset = currentX;
       if (xOffset < 0) {
