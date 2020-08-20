@@ -224,12 +224,13 @@ function renderSuggestions(resp) {
 var lastScrollTop = 0;
 var scrolling = false;
 
-window.addEventListener("scroll", function() {
+window.addEventListener("scroll", function(e) {
    var st = window.pageYOffset || document.documentElement.scrollTop;
    if (st != lastScrollTop) {
       scrolling = true;
    }
    else {
+      e.preventDefault();
       scrolling = false;
    }
    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
