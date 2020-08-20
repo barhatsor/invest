@@ -4,7 +4,7 @@
        MIT License (https://bassets.github.io/mit)
    */
 
-var v = 2.8;
+var v = 3.0;
 var apiResponse;
 
 /* Handle everything API */
@@ -220,6 +220,7 @@ function renderSuggestions(resp) {
 
 /* Swipe to remove stocks */
 function makeDraggable(dragItem) {
+  var active = false;
   var click = false;
   var currentX;
   var initialX;
@@ -233,6 +234,7 @@ function makeDraggable(dragItem) {
 
   function dragStart(e) {
     initialX = e.touches[0].clientX - xOffset;
+    active = true;
     click = true;
   }
 
@@ -281,6 +283,7 @@ function makeDraggable(dragItem) {
         removeStock(dragItem);
       }, 400);
     }
+    active = false;
     // If just clicked, open stock details
     if (click == true) {
       stocks.toggleDetails(dragItem);
