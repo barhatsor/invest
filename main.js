@@ -264,7 +264,11 @@ function makeDraggable(dragItem) {
       }
       else {
         direction = 'right';
-        e.preventDefault();
+        window.setTimeout(function() {
+           if (!scrolling) {
+              e.preventDefault();
+           }
+        }, 200);
       }
       dragItem.style.left = currentX + 'px';
    }
