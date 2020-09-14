@@ -210,8 +210,6 @@ if (localStorage.getItem('tickers')) {
 localStorage.setItem('tickers', tickers);
 
 function addStock(el) {
-   // Clear search
-   document.querySelector('.search').value = '';
    // Check if stock exists
    if (!tArray.includes(el.children[0].innerHTML)) {
       // Add stock to array
