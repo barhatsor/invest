@@ -182,7 +182,7 @@ function renderSuggestions(resp) {
   if (!resp.Note) {
     // Add suggestion to finished HTML
     resp.bestMatches.forEach(match => {
-        out += '<div class="suggestion" onclick="addStock(this);document.querySelector(\'.search\').value = \'\'"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
+        out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
   }
   // If no response provided, show try later message
@@ -210,6 +210,8 @@ if (localStorage.getItem('tickers')) {
 localStorage.setItem('tickers', tickers);
 
 function addStock(el) {
+   // Clear search
+   document.querySelector('.search').value = '';
    // Check if stock exists
    if (!tArray.includes(el.children[0].innerHTML)) {
       // Add stock to array
