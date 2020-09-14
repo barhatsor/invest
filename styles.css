@@ -1,6 +1,7 @@
 /* Bar Hatsor 2020 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 .header {
   position: fixed;
   top: 0;
@@ -31,7 +32,7 @@
   top: 12px;
   left: 59px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 10px !important;
   caret-color: transparent;
   transition: .2s ease, caret-color 0s .2s, opacity 0s;
   box-sizing: inherit;
@@ -59,9 +60,6 @@
 .header .search:focus ~ .close {
   right: 13px;
   opacity: 1;
-}
-.header .search.suggestions {
-  background-image: url('/images/search-white.svg');
 }
 .header .close {
   position: absolute;
