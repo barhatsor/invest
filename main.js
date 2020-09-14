@@ -155,17 +155,17 @@ document.querySelector('.search').addEventListener('input', function (event) {
   }
 })
 
-// If clicked on search
-document.querySelector('.search').addEventListener('click', function (event) {
-   // If suggestions
-   if (document.querySelector('.search-wrapper').innerHTML) {
-      // Make search flat at bottom
-      document.querySelector('.search').style.borderRadius = '';
+// If focused search, show starting suggestions
+document.querySelector('.search').addEventListener('focus', function (event) {
+   // Store finished HTML
+   var out = '';
+   // For each stock
+   for (var prop in apiResponse) {
+      // Add suggestion
+      out += '<div class="suggestion" onclick="addStock(this)"><p>'+apiResponse[prop].quote.symbol+'</p><a>'+apiResponse[prop].quote.companyName+'</a></div>';
    }
-   // Else, make search round
-   else {
-      document.querySelector('.search').style.borderRadius = '10px';
-   }
+   // Inject finished HTML into search wrapper
+   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
 })
 
 // If clicked on close, hide search
@@ -184,10 +184,6 @@ function renderSuggestions(resp) {
     resp.bestMatches.forEach(match => {
         out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
-    // If no suggestions, make search round
-    if (out == "") {
-       document.querySelector('.search').style.borderRadius = '10px';
-    }
   }
   // If no response provided, show try later message
   else {
