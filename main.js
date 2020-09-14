@@ -162,7 +162,7 @@ document.querySelector('.search').addEventListener('focus', function (event) {
    // For each stock
    for (var prop in apiResponse) {
       // Add suggestion
-      out += '<div class="suggestion" onclick="addStock(this)"><p>'+apiResponse[prop].quote.symbol+'</p><a>'+apiResponse[prop].quote.companyName+'</a></div>';
+      out += '<div class="suggestion"><p>'+apiResponse[prop].quote.symbol+'</p><a>'+apiResponse[prop].quote.companyName+'</a></div>';
    }
    // Inject finished HTML into search wrapper
    document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
@@ -182,7 +182,7 @@ function renderSuggestions(resp) {
   if (!resp.Note) {
     // Add suggestion to finished HTML
     resp.bestMatches.forEach(match => {
-        out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
+        out += '<div class="suggestion" onclick="addStock(this);document.querySelector(".search").value = ''"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
   }
   // If no response provided, show try later message
