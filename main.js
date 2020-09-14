@@ -173,6 +173,9 @@ document.querySelector('.search').addEventListener("keyup", function(event) {
              document.querySelector(".search-wrapper").innerHTML = '<hr><div class="suggestion"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
              // And add the first result
              addStock(document.querySelector('.search-wrapper').children[1]);
+             // Close search
+             document.querySelector(".search-wrapper").classList.remove("suggestions");
+             document.querySelector(".search").blur();
           });
        }
        // Close search
