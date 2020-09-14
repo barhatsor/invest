@@ -141,71 +141,41 @@ function filterStocks(data) {
 
 
 /* Search */
-var prevrequest = "";
 // If typed in search
 document.querySelector('.search').addEventListener('input', function (event) {
   // And if search not empty
-  if (this.value != "" && this.value != prevrequest) {
+  if (this.value != "") {
     // Render suggestions
     prevrequest = this.value;
     httpRequest("GET", "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords="+this.value+"&apikey=XH456FPPVS8MHBXA", renderSuggestions);
   }
   else {
     // Else, close search
-    document.querySelector(".search").classList.remove("suggestions");
-    document.querySelector(".search-wrapper").classList.remove("suggestions");
-    document.body.style.overflow = "auto";
+    document.querySelector(".search").blur();
   }
 })
 
-// If enter key pressed
-document.querySelector('.search').addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-       // Add the first result
-       if (document.querySelector('.search-wrapper').children[1].innerHTML) {
-          addStock(document.querySelector('.search-wrapper').children[1]);
-       }
-       // If not loaded yet
-       else {
-          // Send a request
-          httpRequest("GET", "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords="+document.querySelector('.search').value+"&apikey=XH456FPPVS8MHBXA", function() {
-             let match = Object.keys(resp.bestMatches)[1];
-             document.querySelector(".search-wrapper").innerHTML = '<hr><div class="suggestion"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
-             // And add the first result
-             addStock(document.querySelector('.search-wrapper').children[1]);
-             // Close search
-             document.querySelector(".search-wrapper").classList.remove("suggestions");
-             document.querySelector(".search").blur();
-          });
-       }
-       // Close search
-       document.querySelector(".search-wrapper").classList.remove("suggestions");
-       document.querySelector(".search").blur();
-    }
-});
-
-// If clicked off search, close it
-document.querySelector('.search').addEventListener('blur', function (event) {
-  document.querySelector(".search").classList.remove("suggestions");
-  document.querySelector(".search").value = "";
-  document.body.style.overflow = "";
+// If clicked on search
+document.querySelector('.search').addEventListener('click', function (event) {
+   // If suggestions
+   if (document.querySelector('.search-wrapper').innerHTML) {
+      // Make search flat at bottom
+      document.querySelector('.search').style.borderRadius = '';
+   }
+   // Else, make search round
+   else {
+      document.querySelector('.search').style.borderRadius = '10px';
+   }
 })
 
-// If clicked on suggestions or close, hide suggestions
-document.querySelector('.search-wrapper').addEventListener('click', function (event) {
-   document.querySelector(".search-wrapper").classList.remove("suggestions");
-})
+// If clicked on close, hide search
 document.querySelector('.close').addEventListener('click', function (event) {
-   document.querySelector(".search-wrapper").classList.remove("suggestions");
+   document.querySelector(".search").value = "";
 })
 
 
 /* Search Suggestions */
 function renderSuggestions(resp) {
-  // Change UI
-  document.querySelector(".search-wrapper").classList.add("suggestions");
-  document.querySelector(".search").classList.add("suggestions");
-  document.body.style.overflow = "hidden";
   // Store finished HTML
   var out = "";
   // If response
@@ -214,18 +184,18 @@ function renderSuggestions(resp) {
     resp.bestMatches.forEach(match => {
         out += '<div class="suggestion" onclick="addStock(this)"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
-    // If no suggestions, remove suggestion classes
+    // If no suggestions, make search round
     if (out == "") {
-       document.querySelector(".search-wrapper").classList.remove("suggestions");
-       document.querySelector(".search").classList.remove("suggestions");
+       document.querySelector('.search').style.borderRadius = '10px';
     }
   }
   // If no response provided, show try later message
   else {
-    out = '<div class="suggestion"><p>No internet</p></div>';
+    out = '<div class="suggestion"><p>Try again later</p></div>';
   }
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
 }
+
 
 /* Portfolio local storage */
 var tArray = [];
