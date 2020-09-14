@@ -65,7 +65,7 @@ class stockEntries {
                 }
                 // Build stock entries
                 this.out +=
-                    "<div class='entry' mouseup='stocks.toggleDetails(this)'>" +
+                    "<div class='entry' onclick='stocks.toggleDetails(this)'>" +
                     '<div class="arrow-wrapper"><svg class="arrow" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="-122.9 121.1 105.9 61.9"><path d="M-63.2 180.3l43.5-43.5c1.7-1.7 2.7-4 2.7-6.5s-1-4.8-2.7-6.5c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.7L-69.9 161l-37.2-37.2c-1.7-1.7-4-2.7-6.5-2.7s-4.8 1-6.5 2.6c-1.9 1.8-2.8 4.2-2.8 6.6 0 2.3.9 4.6 2.6 6.5 11.4 11.5 41 41.2 43 43.3l.2.2c3.6 3.6 10.3 3.6 13.9 0z" fill="#fff"/></svg></div>' +
                     "<h1>" +
                     response[prop].quote.symbol +
@@ -86,11 +86,6 @@ class stockEntries {
         
         // Inject the finished HTML into the page
         document.querySelector(".entries").innerHTML = this.out;
-       
-        // Add swipe eventListener for stocks
-        document.querySelectorAll(".entry").forEach(entry => {
-           makeDraggable(entry);
-        })
     }
 
     // Toggle stock details
@@ -167,8 +162,20 @@ document.querySelector('.search').addEventListener('input', function (event) {
 document.querySelector('.search').addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
        // Add the first result
-       addStock(document.querySelector('.search-wrapper').children[1]);
-       // And close search
+       if (document.querySelector('.search-wrapper').children[1].innerHTML) {
+          addStock(document.querySelector('.search-wrapper').children[1]);
+       }
+       // If not loaded yet
+       else {
+          // Send a request
+          httpRequest("GET", "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords="+document.querySelector('.search').value+"&apikey=XH456FPPVS8MHBXA", function() {
+             let match = Object.keys(resp.bestMatches)[1];
+             document.querySelector(".search-wrapper").innerHTML = '<hr><div class="suggestion"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
+             // And add the first result
+             addStock(document.querySelector('.search-wrapper').children[1]);
+          });
+       }
+       // Close search
        document.querySelector(".search-wrapper").classList.remove("suggestions");
        document.querySelector(".search").blur();
     }
@@ -216,120 +223,6 @@ function renderSuggestions(resp) {
   }
   document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
 }
-
-
-/* Swipe to remove stocks */
-
-// Check if scrolling vertically
-var lastScrollTop = 0;
-var scrolling = false;
-
-window.addEventListener("scroll", function(e) {
-   var st = window.pageYOffset || document.documentElement.scrollTop;
-   if (st != lastScrollTop) {
-      scrolling = true;
-   }
-   else {
-      scrolling = false;
-   }
-   lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-}, false);
-
-
-function makeDraggable(dragItem) {
-  var active = false;
-  var click = false;
-  var currentX;
-  var initialX;
-  var xOffset = 0;
-  var direction;
-
-  // Add event listners
-  dragItem.addEventListener("touchstart", dragStart, false);
-  dragItem.addEventListener("touchend", dragEnd, false);
-  dragItem.addEventListener("touchmove", drag, false);
-
-  function dragStart(e) {
-    initialX = e.touches[0].clientX - xOffset;
-    active = true;
-    click = true;
-  }
-
-  function drag(e) {
-   if (active && !scrolling) {
-      currentX = e.touches[0].clientX - initialX;
-      xOffset = currentX;
-      if (xOffset < 0) {
-        direction = 'left';
-      }
-      else {
-        direction = 'right';
-        window.setTimeout(function() {
-           if (!scrolling) {
-              e.preventDefault();
-           }
-        }, 200);
-      }
-      dragItem.style.left = currentX + 'px';
-   }
-   click = false;
-  }
-   
-  function dragEnd(e) {
-    if (!scrolling) {
-       initialX = currentX;
-       // Add transition for stock animation
-       dragItem.style.transition = '.2s ease';
-       // If stock is in view
-       if (isInViewport(dragItem)) {
-         // Snap back to starting position
-         xOffset = 0;
-         dragItem.style.left = 0;
-         // Remove transition when done
-         window.setTimeout(function() {
-           dragItem.style.transition = '';
-         }, 200);
-       }
-       // If stock is not in view
-       else {
-         // Leave left or right, according to direction
-         if (direction == 'left') {
-           dragItem.style.left = 'calc(-100% - 3px)';
-         }
-         else {
-           dragItem.style.left = 'calc(100% + 3px)';
-         }
-         // Animate removal
-         window.setTimeout(function() {
-           dragItem.style.marginTop = '-95.8px';
-         }, 200);
-         // When done, remove stock
-         window.setTimeout(function() {
-           removeStock(dragItem);
-         }, 400);
-       }
-       active = false;
-    }
-    else {
-      // Snap back to starting position
-      xOffset = 0;
-      dragItem.style.left = 0;
-    }
-    // If just clicked, open stock details
-    if (click == true) {
-      stocks.toggleDetails(dragItem);
-    }
-  }
-}
-
-var isInViewport = function (el) {
-    var bounding = el.getBoundingClientRect();
-    return (
-        bounding.left >= 0 &&
-        bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-};
-
 
 /* Portfolio local storage */
 var tArray = [];
