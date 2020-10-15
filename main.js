@@ -184,7 +184,7 @@ document.querySelector('.overlay').addEventListener('click', function (event) {
    document.querySelector(".search-wrapper").style.visibility = '';
    document.querySelector(".search-wrapper").style.opacity = '';
    document.querySelector('.overlay').style.display = 'none';
-}
+})
 
 
 /* Search Suggestions */
