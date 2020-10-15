@@ -166,12 +166,25 @@ document.querySelector('.search').addEventListener('focus', function (event) {
    }
    // Inject finished HTML into search wrapper
    document.querySelector(".search-wrapper").innerHTML = "<hr>"+out;
+   
+   // Show overlay
+   document.querySelector(".search-wrapper").style.visibility = 'visible';
+   document.querySelector(".search-wrapper").style.opacity = 1;
+   document.querySelector('.overlay').style.display = 'block';
 })
 
 // If clicked on close, hide search
 document.querySelector('.close').addEventListener('click', function (event) {
    document.querySelector(".search").value = "";
+   document.querySelector(".search").click();
 })
+
+// If clicked on overlay, hide search
+document.querySelector('.overlay').addEventListener('click', function (event) {
+   document.querySelector(".search-wrapper").style.visibility = '';
+   document.querySelector(".search-wrapper").style.opacity = '';
+   document.querySelector('.overlay').style.display = 'none';
+}
 
 
 /* Search Suggestions */
@@ -182,7 +195,7 @@ function renderSuggestions(resp) {
   if (!resp.Note) {
     // Add suggestion to finished HTML
     resp.bestMatches.forEach(match => {
-        out += '<div class="suggestion" onclick="addStock(this);document.querySelector(\'.search\').focus()"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
+        out += '<div class="suggestion" onclick="addStock(this);document.querySelector('.overlay').click()"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
   }
   // If no response provided, show try later message
