@@ -79,7 +79,8 @@
   box-shadow: 0 -4px 0 0 #202C39, 0 0 0 1px #137ffb, 0 0 0 3px #0366d6;
   left: 15px;
   top: 51px;
-  display: none;
+  visibility: hidden;
+  opacity: 0;
   z-index: 1;
 }
 .header .search-wrapper hr {
