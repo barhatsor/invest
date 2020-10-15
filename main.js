@@ -195,7 +195,7 @@ function renderSuggestions(resp) {
   if (!resp.Note) {
     // Add suggestion to finished HTML
     resp.bestMatches.forEach(match => {
-        out += '<div class="suggestion" onclick="addStock(this);document.querySelector('.overlay').click()"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
+        out += '<div class="suggestion" onclick="addStock(this);document.querySelector(\'.overlay\').click()"><p>'+match["1. symbol"]+'</p><a>'+match["2. name"]+'</a></div>';
     })
   }
   // If no response provided, show try later message
